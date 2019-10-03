@@ -328,9 +328,15 @@ class ServicesPage extends Component {
                       <img src={frameInImage} alt='Frame In' style={{width: '300px', height: 'auto'}} />
                     </CardContentImageDiv>
                     <CardContentTextDiv>
-                      <p>
-                        Pressure washing can renew a surface and have dramatic results. In order to get these surfaces as clean as possible we use the surface scrubber! The surface scrubber eliminates having streaks or lines seen on surfaces from traditional spray wands. It achieves this by maintaining even pressure over a large surface area and scrubbing away left over dirt. In most cases chemicals are not needed to remove mildew and stains. However tough areas may require a chemical to be used. We use only environmentally safe chemicals.
-                      </p>
+                      <p>We offer a wide variety of pressure washing services: </p>
+                      <ul>
+                        <li>Pool Cage</li>
+                        <li>Decks</li>
+                        <li>Walkways</li>
+                        <li>Driveways</li>
+                        <li>Siding</li>
+                        <li>Stucco</li>
+                      </ul>
                     </CardContentTextDiv>
                   </CardContentDiv>
                 </Card.Body>

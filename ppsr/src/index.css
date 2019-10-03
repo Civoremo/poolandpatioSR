@@ -18,7 +18,7 @@ code {
 	}
 }
 
-@media only screen and (max-width: 575px) {
+@media only screen and (max-width: 991px) {
 	.callToAction {
 		display: block;
 	}
@@ -28,7 +28,7 @@ code {
 	}
 }
 
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 992px) {
 	.callToAction {
 		display: none;
 	}

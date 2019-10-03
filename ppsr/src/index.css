@@ -22,11 +22,19 @@ code {
 	.callToAction {
 		display: block;
 	}
+
+	.callToActionSpacer {
+		height: 7.3rem;
+	}
 }
 
 @media only screen and (min-width: 576px) {
 	.callToAction {
 		display: none;
+	}
+
+	.callToActionSpacer {
+		height: 4.3rem;
 	}
 }
 

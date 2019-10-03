@@ -18,15 +18,29 @@ code {
 	}
 }
 
+@media only screen and (max-width: 575px) {
+	.callToAction {
+		display: block;
+	}
+}
+
+@media only screen and (min-width: 576px) {
+	.callToAction {
+		display: none;
+	}
+}
+
 .nav-link {
 	display: flex;
 	justify-content: center;
 }
 
 .hamburger-custom {
-	background-color: #0098da;
+	/* background-color: #0098da; */
+	background-color: #fff;
 }
 
 .hamburger-custom:hover {
-	background-color: #1abaff;
+	/* background-color: #1abaff; */
+	background-color: #fff212;
 }

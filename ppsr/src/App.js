@@ -6,7 +6,7 @@ import Navigation from './components/navbar';
 
 function App() {
   return (
-    <div>
+    <div style={{height: '2000px'}}>
       <Navigation />
     </div>
   );

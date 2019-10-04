@@ -10,8 +10,8 @@ function App() {
     <div style={{height: '2000px'}}>
       <Navigation />
       <div className='callToActionSpacer' />
-      <ServicesPage />
       <AboutUs />
+      <ServicesPage />
     </div>
   );
 }

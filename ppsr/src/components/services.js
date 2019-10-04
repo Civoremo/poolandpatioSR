@@ -59,18 +59,17 @@ class ServicesPage extends Component {
     }))
 
   render() {
-    console.log(this.state.collapsedID + ' Clicked')
 
     return (
       <div style={{padding: '40px 0'}}>
 
         <Container>
           <div style={{fontSize: '2rem', marginBottom: '15px'}}>
-            <span style={{marginLeft: '20px', fontFamily: 'Raleway'}}>Services</span>
+            <span style={{paddingLeft: '20px', fontFamily: 'Raleway'}}>Services</span>
             <div style={{borderBottom: '2px solid #DFDFDF', width: '100%'}} />
           </div>
           <div>
-            <p style={{fontSize: '1.1rem', marginBottom: '35px', marginLeft: '20px', fontFamily: 'Roboto'}}>
+            <p style={{fontSize: '1.1rem', marginBottom: '35px', paddingLeft: '20px', fontFamily: 'Roboto'}}>
               Here at <span style={{color: '#1759AA', fontWeight: 'bold'}}>Pool & Patio Screen Repair</span>, we offer a wide variety of services that could be of help to you.
             </p>
           </div>

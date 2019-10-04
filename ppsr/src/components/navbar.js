@@ -18,10 +18,13 @@ import logoImgWhite from './images/logo/logo_lg_alt_white.png';
 
 const NavLinkColor = styled.span`
 	color: #eeeeee;
-	font-weight: bold;
+  font-weight: bold;
+  
+  font-family: 'Raleway', sans-serif;
 
 	:hover {
-		color: #FFF212;
+    /* color: #FFF212; */
+    color: #c8c8c8;
     text-decoration: underline;
 	}
 `;
@@ -56,6 +59,8 @@ const ActionTextSpan = styled.span `
   font-size: 1rem;
   color: #fff;
 
+  font-family: 'Roboto', sans-serif;
+
   @media (max-width: 991px) {
     display: none;
   }
@@ -89,11 +94,11 @@ const Navigationbar = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto" />
             <Nav className="navbar-custom">
-              <Nav.Link href="#home"><NavLinkColor>About</NavLinkColor></Nav.Link>
-              <Nav.Link href="#home"><NavLinkColor>Services</NavLinkColor></Nav.Link>
-              <Nav.Link href="#home"><NavLinkColor>Financing</NavLinkColor></Nav.Link>
-              <Nav.Link href="#home"><NavLinkColor>Gallery</NavLinkColor></Nav.Link>
-              <Nav.Link href="#home"><NavLinkColor>Contact</NavLinkColor></Nav.Link>
+              <Nav.Link href="#about"><NavLinkColor>About</NavLinkColor></Nav.Link>
+              <Nav.Link href="#services"><NavLinkColor>Services</NavLinkColor></Nav.Link>
+              <Nav.Link href="#financing"><NavLinkColor>Financing</NavLinkColor></Nav.Link>
+              <Nav.Link href="#gallery"><NavLinkColor>Gallery</NavLinkColor></Nav.Link>
+              <Nav.Link href="#contact"><NavLinkColor>Contact</NavLinkColor></Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

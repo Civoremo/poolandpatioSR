@@ -21,6 +21,7 @@ const CardDisplayDiv = styled.div `
 
 const CardTitleDiv = styled.div `
   /* font-weight: bold; */
+  font-family: 'Raleway', sans-serif;
 `
 
 const CardIconDiv = styled.div `
@@ -43,6 +44,7 @@ const CardContentImageDiv = styled.div `
 
 const CardContentTextDiv = styled.div `
   width: 100%;
+  font-family: 'Roboto', sans-serif;
 `
 
 class ServicesPage extends Component {
@@ -61,6 +63,18 @@ class ServicesPage extends Component {
 
     return (
       <div style={{padding: '40px 0'}}>
+
+        <Container>
+          <div style={{fontSize: '2rem', marginBottom: '15px'}}>
+            <span style={{marginLeft: '20px', fontFamily: 'Raleway'}}>Services</span>
+            <div style={{borderBottom: '2px solid #DFDFDF', width: '100%'}} />
+          </div>
+          <div>
+            <p style={{fontSize: '1.1rem', marginBottom: '35px', marginLeft: '20px', fontFamily: 'Roboto'}}>
+              Here at <span style={{color: '#1759AA', fontWeight: 'bold'}}>Pool & Patio Screen Repair</span>, we offer a wide variety of services that could be of help to you.
+            </p>
+          </div>
+        </Container>
   
         <Container>
           <Accordion>
@@ -310,7 +324,7 @@ class ServicesPage extends Component {
               </Accordion.Collapse>
             </Card>
   
-            <Card style={{borderRadius: '0', borderBottom: '1px solid #DFDFDF'}}>
+            <Card style={{marginBottom: '5px', borderBottom: '1px solid #DFDFDF'}}>
               <Accordion.Toggle as={Card.Header} eventKey= '9' onClick={this.toggleAccordion(9)}>
                 <CardDisplayDiv>
                   <CardTitleDiv>

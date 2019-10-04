@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
+import Modal from 'react-bootstrap/Modal';
 import styled from 'styled-components';
 // import '../index.css'
 
 // import logoImg from './images/logo/logo_lg_alt.png';
 import logoImgWhite from './images/logo/logo_lg_alt_white.png';
+import Gallery from './gallery';
 
 /*
   colors
@@ -70,8 +72,9 @@ const ActionTextSpan = styled.span `
   }
 `
 
-const Navigationbar = () => {
-
+const Navigationbar = props => {
+  const { imageArray } = props;
+  const [lgGallery, setGallery] = useState(false);
 
   return (
     <div>
@@ -97,7 +100,7 @@ const Navigationbar = () => {
               <Nav.Link href="#about"><NavLinkColor>About</NavLinkColor></Nav.Link>
               <Nav.Link href="#services"><NavLinkColor>Services</NavLinkColor></Nav.Link>
               <Nav.Link href="#financing"><NavLinkColor>Financing</NavLinkColor></Nav.Link>
-              <Nav.Link href="#gallery"><NavLinkColor>Gallery</NavLinkColor></Nav.Link>
+              <Nav.Link href="#gallery"><NavLinkColor onClick={() => setGallery(true)}>Gallery</NavLinkColor></Nav.Link>
               <Nav.Link href="#contact"><NavLinkColor>Contact</NavLinkColor></Nav.Link>
             </Nav>
           </Navbar.Collapse>
@@ -111,6 +114,12 @@ const Navigationbar = () => {
           </div>
         </Container>
       </ActionDiv>
+
+      <Gallery 
+        imageArray={imageArray} 
+        lgGallery={lgGallery}
+        setGallery={setGallery}
+      />
       
     </div>
   )

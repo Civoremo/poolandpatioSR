@@ -31,7 +31,7 @@ const EmailInput = styled.div `
 const ContactForm = props => {
   const { handleInputChange, setErrorMessages, clearInputs, senderEmail, senderName, senderMessage, senderError } = props;
 
-  function validateEmail () {
+  const validateEmail = () => {
     let errors = {};
     let formIsValid = true;
 
@@ -57,16 +57,16 @@ const ContactForm = props => {
       formIsValid = false;
     }
 
-    setErrorMessages( errors);
+    setErrorMessages( errors );
 
     return formIsValid;
   }
 
-  function sendMessage (event) {
+  const sendMessage = (event) => {
     event.preventDefault();
 
-    if (!this.validateEmail()) {
-      alert(senderError)
+    if (!validateEmail()) {
+      alert(senderError.name + senderError.email + senderError.message)
       return
     }
 
@@ -79,10 +79,12 @@ const ContactForm = props => {
 
     emailjs.send(process.env.REACT_APP_EMAILJS_SERVICEID, process.env.REACT_APP_EMAILJS_TEMPLATE, templateParams, process.env.REACT_APP_EMAILJS_USER)
       .then(response => {
+        console.log(response)
         alert("Message send successfully.")
         clearInputs();
       })
       .catch(error => {
+        console.log(error)
         alert("Message failed, try again.")
       })
   }
@@ -124,7 +126,7 @@ const ContactForm = props => {
                 name='senderMessage'
                 placeholder='Message'
                 required='required'
-                onChange={senderMessage}
+                onChange={handleInputChange}
                 value={senderMessage}
                 error={senderError.message}
                 rows='6'
@@ -134,7 +136,7 @@ const ContactForm = props => {
             </MessageInputContainer>
             <FormSubmitButtonContainer>
               <Button
-                onClick={() => this.sendMessage()}
+                onClick={sendMessage}
                 type='button'
                 name='submit'
                 required='required'

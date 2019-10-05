@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
-import Modal from 'react-bootstrap/Modal';
 import styled from 'styled-components';
-// import '../index.css'
 
 // import logoImg from './images/logo/logo_lg_alt.png';
 import logoImgWhite from './images/logo/logo_lg_alt_white.png';
@@ -25,7 +23,6 @@ const NavLinkColor = styled.span`
   font-family: 'Raleway', sans-serif;
 
 	:hover {
-    /* color: #FFF212; */
     color: #c8c8c8;
     text-decoration: underline;
 	}

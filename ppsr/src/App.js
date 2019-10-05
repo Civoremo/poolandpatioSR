@@ -5,14 +5,22 @@ import './App.css';
 import Navigation from './components/navbar';
 import ServicesPage from './components/services';
 import AboutUs from './components/aboutus';
-import Gallery from './components/gallery';
+import ContactUs from './components/contact';
 
 const URL = `http://res.cloudinary.com/ppscreens/image/list/ppsr.json`;
 
 class App extends Component {
   state = {
-    collapedId: '',
-    imageArray: []
+    collapsedID: '',
+    imageArray: [],
+    senderEmail: '',
+    senderName: '',
+    senderMessage: '',
+    error: {
+      name: '',
+      email: '',
+      message: ''
+    }
   }
 
   componentDidMount() {
@@ -33,6 +41,27 @@ class App extends Component {
       collapsedID: prevState.collapsedID !== collapsedID ? collapsedID : ''
   }))
 
+  handleInputChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  clearInputs = (event) => {
+    this.setState({
+      senderEmail: '',
+      senderName: '',
+      senderMessage: '',
+      error: {}
+    })
+  }
+
+  setErrorMessages = (errors) => {
+    this.setState({
+      error: errors
+    })
+  } 
+
   render() {
 
     return (
@@ -43,12 +72,18 @@ class App extends Component {
         <div className='callToActionSpacer' />
         <AboutUs />
         <ServicesPage 
-          collapedId={this.state.collapedId}
+          collapsedID={this.state.collapsedID}
           toggleAccordion={this.toggleAccordion}
         />
-        {/* <Gallery 
-          imageArray={this.state.imageArray}
-        /> */}
+        <ContactUs 
+          handleInputChange={this.handleInputChange}
+          setErrorMessages={this.setErrorMessages}
+          clearInputs={this.clearInputs}
+          senderEmail={this.state.senderEmail}
+          senderName={this.state.senderName}
+          senderMessage={this.state.senderMessage}
+          senderError={this.state.error}
+        />
       </div>
     );
   }

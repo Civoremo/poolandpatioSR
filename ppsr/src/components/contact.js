@@ -1,7 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
 import * as emailjs from 'emailjs-com';
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 import styled from 'styled-components';
+
+const FormContainer = styled.div `
+
+`
+
+const NameEmailInputContainer = styled.div `
+
+`
+
+const MessageInputContainer = styled.div `
+
+`
+
+const FormSubmitButtonContainer = styled.div `
+
+`
+
+const NameInput = styled.div `
+
+`
+
+const EmailInput = styled.div `
+
+`
 
 const ContactForm = props => {
   const { handleInputChange, setErrorMessages, clearInputs, senderEmail, senderName, senderMessage, senderError } = props;
@@ -64,7 +89,62 @@ const ContactForm = props => {
 
   return (
     <div>
-      contact form
+      <Container>
+        <FormContainer>
+          <form method='post' action='submmit'>
+            <NameEmailInputContainer>
+              <NameInput>
+                <input
+                  type='text'
+                  name='senderName'
+                  placeholder='Name'
+                  required='required'
+                  onChange={handleInputChange}
+                  value={senderName}
+                  error={senderError.name}
+                >
+                </input>
+              </NameInput>
+              <EmailInput>
+                <input
+                  type='text'
+                  name='senderEmail'
+                  placeholder='Email'
+                  required='required'
+                  onChange={handleInputChange}
+                  value={senderEmail}
+                  error={senderError.email}
+                >
+                </input>
+              </EmailInput>
+            </NameEmailInputContainer>
+            <MessageInputContainer>
+              <textarea
+                type='text'
+                name='senderMessage'
+                placeholder='Message'
+                required='required'
+                onChange={senderMessage}
+                value={senderMessage}
+                error={senderError.message}
+                rows='6'
+                style={{resize: 'none'}}
+              >
+              </textarea>
+            </MessageInputContainer>
+            <FormSubmitButtonContainer>
+              <Button
+                onClick={() => this.sendMessage()}
+                type='button'
+                name='submit'
+                required='required'
+              >
+                Submit
+              </Button>
+            </FormSubmitButtonContainer>
+          </form>
+        </FormContainer>
+      </Container>
     </div>
   )
 }

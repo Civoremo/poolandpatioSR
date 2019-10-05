@@ -4,7 +4,8 @@ import styled from 'styled-components';
 
 const ImageModalDiv = styled.div `
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `
 
 const GalleryPage = props => {
@@ -29,9 +30,9 @@ const GalleryPage = props => {
           </Modal.Header>
           <Modal.Body>
             <ImageModalDiv>
-              {imageArray.map((image, index) => {
-                return <img key={index} style={{width: '90%'}} src={`https://res.cloudinary.com/ppscreens/image/upload/v${imageArray[index].version}/${imageArray[index].public_id}.${imageArray[index].format}`} />
-              })}
+              {/* {imageArray.map((image, index) => {
+                return <img key={index} style={{width: '90%', marginBottom: '25px'}} src={`https://res.cloudinary.com/ppscreens/image/upload/v${imageArray[index].version}/${imageArray[index].public_id}.${imageArray[index].format}`} alt={`${imageArray[index].public_id}`} />
+              })} */}
             </ImageModalDiv>
           </Modal.Body>
         </Modal>

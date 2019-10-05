@@ -28,6 +28,13 @@
 			rel="stylesheet"
 		/>
 
+		<script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+		<script type="text/javascript">
+			(function() {
+				emailjs.init("%REACT_APP_EMAILJS_USER%");
+			})();
+		</script>
+
 		<title>React App</title>
 	</head>
 	<body>

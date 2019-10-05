@@ -20,7 +20,8 @@ class App extends Component {
       name: '',
       email: '',
       message: ''
-    }
+    },
+    insufficientInfo: false
   }
 
   componentDidMount() {
@@ -52,7 +53,8 @@ class App extends Component {
       senderEmail: '',
       senderName: '',
       senderMessage: '',
-      error: {}
+      error: {},
+      insufficientInfo: false
     })
   }
 
@@ -61,6 +63,12 @@ class App extends Component {
       error: errors
     })
   } 
+
+  toggleMissingInfoMessage = (event) => {
+    this.setState({
+      insufficientInfo: true
+    })
+  }
 
   render() {
 
@@ -79,10 +87,12 @@ class App extends Component {
           handleInputChange={this.handleInputChange}
           setErrorMessages={this.setErrorMessages}
           clearInputs={this.clearInputs}
+          toggleMissingInfoMessage={this.toggleMissingInfoMessage}
           senderEmail={this.state.senderEmail}
           senderName={this.state.senderName}
           senderMessage={this.state.senderMessage}
           senderError={this.state.error}
+          insufficientInfo={this.state.insufficientInfo}
         />
       </div>
     );

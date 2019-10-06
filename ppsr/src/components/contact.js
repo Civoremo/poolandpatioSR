@@ -100,13 +100,23 @@ const LineSeperatorDiv = styled.div `
 `
 
 const ContactForm = props => {
-  const { handleInputChange, setErrorMessages, clearInputs, toggleMissingInfoMessage, senderEmail, senderName, senderMessage, senderError, insufficientInfo } = props;
+  const { 
+    handleInputChange, 
+    setErrorMessages, 
+    clearInputs, 
+    toggleMissingInfoMessage, 
+    senderEmail, 
+    senderFirstName, 
+    senderMessage, 
+    senderError, 
+    insufficientInfo 
+  } = props;
 
   const validateEmail = () => {
     let errors = {};
     let formIsValid = true;
 
-    if (!senderName || senderName.length < 3) {
+    if (!senderFirstName || senderFirstName.length < 3) {
       errors.name = 'Minimum length of 3 characters.';
       formIsValid = false;
     }
@@ -143,7 +153,7 @@ const ContactForm = props => {
     }
 
     let templateParams = {
-      from_name: senderName + ' ( ' + senderEmail + ' ) ',
+      from_name: senderFirstName + ' ( ' + senderEmail + ' ) ',
       from_email: senderEmail,
       to_name: 'PPSR',
       subject: 'PPSR Contact Form',
@@ -170,6 +180,14 @@ const ContactForm = props => {
           <span style={{paddingLeft: '20px', fontFamily: 'Raleway'}}>Contact Us</span>
           <div style={{borderBottom: '2px solid #DFDFDF', width: '100%', marginBottom: '30px'}} />
         </div>
+        <div style={{marginBottom: '50px'}}>
+          <p>
+            Fill out the form below to receive a free no obligation estimate on your project. Tell us what kind of work you need done. We will follow up via email or call you with any questions we might have to accurately quote your project.
+          </p>
+          <p>
+            If we are unable to quote your project online, we will email or call you to schedule a convenient time to come out and give you an accurate quote.
+          </p>
+        </div>
 
         <FormContainer>
           <FormInputContainer method='post' action='submmit'>
@@ -177,11 +195,11 @@ const ContactForm = props => {
               <NameInputDiv>
                 <NameInput
                   type='text'
-                  name='senderName'
+                  name='senderFirstName'
                   placeholder='Name'
                   required='required'
                   onChange={handleInputChange}
-                  value={senderName}
+                  value={senderFirstName}
                   error={senderError.name}
                   // style={{padding: '0 10px', height: '40px'}}
                 >

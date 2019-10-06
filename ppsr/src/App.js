@@ -14,7 +14,22 @@ class App extends Component {
     collapsedID: '',
     imageArray: [],
     senderEmail: '',
-    senderName: '',
+    senderConfirmEmail: '',
+    senderFirstName: '',
+    senderLastName: '',
+    senderStreet: '',
+    senderCity: '',
+    senderState: '',
+    senderZipcode: '',
+    senderGateCode: '',
+    senderServices: {
+      complete: false,
+      individual: false,
+      window: false,
+      newLanai: false,
+      newEntry: false,
+      miscRepair: false
+    },
     senderMessage: '',
     error: {
       name: '',
@@ -51,7 +66,7 @@ class App extends Component {
   clearInputs = (event) => {
     this.setState({
       senderEmail: '',
-      senderName: '',
+      senderFirstName: '',
       senderMessage: '',
       error: {},
       insufficientInfo: false
@@ -89,7 +104,7 @@ class App extends Component {
           clearInputs={this.clearInputs}
           toggleMissingInfoMessage={this.toggleMissingInfoMessage}
           senderEmail={this.state.senderEmail}
-          senderName={this.state.senderName}
+          senderFirstName={this.state.senderFirstName}
           senderMessage={this.state.senderMessage}
           senderError={this.state.error}
           insufficientInfo={this.state.insufficientInfo}

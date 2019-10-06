@@ -31,7 +31,7 @@
 		<script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
 		<script type="text/javascript">
 			(function() {
-				emailjs.init("%REACT_APP_EMAILJS_USER%");
+				emailjs.init(process.env.REACT_APP_EMAILJS_USER);
 			})();
 		</script>
 

@@ -1,0 +1,64 @@
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+		"Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* Font Family */
+/* 
+	font-family: 'Raleway', sans-serif; TITLES
+	font-family: 'Roboto', sans-serif; TEXT
+*/
+
+@media only screen and (max-width: 575px) {
+	.navbar-custom {
+		border-top: 1px solid whitesmoke;
+		margin-top: 15px;
+		padding-top: 20px;
+	}
+}
+
+@media only screen and (max-width: 991px) {
+	.callToAction {
+		display: block;
+	}
+
+	.callToActionSpacer {
+		height: 7.3rem;
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	.callToAction {
+		display: none;
+	}
+
+	.callToActionSpacer {
+		height: 4.3rem;
+	}
+}
+
+.nav-link {
+	display: flex;
+	justify-content: center;
+}
+
+.hamburger-custom {
+	/* background-color: #0098da; */
+	background-color: #fff;
+}
+
+.hamburger-custom:hover {
+	background-color: #c8c8c8;
+	/* background-color: #fff212; */
+}
+
+.card-header {
+	background-color: rgb(232, 237, 240);
+}

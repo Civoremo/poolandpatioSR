@@ -110,6 +110,14 @@ const InputField = styled.input `
 
 const InputDiv = styled.div `
   min-width: 350px;
+
+  @media (max-width: 1199px) {
+    min-width: 250px
+  }
+
+  @media (max-width: 991px) {
+    min-width: 100%;
+  }
 `
 
 const InputFieldContainer = styled.div `
@@ -545,7 +553,7 @@ const ContactForm = props => {
               <textarea
                 type='text'
                 name='senderMessage'
-                placeholder='Please provide us with details about the project...'
+                placeholder='Please provide us with details about your project...'
                 required='required'
                 onChange={handleInputChange}
                 value={senderMessage}

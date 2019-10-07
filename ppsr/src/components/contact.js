@@ -27,7 +27,8 @@ const NameEmailInputContainer = styled.div `
 `
 
 const MessageInputContainer = styled.div `
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
+  padding: 10px 20px;
 `
 
 const FormSubmitButtonContainer = styled.div `
@@ -87,6 +88,9 @@ const HoursOfOperationDiv = styled.div `
 
 const FormInputContainer = styled.form `
   width: 100%;
+  border: 3px solid #1759AA;
+  border-radius: 5px;
+  padding: 40px 20px 20px 20px;
 
   @media (min-width: 1200px) {
     width: 800px;
@@ -100,15 +104,37 @@ const LineSeperatorDiv = styled.div `
 `
 
 const InputField = styled.input `
-
+  width: 100%;
+  padding: 5px 5px;
 `
 
 const InputDiv = styled.div `
+  min-width: 350px;
+`
 
+const InputFieldContainer = styled.div `
+  padding: 10px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`
+
+const CheckboxContainer = styled.div `
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px 20px; 
+  /* border: 1px solid red; */
 `
 
 const CheckboxDiv = styled.div `
+  width: 200px;
+  margin-bottom: 5px;
+  /* border: 1px solid green; */
+`
 
+const CheckboxInput = styled.input `
+  margin-right: 5px;
 `
 
 const ContactForm = props => {
@@ -138,12 +164,42 @@ const ContactForm = props => {
     let formIsValid = true;
 
     if (!senderFirstName || senderFirstName.length < 2) {
-      errors.name = 'Not enough info.';
+      errors.fName = 'Required!';
+      formIsValid = false;
+    }
+
+    if (!senderLastName || senderLastName.length < 2) {
+      errors.lName = 'Required!';
       formIsValid = false;
     }
 
     if (!senderEmail || senderEmail.length < 3) {
-      errors.email = 'Email required!';
+      errors.email = 'Not a valid email!';
+      formIsValid = false;
+    }
+
+    if (!senderStreet) {
+      errors.street = 'Required!';
+      formIsValid = false;
+    }
+
+    if (!senderCity) {
+      errors.city = 'Required!';
+      formIsValid = false;
+    }
+
+    if (!senderState) {
+      errors.state = 'Required!';
+      formIsValid = false;
+    }
+
+    if (!senderZipcode) {
+      errors.zipcode = 'Required!';
+      formIsValid = false;
+    }
+
+    if(!senderPhone || senderPhone.length < 11 || senderPhone.length > 13) {
+      errors.phone = 'Not a valid phone!';
       formIsValid = false;
     }
 
@@ -270,202 +326,220 @@ const ContactForm = props => {
           </FormInputContainer> */}
 
           <FormInputContainer method='post' action='submit'>
-            <InputDiv>
-              <InputField
-                type='text'
-                name='senderFirstName'
-                placeholder='First Name'
-                required='required'
-                onChange={handleInputChange}
-                value={senderFirstName}
-              >
-              </InputField>
-            </InputDiv>
 
-            <InputDiv>
-              <InputField
-                type='text'
-                name='senderLastName'
-                placeholder='Last Name'
-                required='required'
-                onChange={handleInputChange}
-                value={senderLastName}
-              >
-              </InputField>
-            </InputDiv>
+            <div style={{fontWeight: 'bold'}}>Contact Info</div>
 
-            <InputDiv>
-              <InputField
-                type='text'
-                name='senderEmail'
-                placeholder='Email'
-                required="required"
-                onChange={handleInputChange}
-                value={senderEmail}
-              >              
-              </InputField>
-            </InputDiv>
-
-            <InputDiv>
-              <InputField
-                type="text"
-                name='senderPhone'
-                placeholder='Phone #'
-                required='required'
-                onChange={handleInputChange}
-                value={senderPhone}
-              >
-              </InputField>
-            </InputDiv>
-
-            <InputDiv>
-              <InputField
-                type='text'
-                name='senderStreet'
-                placeholder='Street'
-                required='required'
-                onChange={handleInputChange}
-                value={senderStreet}
-              >
-              </InputField>
-            </InputDiv>
-
-            <InputDiv>
-              <InputField
-                type='text'
-                name='senderCity'
-                placeholder='City'
-                required='required'
-                onChange={handleInputChange}
-                value={senderCity}
-              >
-              </InputField>
-            </InputDiv>
-
-            <InputDiv>
-              <InputField
-                type='text'
-                name='senderState'
-                placeholder='State'
-                required='required'
-                onChange={handleInputChange}
-                value={senderState}
-              >
-              </InputField>
-            </InputDiv>
-
-            <InputDiv>
-              <InputField
-                type='text'
-                name='senderZipcode'
-                placeholder='Zip Code'
-                required='required'
-                onChange={handleInputChange}
-                value={senderZipcode}
-              >
-              </InputField>
-            </InputDiv>
-
-            <InputDiv>
-              <InputField
-                type='text'
-                name='senderGateCode'
-                placeholder='Gate Code'
-                onChange={handleInputChange}
-                value={senderGateCode}
-              >
-              </InputField>
-            </InputDiv>
-
-            <CheckboxDiv>
-              <div>
+            <InputFieldContainer>
+              <InputDiv>
                 <InputField
+                  type='text'
+                  name='senderFirstName'
+                  placeholder='First Name'
+                  required='required'
+                  onChange={handleInputChange}
+                  value={senderFirstName}
+                >
+                </InputField>
+                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.fName}</div>
+              </InputDiv>
+
+              <InputDiv>
+                <InputField
+                  type='text'
+                  name='senderLastName'
+                  placeholder='Last Name'
+                  required='required'
+                  onChange={handleInputChange}
+                  value={senderLastName}
+                >
+                </InputField>
+                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.lName}</div>
+              </InputDiv>
+
+              <InputDiv>
+                <InputField
+                  type='text'
+                  name='senderEmail'
+                  placeholder='Email'
+                  required="required"
+                  onChange={handleInputChange}
+                  value={senderEmail}
+                >              
+                </InputField>
+                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.email}</div>
+              </InputDiv>
+
+              <InputDiv>
+                <InputField
+                  type="text"
+                  name='senderPhone'
+                  placeholder='Phone # (ex. 555-555-5555)'
+                  required='required'
+                  onChange={handleInputChange}
+                  value={senderPhone}
+                >
+                </InputField>
+                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.phone}</div>
+              </InputDiv>
+
+              <InputDiv>
+                <InputField
+                  type='text'
+                  name='senderStreet'
+                  placeholder='Street'
+                  required='required'
+                  onChange={handleInputChange}
+                  value={senderStreet}
+                >
+                </InputField>
+                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.street}</div>
+              </InputDiv>
+
+              <InputDiv>
+                <InputField
+                  type='text'
+                  name='senderCity'
+                  placeholder='City'
+                  required='required'
+                  onChange={handleInputChange}
+                  value={senderCity}
+                >
+                </InputField>
+                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.city}</div>
+              </InputDiv>
+
+              <InputDiv>
+                <InputField
+                  type='text'
+                  name='senderState'
+                  placeholder='State'
+                  required='required'
+                  onChange={handleInputChange}
+                  value={senderState}
+                >
+                </InputField>
+                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.state}</div>
+              </InputDiv>
+
+              <InputDiv>
+                <InputField
+                  type='text'
+                  name='senderZipcode'
+                  placeholder='Zip Code'
+                  required='required'
+                  onChange={handleInputChange}
+                  value={senderZipcode}
+                >
+                </InputField>
+                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.zipcode}</div>
+              </InputDiv>
+
+              <InputDiv>
+                <InputField
+                  type='text'
+                  name='senderGateCode'
+                  placeholder='Gate Code (if available)'
+                  onChange={handleInputChange}
+                  value={senderGateCode}
+                >
+                </InputField>
+                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}></div>
+              </InputDiv>
+            </InputFieldContainer>
+            
+            <div style={{fontWeight: 'bold'}}>Select Services</div>
+
+            <CheckboxContainer>
+              <CheckboxDiv>
+                <CheckboxInput
                   type='checkbox'
                   name='complete'
                   onChange={(event) => handleCheckboxChange(event, 'complete')}
                   value={senderServices.complete}
                 >
-                </InputField>
+                </CheckboxInput>
                 <label>Complete Re-Screen</label>
-              </div>
+              </CheckboxDiv>
 
-              <div>
-                <InputField
+              <CheckboxDiv>
+                <CheckboxInput
                   type='checkbox'
                   name='individual'
                   onChange={(event) => handleCheckboxChange(event, 'individual')}
                   value={senderServices.individual}
                 >
-                </InputField>
+                </CheckboxInput>
                 <label>Individual Panels</label>
-              </div>
+              </CheckboxDiv>
 
-              <div>
-                <InputField
+              <CheckboxDiv>
+                <CheckboxInput
                   type='checkbox'
                   name='window'
                   onChange={(event) => handleCheckboxChange(event, 'window')}
                   value={senderServices.window}
                 >
-                </InputField>
+                </CheckboxInput>
                 <label>Window Screens</label>
-              </div>
+              </CheckboxDiv>
 
-              <div>
-                <InputField
+              <CheckboxDiv>
+                <CheckboxInput
                   type='checkbox'
                   name='lanai'
                   onChange={(event) => handleCheckboxChange(event, 'lanai')}
                   value={senderServices.lanai}
                 >
-                </InputField>
+                </CheckboxInput>
                 <label>New Screen Lanai Insert</label>
-              </div>
+              </CheckboxDiv>
 
-              <div>
-                <InputField
+              <CheckboxDiv>
+                <CheckboxInput
                   type='checkbox'
                   name='entry'
                   onChange={(event) => handleCheckboxChange(event, 'entry')}
                   value={senderServices.entry}
                 >
-                </InputField>
+                </CheckboxInput>
                 <label>Front Entry Way Insert</label>
-              </div>
+              </CheckboxDiv>
 
-              <div>
-                <InputField
+              <CheckboxDiv>
+                <CheckboxInput
                   type='checkbox'
                   name='washing'
                   onChange={(event) => handleCheckboxChange(event, 'washing')}
                   value={senderServices.washing}
                 >
-                </InputField>
+                </CheckboxInput>
                 <label>Pressure Washing</label>
-              </div>
+              </CheckboxDiv>
 
-              <div>
-                <InputField
+              <CheckboxDiv>
+                <CheckboxInput
                   type='checkbox'
                   name='gutter'
                   onChange={(event) => handleCheckboxChange(event, 'gutter')}
                   value={senderServices.gutter}
                 >
-                </InputField>
+                </CheckboxInput>
                 <label>Gutter Cleaning</label>
-              </div>
+              </CheckboxDiv>
 
-              <div>
-                <InputField
+              <CheckboxDiv>
+                <CheckboxInput
                   type='checkbox'
                   name='misc'
                   onChange={(event) => handleCheckboxChange(event, 'misc')}
                   value={senderServices.misc}
                 >
-                </InputField>
+                </CheckboxInput>
                 <label>Misc. Repairs</label>
-              </div>
-            </CheckboxDiv>
+              </CheckboxDiv>
+            </CheckboxContainer>
+
+            <div style={{fontWeight: 'bold'}}>Message</div>
 
             <MessageInputContainer>
               <textarea
@@ -482,6 +556,17 @@ const ContactForm = props => {
               </textarea>
               <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.message}</div>
             </MessageInputContainer>
+
+            <FormSubmitButtonContainer>
+              <Button
+                onClick={sendMessage}
+                type='button'
+                name='submit'
+                required='required'
+              >
+                Submit
+              </Button>
+            </FormSubmitButtonContainer>
 
           </FormInputContainer>
 

@@ -35,14 +35,15 @@ class App extends Component {
     },
     senderMessage: '',
     error: {
-      name: '',
-        email: '',
-        phone: '',
-        message: '',
-        street: '',
-        city: '',
-        state: '',
-        zipcode: '',
+      fName: '',
+      lName: '',
+      email: '',
+      phone: '',
+      message: '',
+      street: '',
+      city: '',
+      state: '',
+      zipcode: '',
     },
     insufficientInfo: false
   }

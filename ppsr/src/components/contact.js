@@ -99,6 +99,18 @@ const LineSeperatorDiv = styled.div `
   margin-right: 25px;
 `
 
+const InputField = styled.input `
+
+`
+
+const InputDiv = styled.div `
+
+`
+
+const CheckboxDiv = styled.div `
+
+`
+
 const ContactForm = props => {
   const { 
     handleInputChange, 
@@ -107,6 +119,14 @@ const ContactForm = props => {
     toggleMissingInfoMessage, 
     senderEmail, 
     senderFirstName, 
+    senderLastName,
+    senderPhone,
+    senderStreet,
+    senderCity,
+    senderState,
+    senderZipcode,
+    senderGateCode,
+    senderServices,
     senderMessage, 
     senderError, 
     insufficientInfo 
@@ -116,8 +136,8 @@ const ContactForm = props => {
     let errors = {};
     let formIsValid = true;
 
-    if (!senderFirstName || senderFirstName.length < 3) {
-      errors.name = 'Minimum length of 3 characters.';
+    if (!senderFirstName || senderFirstName.length < 2) {
+      errors.name = 'Not enough info.';
       formIsValid = false;
     }
 
@@ -127,7 +147,7 @@ const ContactForm = props => {
     }
 
     if (!senderMessage || senderMessage.length < 10) {
-      errors.message = 'Minimum length of 10 characters.';
+      errors.message = 'Not enough info.';
       formIsValid = false;
     }
 
@@ -153,7 +173,7 @@ const ContactForm = props => {
     }
 
     let templateParams = {
-      from_name: senderFirstName + ' ( ' + senderEmail + ' ) ',
+      from_name: senderFirstName + senderLastName + ' ( ' + senderEmail + ' ) ',
       from_email: senderEmail,
       to_name: 'PPSR',
       subject: 'PPSR Contact Form',
@@ -190,7 +210,7 @@ const ContactForm = props => {
         </div>
 
         <FormContainer>
-          <FormInputContainer method='post' action='submmit'>
+          {/* <FormInputContainer method='post' action='submmit'>
             <NameEmailInputContainer>
               <NameInputDiv>
                 <NameInput
@@ -246,6 +266,214 @@ const ContactForm = props => {
                 Submit
               </Button>
             </FormSubmitButtonContainer>
+          </FormInputContainer> */}
+
+          <FormInputContainer method='post' action='submit'>
+            <InputDiv>
+              <InputField
+                type='text'
+                name='senderFirstName'
+                placeholder='First Name'
+                required='required'
+                onChange={handleInputChange}
+                value={senderFirstName}
+              >
+              </InputField>
+            </InputDiv>
+
+            <InputDiv>
+              <InputField
+                type='text'
+                name='senderLastName'
+                placeholder='Last Name'
+                required='required'
+                onChange={handleInputChange}
+                value={senderLastName}
+              >
+              </InputField>
+            </InputDiv>
+
+            <InputDiv>
+              <InputField
+                type='text'
+                name='senderEmail'
+                placeholder='Email'
+                required="required"
+                onChange={handleInputChange}
+                value={senderEmail}
+              >              
+              </InputField>
+            </InputDiv>
+
+            <InputDiv>
+              <InputField
+                type="text"
+                name='senderPhone'
+                placeholder='Phone #'
+                required='required'
+                onChange={handleInputChange}
+                value={senderPhone}
+              >
+              </InputField>
+            </InputDiv>
+
+            <InputDiv>
+              <InputField
+                type='text'
+                name='senderStreet'
+                placeholder='Street'
+                required='required'
+                onChange={handleInputChange}
+                value={senderStreet}
+              >
+              </InputField>
+            </InputDiv>
+
+            <InputDiv>
+              <InputField
+                type='text'
+                name='senderCity'
+                placeholder='City'
+                required='required'
+                onChange={handleInputChange}
+                value={senderCity}
+              >
+              </InputField>
+            </InputDiv>
+
+            <InputDiv>
+              <InputField
+                type='text'
+                name='senderState'
+                placeholder='State'
+                required='required'
+                onChange={handleInputChange}
+                value={senderState}
+              >
+              </InputField>
+            </InputDiv>
+
+            <InputDiv>
+              <InputField
+                type='text'
+                name='senderZipcode'
+                placeholder='Zip Code'
+                required='required'
+                onChange={handleInputChange}
+                value={senderZipcode}
+              >
+              </InputField>
+            </InputDiv>
+
+            <InputDiv>
+              <InputField
+                type='text'
+                name='senderGateCode'
+                placeholder='Gate Code'
+                onChange={handleInputChange}
+                value={senderGateCode}
+              >
+              </InputField>
+            </InputDiv>
+
+            <CheckboxDiv>
+              <div>
+                <InputField
+                  type='checkbox'
+                  name='senderServices_Complete'
+                  value={senderServices.complete}
+                >
+                </InputField>
+                <label>Complete Re-Screen</label>
+              </div>
+
+              <div>
+                <InputField
+                  type='checkbox'
+                  name='senderServices_Individual'
+                  value={senderServices.individual}
+                >
+                </InputField>
+                <label>Individual Panels</label>
+              </div>
+
+              <div>
+                <InputField
+                  type='checkbox'
+                  name='senderServices_Window'
+                  value={senderServices.window}
+                >
+                </InputField>
+                <label>Window Screens</label>
+              </div>
+
+              <div>
+                <InputField
+                  type='checkbox'
+                  name='senderServices_NewLanai'
+                  value={senderServices.newLanai}
+                >
+                </InputField>
+                <label>New Screen Lanai Insert</label>
+              </div>
+
+              <div>
+                <InputField
+                  type='checkbox'
+                  name='senderServices_NewEntry'
+                  value={senderServices.newEntry}
+                >
+                </InputField>
+                <label>Front Entry Way Insert</label>
+              </div>
+
+              <div>
+                <InputField
+                  type='checkbox'
+                  name='senderServices_PressureWashing'
+                  value={senderServices.pressureWashing}
+                >
+                </InputField>
+                <label>Pressure Washing</label>
+              </div>
+
+              <div>
+                <InputField
+                  type='checkbox'
+                  name='senderServices_GutterCleaning'
+                  value={senderServices.gutterCleaning}
+                >
+                </InputField>
+                <label>Gutter Cleaning</label>
+              </div>
+
+              <div>
+                <InputField
+                  type='checkbox'
+                  name='senderServices_MiscRepairs'
+                  value={senderServices.miscRepair}
+                >
+                </InputField>
+                <label>Misc. Repairs</label>
+              </div>
+            </CheckboxDiv>
+
+            <MessageInputContainer>
+              <textarea
+                type='text'
+                name='senderMessage'
+                placeholder='Please provide us with details about the project...'
+                required='required'
+                onChange={handleInputChange}
+                value={senderMessage}
+                error={senderError.message}
+                rows='6'
+                style={{resize: 'none', padding: '5px 10px', width: '100%'}}
+              >
+              </textarea>
+              <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.message}</div>
+            </MessageInputContainer>
+
           </FormInputContainer>
 
           <LineSeperatorDiv />

@@ -17,6 +17,7 @@ class App extends Component {
     senderConfirmEmail: '',
     senderFirstName: '',
     senderLastName: '',
+    senderPhone: '',
     senderStreet: '',
     senderCity: '',
     senderState: '',
@@ -28,13 +29,20 @@ class App extends Component {
       window: false,
       newLanai: false,
       newEntry: false,
+      pressureWashing: false,
+      gutterCleaning: false,
       miscRepair: false
     },
     senderMessage: '',
     error: {
       name: '',
-      email: '',
-      message: ''
+        email: '',
+        phone: '',
+        message: '',
+        street: '',
+        city: '',
+        state: '',
+        zipcode: '',
     },
     insufficientInfo: false
   }
@@ -66,9 +74,36 @@ class App extends Component {
   clearInputs = (event) => {
     this.setState({
       senderEmail: '',
+      senderConfirmEmail: '',
       senderFirstName: '',
+      senderLastName: '',
+      senderPhone: '',
+      senderStreet: '',
+      senderCity: '',
+      senderState: '',
+      senderZipcode: '',
+      senderGateCode: '',
+      senderServices: {
+        complete: false,
+        individual: false,
+        window: false,
+        newLanai: false,
+        newEntry: false,
+        pressureWashing: false,
+        gutterCleaning: false,
+        miscRepair: false
+      },
       senderMessage: '',
-      error: {},
+      error: {
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+        street: '',
+        city: '',
+        state: '',
+        zipcode: '',
+      },
       insufficientInfo: false
     })
   }
@@ -105,6 +140,14 @@ class App extends Component {
           toggleMissingInfoMessage={this.toggleMissingInfoMessage}
           senderEmail={this.state.senderEmail}
           senderFirstName={this.state.senderFirstName}
+          senderLastName={this.state.senderLastName}
+          senderPhone={this.state.senderPhone}
+          senderStreet={this.state.senderStreet}
+          senderCity={this.state.senderCity}
+          senderState={this.state.senderState}
+          senderZipcode={this.state.senderZipcode}
+          senderGateCode={this.state.senderGateCode}
+          senderServices={this.state.senderServices}
           senderMessage={this.state.senderMessage}
           senderError={this.state.error}
           insufficientInfo={this.state.insufficientInfo}

@@ -27,11 +27,11 @@ class App extends Component {
       complete: false,
       individual: false,
       window: false,
-      newLanai: false,
-      newEntry: false,
-      pressureWashing: false,
-      gutterCleaning: false,
-      miscRepair: false
+      lanai: false,
+      entry: false,
+      washing: false,
+      gutter: false,
+      misc: false
     },
     senderMessage: '',
     error: {
@@ -68,6 +68,49 @@ class App extends Component {
   handleInputChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
+    })
+    console.log(event.target.name + ` - ${event.target.value}`)
+  }
+
+  handleCheckboxChange = (event, name) => {
+
+    console.log('Name ' + event.target.name)
+    console.log('Value ' + event.target.checked)
+
+    this.setState(prevState => {
+      let tempServices = { ...prevState.senderServices};
+      console.table("PREV " + prevState.senderServices[name])
+  
+      if (name === 'complete') {
+        tempServices[name] = !prevState.senderServices[name]
+      }
+      else if (name === 'individual') {
+        tempServices[name] = !prevState.senderServices[name]
+      }
+      else if (name === 'window') {
+        tempServices[name] = !prevState.senderServices[name]
+      }
+      else if (name === 'lanai') {
+        tempServices[name] = !prevState.senderServices[name]
+      }
+      else if (name === 'entry') {
+        tempServices[name] = !prevState.senderServices[name]
+      }
+      else if (name === 'washing') {
+        tempServices[name] = !prevState.senderServices[name]
+      }
+      else if (name === 'gutter') {
+        tempServices[name] = !prevState.senderServices[name]
+      }
+      else if (name === 'misc') {
+        tempServices[name] = !prevState.senderServices[name]
+      }
+      else {
+        console.log('lets figure this out')
+      }
+
+      return {senderServices: tempServices}
+
     })
   }
 
@@ -121,7 +164,7 @@ class App extends Component {
   }
 
   render() {
-
+    console.log(this.state.senderServices)
     return (
       <div style={{height: '2000px'}}>
         <Navigation 
@@ -135,6 +178,7 @@ class App extends Component {
         />
         <ContactUs 
           handleInputChange={this.handleInputChange}
+          handleCheckboxChange={this.handleCheckboxChange}
           setErrorMessages={this.setErrorMessages}
           clearInputs={this.clearInputs}
           toggleMissingInfoMessage={this.toggleMissingInfoMessage}

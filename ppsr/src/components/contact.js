@@ -114,6 +114,7 @@ const CheckboxDiv = styled.div `
 const ContactForm = props => {
   const { 
     handleInputChange, 
+    handleCheckboxChange,
     setErrorMessages, 
     clearInputs, 
     toggleMissingInfoMessage, 
@@ -380,7 +381,8 @@ const ContactForm = props => {
               <div>
                 <InputField
                   type='checkbox'
-                  name='senderServices_Complete'
+                  name='complete'
+                  onChange={(event) => handleCheckboxChange(event, 'complete')}
                   value={senderServices.complete}
                 >
                 </InputField>
@@ -390,7 +392,8 @@ const ContactForm = props => {
               <div>
                 <InputField
                   type='checkbox'
-                  name='senderServices_Individual'
+                  name='individual'
+                  onChange={(event) => handleCheckboxChange(event, 'individual')}
                   value={senderServices.individual}
                 >
                 </InputField>
@@ -400,7 +403,8 @@ const ContactForm = props => {
               <div>
                 <InputField
                   type='checkbox'
-                  name='senderServices_Window'
+                  name='window'
+                  onChange={(event) => handleCheckboxChange(event, 'window')}
                   value={senderServices.window}
                 >
                 </InputField>
@@ -410,8 +414,9 @@ const ContactForm = props => {
               <div>
                 <InputField
                   type='checkbox'
-                  name='senderServices_NewLanai'
-                  value={senderServices.newLanai}
+                  name='lanai'
+                  onChange={(event) => handleCheckboxChange(event, 'lanai')}
+                  value={senderServices.lanai}
                 >
                 </InputField>
                 <label>New Screen Lanai Insert</label>
@@ -420,8 +425,9 @@ const ContactForm = props => {
               <div>
                 <InputField
                   type='checkbox'
-                  name='senderServices_NewEntry'
-                  value={senderServices.newEntry}
+                  name='entry'
+                  onChange={(event) => handleCheckboxChange(event, 'entry')}
+                  value={senderServices.entry}
                 >
                 </InputField>
                 <label>Front Entry Way Insert</label>
@@ -430,8 +436,9 @@ const ContactForm = props => {
               <div>
                 <InputField
                   type='checkbox'
-                  name='senderServices_PressureWashing'
-                  value={senderServices.pressureWashing}
+                  name='washing'
+                  onChange={(event) => handleCheckboxChange(event, 'washing')}
+                  value={senderServices.washing}
                 >
                 </InputField>
                 <label>Pressure Washing</label>
@@ -440,8 +447,9 @@ const ContactForm = props => {
               <div>
                 <InputField
                   type='checkbox'
-                  name='senderServices_GutterCleaning'
-                  value={senderServices.gutterCleaning}
+                  name='gutter'
+                  onChange={(event) => handleCheckboxChange(event, 'gutter')}
+                  value={senderServices.gutter}
                 >
                 </InputField>
                 <label>Gutter Cleaning</label>
@@ -450,8 +458,9 @@ const ContactForm = props => {
               <div>
                 <InputField
                   type='checkbox'
-                  name='senderServices_MiscRepairs'
-                  value={senderServices.miscRepair}
+                  name='misc'
+                  onChange={(event) => handleCheckboxChange(event, 'misc')}
+                  value={senderServices.misc}
                 >
                 </InputField>
                 <label>Misc. Repairs</label>

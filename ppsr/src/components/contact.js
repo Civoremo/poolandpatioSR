@@ -17,15 +17,6 @@ const FormContainer = styled.div `
   }
 `
 
-const NameEmailInputContainer = styled.div `
-  display: flex;
-  width: 100%;
-
-  @media (max-width: 1199px) {
-    flex-direction: column;
-  }
-`
-
 const MessageInputContainer = styled.div `
   /* margin-bottom: 20px; */
   padding: 10px 20px;
@@ -33,37 +24,11 @@ const MessageInputContainer = styled.div `
 
 const FormSubmitButtonContainer = styled.div `
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  margin-bottom: 20px;
-`
-
-const NameInputDiv = styled.div `
-  margin-right: 30px;
-
-  @media (max-width: 1199px) {
-    margin-right: 0px;
-  }
-`
-
-const NameInput = styled.input `
-  width: 383px;
-
-  @media (max-width: 1199px) {
-    width: 100%;
-  }
-`
-
-const EmailInputDiv = styled.div `
-
-`
-
-const EmailInput = styled.input `
-  width: 383px;
-
-  @media (max-width: 1199px) {
-    width: 100%;
-  }
+  /* margin-bottom: 10px; */
 `
 
 const DisplayErrorDiv = styled.div `
@@ -83,6 +48,7 @@ const HoursOfOperationDiv = styled.div `
   @media (max-width: 767px) {
     flex-direction: row;
     justify-content: center;
+    margin-top: 30px;
   }
 `
 
@@ -173,46 +139,55 @@ const ContactForm = props => {
 
     if (!senderFirstName || senderFirstName.length < 2) {
       errors.fName = 'Required!';
+      errors.incomplete = 'Incomplete, check input fields and try again!';
       formIsValid = false;
     }
 
     if (!senderLastName || senderLastName.length < 2) {
       errors.lName = 'Required!';
+      errors.incomplete = 'Incomplete, check input fields and try again!';
       formIsValid = false;
     }
 
     if (!senderEmail || senderEmail.length < 3) {
       errors.email = 'Not a valid email!';
+      errors.incomplete = 'Incomplete, check input fields and try again!';
       formIsValid = false;
     }
 
     if (!senderStreet) {
       errors.street = 'Required!';
+      errors.incomplete = 'Incomplete, check input fields and try again!';
       formIsValid = false;
     }
 
     if (!senderCity) {
       errors.city = 'Required!';
+      errors.incomplete = 'Incomplete, check input fields and try again!';
       formIsValid = false;
     }
 
     if (!senderState) {
       errors.state = 'Required!';
+      errors.incomplete = 'Incomplete, check input fields and try again!';
       formIsValid = false;
     }
 
     if (!senderZipcode) {
       errors.zipcode = 'Required!';
+      errors.incomplete = 'Incomplete, check input fields and try again!';
       formIsValid = false;
     }
 
-    if(!senderPhone || senderPhone.length < 11 || senderPhone.length > 13) {
+    if(!senderPhone || senderPhone.length < 10) {
       errors.phone = 'Not a valid phone!';
+      errors.incomplete = 'Incomplete, check input fields and try again!';
       formIsValid = false;
     }
 
     if (!senderMessage || senderMessage.length < 10) {
       errors.message = 'Not enough info.';
+      errors.incomplete = 'Incomplete, check input fields and try again!';
       formIsValid = false;
     }
 
@@ -220,6 +195,7 @@ const ContactForm = props => {
 
     if (!pattern.test(senderEmail)) {
       errors.email = 'Not a valid email.';
+      errors.incomplete = 'Incomplete, check input fields and try again!';
       formIsValid = false;
     }
 
@@ -238,11 +214,34 @@ const ContactForm = props => {
     }
 
     let templateParams = {
-      from_name: senderFirstName + senderLastName + ' ( ' + senderEmail + ' ) ',
+      from_name: senderFirstName + ' ' + senderLastName + ' ( ' + senderEmail + ' ) ',
       from_email: senderEmail,
       to_name: 'PPSR',
       subject: 'PPSR Contact Form',
-      message_html: senderMessage
+      message_html:{ 
+        customer: `Customer: ${senderFirstName} ${senderLastName}`,
+        phone: `Phone: ${senderPhone}`,
+        email: `Email: ${senderEmail}`,
+        
+        address: `Address:`,
+        street: `${senderStreet}`,
+        cityStateZip: `${senderCity}, ${senderState}, ${senderZipcode}`,
+
+        gateCode: `Gate Code: ${senderGateCode}`,
+
+        services: `Services:`,
+        complete: `Complete Re-Screen: ${senderServices.complete}`,
+        individual: `Individual Panels: ${senderServices.individual}`,
+        window: `Window Screens: ${senderServices.window}`,
+        lanai: `New Lanai Insert: ${senderServices.lanai}`,
+        entry: `New Entry Way Insert: ${senderServices.entry}`,
+        washing: `Pressure Washing: ${senderServices.washing}`,
+        gutter: `Gutter Cleaning: ${senderServices.gutter}`,
+        misc: `Misc. Repairs: ${senderServices.misc}`,
+
+        message: `Message:`,
+        details: `${senderMessage}`
+      }
     }
 
     emailjs.send(process.env.REACT_APP_EMAILJS_SERVICEID, process.env.REACT_APP_EMAILJS_TEMPLATE, templateParams, process.env.REACT_APP_EMAILJS_USER)
@@ -275,64 +274,6 @@ const ContactForm = props => {
         </div>
 
         <FormContainer>
-          {/* <FormInputContainer method='post' action='submmit'>
-            <NameEmailInputContainer>
-              <NameInputDiv>
-                <NameInput
-                  type='text'
-                  name='senderFirstName'
-                  placeholder='Name'
-                  required='required'
-                  onChange={handleInputChange}
-                  value={senderFirstName}
-                  error={senderError.name}
-                  // style={{padding: '0 10px', height: '40px'}}
-                >
-                </NameInput>
-                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.name}</div>
-              </NameInputDiv>
-              <EmailInputDiv>
-                <EmailInput
-                  type='text'
-                  name='senderEmail'
-                  placeholder='Email'
-                  required='required'
-                  onChange={handleInputChange}
-                  value={senderEmail}
-                  error={senderError.email}
-                  // style={{padding: '0 10px', height: '40px'}}
-                >
-                </EmailInput>
-                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.email}</div>
-              </EmailInputDiv>
-            </NameEmailInputContainer>
-            <MessageInputContainer>
-              <textarea
-                type='text'
-                name='senderMessage'
-                placeholder='Message'
-                required='required'
-                onChange={handleInputChange}
-                value={senderMessage}
-                error={senderError.message}
-                rows='6'
-                style={{resize: 'none', padding: '5px 10px', width: '100%'}}
-              >
-              </textarea>
-              <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.message}</div>
-            </MessageInputContainer>
-            <FormSubmitButtonContainer>
-              <Button
-                onClick={sendMessage}
-                type='button'
-                name='submit'
-                required='required'
-              >
-                Submit
-              </Button>
-            </FormSubmitButtonContainer>
-          </FormInputContainer> */}
-
           <FormInputContainer method='post' action='submit'>
 
             <div style={{fontWeight: 'bold'}}>Contact Info</div>
@@ -381,7 +322,7 @@ const ContactForm = props => {
                 <InputField
                   type="text"
                   name='senderPhone'
-                  placeholder='Phone # (ex. 555-555-5555)'
+                  placeholder='Phone #'
                   required='required'
                   onChange={handleInputChange}
                   value={senderPhone}
@@ -446,7 +387,7 @@ const ContactForm = props => {
                 <InputField
                   type='text'
                   name='senderGateCode'
-                  placeholder='Gate Code (if available)'
+                  placeholder='Gate Code'
                   onChange={handleInputChange}
                   value={senderGateCode}
                 >
@@ -571,9 +512,11 @@ const ContactForm = props => {
                 type='button'
                 name='submit'
                 required='required'
+                style={{marginBottom: '10px'}}
               >
                 Submit
               </Button>
+              <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.incomplete}</div>
             </FormSubmitButtonContainer>
 
           </FormInputContainer>
@@ -587,6 +530,7 @@ const ContactForm = props => {
                   Business Hours
                 </span>
               </div>
+              <div style={{marginBottom: '10px', textAlign: 'center'}}><span style={{fontWeight: 'bold'}}>407-800-8116</span></div>
               <div style={{minWidth: '250px'}}>
                 <div style={{display: 'flex', justifyContent: 'space-between'}}>
                   <span>Sunday:</span>

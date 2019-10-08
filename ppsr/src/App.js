@@ -44,6 +44,7 @@ class App extends Component {
       city: '',
       state: '',
       zipcode: '',
+      incomplete: ''
     },
     insufficientInfo: false
   }
@@ -131,11 +132,11 @@ class App extends Component {
         complete: false,
         individual: false,
         window: false,
-        newLanai: false,
-        newEntry: false,
-        pressureWashing: false,
-        gutterCleaning: false,
-        miscRepair: false
+        lanai: false,
+        entry: false,
+        washing: false,
+        gutter: false,
+        misc: false
       },
       senderMessage: '',
       error: {
@@ -147,6 +148,7 @@ class App extends Component {
         city: '',
         state: '',
         zipcode: '',
+        incomplete: ''
       },
       insufficientInfo: false
     })

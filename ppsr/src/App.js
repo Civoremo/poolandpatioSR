@@ -14,12 +14,37 @@ class App extends Component {
     collapsedID: '',
     imageArray: [],
     senderEmail: '',
-    senderName: '',
+    senderConfirmEmail: '',
+    senderFirstName: '',
+    senderLastName: '',
+    senderPhone: '',
+    senderStreet: '',
+    senderCity: '',
+    senderState: '',
+    senderZipcode: '',
+    senderGateCode: '',
+    senderServices: {
+      complete: false,
+      individual: false,
+      window: false,
+      lanai: false,
+      entry: false,
+      washing: false,
+      gutter: false,
+      misc: false
+    },
     senderMessage: '',
     error: {
-      name: '',
+      fName: '',
+      lName: '',
       email: '',
-      message: ''
+      phone: '',
+      message: '',
+      street: '',
+      city: '',
+      state: '',
+      zipcode: '',
+      incomplete: ''
     },
     insufficientInfo: false
   }
@@ -46,14 +71,85 @@ class App extends Component {
     this.setState({
       [event.target.name]: event.target.value
     })
+    console.log(event.target.name + ` - ${event.target.value}`)
+  }
+
+  handleCheckboxChange = (event, name) => {
+
+    console.log('Name ' + event.target.name)
+    console.log('Value ' + event.target.checked)
+
+    this.setState(prevState => {
+      let tempServices = { ...prevState.senderServices};
+      console.table("PREV " + prevState.senderServices[name])
+  
+      if (name === 'complete') {
+        tempServices[name] = !prevState.senderServices[name]
+      }
+      else if (name === 'individual') {
+        tempServices[name] = !prevState.senderServices[name]
+      }
+      else if (name === 'window') {
+        tempServices[name] = !prevState.senderServices[name]
+      }
+      else if (name === 'lanai') {
+        tempServices[name] = !prevState.senderServices[name]
+      }
+      else if (name === 'entry') {
+        tempServices[name] = !prevState.senderServices[name]
+      }
+      else if (name === 'washing') {
+        tempServices[name] = !prevState.senderServices[name]
+      }
+      else if (name === 'gutter') {
+        tempServices[name] = !prevState.senderServices[name]
+      }
+      else if (name === 'misc') {
+        tempServices[name] = !prevState.senderServices[name]
+      }
+      else {
+        console.log('lets figure this out')
+      }
+
+      return {senderServices: tempServices}
+
+    })
   }
 
   clearInputs = (event) => {
     this.setState({
       senderEmail: '',
-      senderName: '',
+      senderConfirmEmail: '',
+      senderFirstName: '',
+      senderLastName: '',
+      senderPhone: '',
+      senderStreet: '',
+      senderCity: '',
+      senderState: '',
+      senderZipcode: '',
+      senderGateCode: '',
+      senderServices: {
+        complete: false,
+        individual: false,
+        window: false,
+        lanai: false,
+        entry: false,
+        washing: false,
+        gutter: false,
+        misc: false
+      },
       senderMessage: '',
-      error: {},
+      error: {
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+        street: '',
+        city: '',
+        state: '',
+        zipcode: '',
+        incomplete: ''
+      },
       insufficientInfo: false
     })
   }
@@ -71,7 +167,7 @@ class App extends Component {
   }
 
   render() {
-
+    console.log(this.state.senderServices)
     return (
       <div style={{height: '2000px'}}>
         <Navigation 
@@ -85,11 +181,20 @@ class App extends Component {
         />
         <ContactUs 
           handleInputChange={this.handleInputChange}
+          handleCheckboxChange={this.handleCheckboxChange}
           setErrorMessages={this.setErrorMessages}
           clearInputs={this.clearInputs}
           toggleMissingInfoMessage={this.toggleMissingInfoMessage}
           senderEmail={this.state.senderEmail}
-          senderName={this.state.senderName}
+          senderFirstName={this.state.senderFirstName}
+          senderLastName={this.state.senderLastName}
+          senderPhone={this.state.senderPhone}
+          senderStreet={this.state.senderStreet}
+          senderCity={this.state.senderCity}
+          senderState={this.state.senderState}
+          senderZipcode={this.state.senderZipcode}
+          senderGateCode={this.state.senderGateCode}
+          senderServices={this.state.senderServices}
           senderMessage={this.state.senderMessage}
           senderError={this.state.error}
           insufficientInfo={this.state.insufficientInfo}

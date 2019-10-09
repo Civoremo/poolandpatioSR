@@ -46,7 +46,8 @@ class App extends Component {
       zipcode: '',
       incomplete: ''
     },
-    insufficientInfo: false
+    insufficientInfo: false,
+    verified: false
   }
 
   componentDidMount() {
@@ -166,6 +167,12 @@ class App extends Component {
     })
   }
 
+  onVerify = recaptchaResponse => {
+    this.setState({
+      verified: true
+    })
+  }
+
   render() {
     console.log(this.state.senderServices)
     return (
@@ -198,6 +205,8 @@ class App extends Component {
           senderMessage={this.state.senderMessage}
           senderError={this.state.error}
           insufficientInfo={this.state.insufficientInfo}
+          verified={this.state.verified}
+          onVerify={this.onVerify}
         />
       </div>
     );

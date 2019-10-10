@@ -171,6 +171,29 @@ class App extends Component {
     this.setState({
       verified: true
     })
+
+    fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      // headers: {
+      //   'Content-Type': 'application/x-www-form-urlencoded'
+      // },
+      // headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({
+        secret: `${process.env.REACT_APP_CAPTCHASECRET}`, 
+        response: `${document.querySelector('#g-recaptcha-response').value}`, 
+        // remoteip: 'localhost'
+      })
+    })
+    .then(res => {
+      console.log(res)
+      
+    })
+    .catch(err => {
+      console.log('error ' + err)
+    })
+
+    // let res = document.querySelector('#g-recaptcha-response').value;
+    // console.log(res)
   }
 
   render() {

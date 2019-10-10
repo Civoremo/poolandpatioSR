@@ -1,5 +1,6 @@
 import React from 'react';
 import * as emailjs from 'emailjs-com';
+import Reaptcha from 'reaptcha';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import styled from 'styled-components';
@@ -130,7 +131,9 @@ const ContactForm = props => {
     senderServices,
     senderMessage, 
     senderError, 
-    insufficientInfo 
+    insufficientInfo,
+    verified,
+    onVerify
   } = props;
 
   const validateEmail = () => {
@@ -210,6 +213,7 @@ const ContactForm = props => {
 
     if (!validateEmail()) {
       // alert(senderError.name + senderError.email + senderError.message)
+      // get_action()
       return
     }
 
@@ -255,6 +259,7 @@ const ContactForm = props => {
         alert("Message failed, try again.")
       })
   }
+
 
   return (
     <div style={{padding: '40px 0'}}>
@@ -507,11 +512,17 @@ const ContactForm = props => {
             </MessageInputContainer>
 
             <FormSubmitButtonContainer>
+
+              {/* <div className="g-recaptcha" style={{marginBottom: '10px'}} data-sitekey={process.env.REACT_APP_RECAPTCHA}></div> */}
+
+              <Reaptcha sitekey={process.env.REACT_APP_RECAPTCHA} onVerify={onVerify} />
+
               <Button
                 onClick={sendMessage}
                 type='button'
                 name='submit'
-                required='required'
+                // required='required'
+                disabled={!verified}
                 style={{marginBottom: '10px'}}
               >
                 Submit
@@ -520,6 +531,23 @@ const ContactForm = props => {
             </FormSubmitButtonContainer>
 
           </FormInputContainer>
+
+          {/* <form action="?" method="POST">
+              <div id="html_element"></div>
+              <br />
+              <input type="submit" value="Submit">
+                </input>
+            </form>
+
+            <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+                async defer>
+            </script>
+
+            <form action="?" method="POST">
+              <div className="g-recaptcha" data-sitekey={process.env.REACT_APP_RECAPTCHA}></div>
+              <br/>
+              <input type="submit" value="Submit" />
+            </form> */}
 
           <LineSeperatorDiv />
 

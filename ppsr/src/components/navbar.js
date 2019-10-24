@@ -7,6 +7,7 @@ import styled from 'styled-components';
 // import logoImg from './images/logo/logo_lg_alt.png';
 import logoImgWhite from './images/logo/logo_lg_alt_white.png';
 import Gallery from './gallery';
+import SignIn from './sign_in';
 
 /*
   colors
@@ -19,6 +20,7 @@ import Gallery from './gallery';
 const NavLinkColor = styled.span`
 	color: #eeeeee;
   font-weight: bold;
+  font-size: 0.8rem;
   
   font-family: 'Raleway', sans-serif;
 
@@ -72,6 +74,7 @@ const ActionTextSpan = styled.span `
 const Navigationbar = props => {
   const { imageArray } = props;
   const [lgGallery, setGallery] = useState(false);
+  const [lgSignIn, setSignIn] = useState(false);
 
   return (
     <div>
@@ -99,6 +102,7 @@ const Navigationbar = props => {
               <Nav.Link href="#financing"><NavLinkColor>Financing</NavLinkColor></Nav.Link>
               <Nav.Link href="#gallery"><NavLinkColor onClick={() => setGallery(true)}>Gallery</NavLinkColor></Nav.Link>
               <Nav.Link href="#contact"><NavLinkColor>Contact</NavLinkColor></Nav.Link>
+              <Nav.Link href="#signin"><NavLinkColor onClick={() => setSignIn(true)}>Log In</NavLinkColor></Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -116,6 +120,11 @@ const Navigationbar = props => {
         imageArray={imageArray} 
         lgGallery={lgGallery}
         setGallery={setGallery}
+      />
+
+      <SignIn 
+        lgSignIn={lgSignIn}
+        setSignIn={setSignIn}
       />
       
     </div>

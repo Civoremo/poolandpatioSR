@@ -21,6 +21,7 @@ const NavLinkColor = styled.span`
 	color: #eeeeee;
   font-weight: bold;
   font-size: 0.8rem;
+  letter-spacing: 2px;
   
   font-family: 'Raleway', sans-serif;
 
@@ -71,10 +72,39 @@ const ActionTextSpan = styled.span `
   }
 `
 
-const Navigationbar = props => {
+const Navigationbar = props  => {
   const { imageArray } = props;
   const [lgGallery, setGallery] = useState(false);
-  const [lgSignIn, setSignIn] = useState(false);
+  const [lgSignIn, setSignIn] = useState(true);
+  // const handleInputChange = props.handleInputChange;
+
+  const { 
+    handleInputChange, 
+  //   handleCheckboxChange,
+  //   setErrorMessages, 
+    clearInputs, 
+  //   toggleMissingInfoMessage, 
+    senderEmail, 
+    senderFirstName, 
+    senderLastName,
+    senderConfirmEmail,
+    credentials,
+    confirmCredentials,
+    confirmationKey,
+  //   senderPhone,
+  //   senderStreet,
+  //   senderCity,
+  //   senderState,
+  //   senderZipcode,
+  //   senderGateCode,
+  //   senderServices,
+  //   senderMessage, 
+  //   senderError, 
+  //   insufficientInfo,
+  //   verified,
+  //   onVerify,
+  isSelected
+  } = props;
 
   return (
     <div>
@@ -102,6 +132,7 @@ const Navigationbar = props => {
               <Nav.Link href="#financing"><NavLinkColor>Financing</NavLinkColor></Nav.Link>
               <Nav.Link href="#gallery"><NavLinkColor onClick={() => setGallery(true)}>Gallery</NavLinkColor></Nav.Link>
               <Nav.Link href="#contact"><NavLinkColor>Contact</NavLinkColor></Nav.Link>
+              <Nav.Link href='#shop'><NavLinkColor>SHOP</NavLinkColor></Nav.Link>
               <Nav.Link href="#signin"><NavLinkColor onClick={() => setSignIn(true)}>Log In</NavLinkColor></Nav.Link>
             </Nav>
           </Navbar.Collapse>
@@ -125,8 +156,19 @@ const Navigationbar = props => {
       <SignIn 
         lgSignIn={lgSignIn}
         setSignIn={setSignIn}
+
+        handleInputChange={handleInputChange}
+        clearInputs={clearInputs}
+        senderEmail={senderEmail}
+        senderFirstName={senderFirstName}
+        senderLastName={senderLastName}
+        senderConfirmEmail={senderConfirmEmail}
+        credentials={credentials}
+        confirmCredentials={confirmCredentials}
+        confirmationKey={confirmationKey}
+        isSelected={isSelected}
       />
-      
+      {console.log('NAV: ', isSelected)}
     </div>
   )
 }

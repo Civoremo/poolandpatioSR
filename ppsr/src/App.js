@@ -51,7 +51,7 @@ class App extends Component {
     },
     insufficientInfo: false,
     verified: false,
-    isSelected: false
+    isSelected: true
   }
 
   componentDidMount() {
@@ -77,6 +77,12 @@ class App extends Component {
       [event.target.name]: event.target.value
     })
     console.log(event.target.name + ` - ${event.target.value}`)
+  }
+
+  toggleSignInLinks = (event) => {
+    this.setState({
+      isSelected: !this.state.isSelected
+    })
   }
 
   handleCheckboxChange = (event, name) => {
@@ -210,6 +216,7 @@ class App extends Component {
         <Navigation 
         imageArray={this.state.imageArray}
           handleInputChange={this.handleInputChange}
+          toggleSignInLinks={this.toggleSignInLinks}
           // handleCheckboxChange={this.handleCheckboxChange}
           // setErrorMessages={this.setErrorMessages}
           clearInputs={this.clearInputs}

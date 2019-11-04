@@ -80,6 +80,7 @@ const Navigationbar = props  => {
 
   const { 
     handleInputChange, 
+    toggleSignInLinks,
   //   handleCheckboxChange,
   //   setErrorMessages, 
     clearInputs, 
@@ -158,6 +159,7 @@ const Navigationbar = props  => {
         setSignIn={setSignIn}
 
         handleInputChange={handleInputChange}
+        toggleSignInLinks={toggleSignInLinks}
         clearInputs={clearInputs}
         senderEmail={senderEmail}
         senderFirstName={senderFirstName}

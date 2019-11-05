@@ -1,8 +1,6 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import Nav from 'react-bootstrap/Nav';
 import styled from 'styled-components';
 
 import SignUp from './signup';
@@ -12,18 +10,6 @@ const SignUpInputForm = styled.form `
     // display: flex;
     // justify-items: space-between;
     // align-items: center;
-`
-
-const InputField = styled.input `
-    width: 100%;
-    padding: 5px 5px;
-`
-
-const SignupLoginDiv = styled.div `
-    display: flex;
-    justify-content: space-between;
-    // border: 1px solid red;
-    width: 200px;
 `
 
 const SignUpDiv = styled.div `
@@ -41,11 +27,12 @@ const LoginDiv = styled.div `
 const LinkDivContainer = styled.div `
     display: flex;
     padding-left: 30px;
+    justify-content: center;
 `
 
 const LinkSignUpDiv = styled.div `
-    height: 40px;
-    background-color: ${props => props.showing ? '#fff' : 'lightgrey'};
+    height: ${props => props.showing ? '43px' : '40px'};
+    background-color: ${props => props.showing ? '#fff' : 'silver'};
     border-left: ${props => props.showing ? '2px' : '1px'} solid grey;
     border-top: 1px solid grey;
     border-right: 1px solid grey;
@@ -57,11 +44,13 @@ const LinkSignUpDiv = styled.div `
     justify-content: center;
     padding-top: 10px;
     z-index: ${props => props.showing ? '20' : '1'};
+    border-bottom: ${props => props.showing ? '0' : '2px'} solid grey;
+    margin-top: ${props => props.showing ? '0' : '3px'};
 `
 
 const LinkLoginDiv = styled.div `
-    height: 40px;
-    background-color: ${props => props.showing ? '#fff' : 'lightgrey'};
+    height:  ${props => props.showing ? '43px' : '40px'};
+    background-color: ${props => props.showing ? '#fff' : 'silver'};
     border-left: ${props => props.showing ? '2px' : '1px'} solid grey;
     // border-left: 2px solid grey;
     border-top: 1px solid grey;
@@ -74,6 +63,8 @@ const LinkLoginDiv = styled.div `
     justify-content: center;
     padding-top: 10px;
     z-index: ${props => props.showing ? '20' : '1'};
+    border-bottom: ${props => props.showing ? '0' : '2px'} solid grey;
+    margin-top: ${props => props.showing ? '0' : '3px'};
 `
 
 const LinkStyle = styled.span `
@@ -81,7 +72,7 @@ const LinkStyle = styled.span `
 `
 
 const SignInContainer = styled.div `
-    border: 1px solid grey;
+    border-top: 1px solid silver;
     background-color: #fff;
     min-height: 280px;
     display: flex;
@@ -133,21 +124,6 @@ const SignIn = props => {
                 <Modal.Body>
                     <SignUpInputForm method='post' action='submit'>
 
-                    {/* <SignUp 
-                        handleInputChange={handleInputChange}
-                        senderEmail={senderEmail}
-                        senderFirstName={senderFirstName}
-                        senderLastName={senderLastName}
-                        senderConfirmEmail={senderConfirmEmail}
-                        credentials={credentials}
-                        confirmCredentials={confirmCredentials}
-                    />
-                
-                    <Login 
-                        handleInputChange={handleInputChange}
-                        senderEmail={senderEmail}
-                        confirmationKey={confirmationKey}
-                    /> */}
                     <LinkDivContainer>
                         <LinkSignUpDiv showing={isSelected}>
                             <a href='#show' onClick={() => !isSelected ? toggleSignInLinks() : ''}><LinkStyle showing={isSelected}>Sign Up</LinkStyle></a>

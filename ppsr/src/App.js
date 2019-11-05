@@ -14,6 +14,9 @@ class App extends Component {
     collapsedID: '',
     imageArray: [],
     senderEmail: '',
+    credentials: '',
+    confirmCredentials: '',
+    confirmationKey: '',
     senderConfirmEmail: '',
     senderFirstName: '',
     senderLastName: '',
@@ -47,7 +50,8 @@ class App extends Component {
       incomplete: ''
     },
     insufficientInfo: false,
-    verified: false
+    verified: false,
+    isSelected: true
   }
 
   componentDidMount() {
@@ -73,6 +77,12 @@ class App extends Component {
       [event.target.name]: event.target.value
     })
     console.log(event.target.name + ` - ${event.target.value}`)
+  }
+
+  toggleSignInLinks = (event) => {
+    this.setState({
+      isSelected: !this.state.isSelected
+    })
   }
 
   handleCheckboxChange = (event, name) => {
@@ -121,6 +131,9 @@ class App extends Component {
     this.setState({
       senderEmail: '',
       senderConfirmEmail: '',
+      credentials: '',
+      confirmCredentials: '',
+      confirmationKey: '',
       senderFirstName: '',
       senderLastName: '',
       senderPhone: '',
@@ -151,7 +164,7 @@ class App extends Component {
         zipcode: '',
         incomplete: ''
       },
-      insufficientInfo: false
+      insufficientInfo: false,
     })
   }
 
@@ -201,8 +214,35 @@ class App extends Component {
     return (
       <div style={{height: '2000px'}}>
         <Navigation 
-          imageArray={this.state.imageArray}
+        imageArray={this.state.imageArray}
+          handleInputChange={this.handleInputChange}
+          toggleSignInLinks={this.toggleSignInLinks}
+          // handleCheckboxChange={this.handleCheckboxChange}
+          // setErrorMessages={this.setErrorMessages}
+          clearInputs={this.clearInputs}
+          // toggleMissingInfoMessage={this.toggleMissingInfoMessage}
+          senderEmail={this.state.senderEmail}
+          senderFirstName={this.state.senderFirstName}
+          senderLastName={this.state.senderLastName}
+          senderConfirmEmail={this.state.senderConfirmEmail}
+          credentials={this.state.credentials}
+          confirmCredentials={this.state.confirmCredentials}
+          confirmationKey={this.state.confirmationKey}
+          // senderPhone={this.state.senderPhone}
+          // senderStreet={this.state.senderStreet}
+          // senderCity={this.state.senderCity}
+          // senderState={this.state.senderState}
+          // senderZipcode={this.state.senderZipcode}
+          // senderGateCode={this.state.senderGateCode}
+          // senderServices={this.state.senderServices}
+          // senderMessage={this.state.senderMessage}
+          // senderError={this.state.error}
+          // insufficientInfo={this.state.insufficientInfo}
+          // verified={this.state.verified}
+          // onVerify={this.onVerify}
+          isSelected={this.state.isSelected}
         />
+        {console.log('APP: ', this.state.isSelected)}
         <div className='callToActionSpacer' />
         <AboutUs />
         <ServicesPage 

@@ -75,14 +75,19 @@ const ActionTextSpan = styled.span `
 const Navigationbar = props  => {
   const { imageArray } = props;
   const [lgGallery, setGallery] = useState(false);
-  const [lgSignIn, setSignIn] = useState(true);
-  // const handleInputChange = props.handleInputChange;
+  const [lgSignIn, setSignIn] = useState(false);
+
+  const handleCloseSigninModal = () =>  {
+    console.log('should be closing the modal')
+    setSignIn(false);
+  };
 
   const { 
     handleInputChange, 
     toggleSignInLinks,
   //   handleCheckboxChange,
   //   setErrorMessages, 
+  clearSigninInputs,
     clearInputs, 
   //   toggleMissingInfoMessage, 
     senderEmail, 
@@ -157,9 +162,11 @@ const Navigationbar = props  => {
       <SignIn 
         lgSignIn={lgSignIn}
         setSignIn={setSignIn}
+        handleCloseSigninModal={handleCloseSigninModal}
 
         handleInputChange={handleInputChange}
         toggleSignInLinks={toggleSignInLinks}
+        clearSigninInputs={clearSigninInputs}
         clearInputs={clearInputs}
         senderEmail={senderEmail}
         senderFirstName={senderFirstName}
@@ -170,7 +177,6 @@ const Navigationbar = props  => {
         confirmationKey={confirmationKey}
         isSelected={isSelected}
       />
-      {console.log('NAV: ', isSelected)}
     </div>
   )
 }

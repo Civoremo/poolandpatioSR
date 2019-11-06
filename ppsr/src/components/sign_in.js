@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import styled from 'styled-components';
@@ -85,13 +86,15 @@ const SignInContainer = styled.div `
 
 const SignIn = props => {
     const { lgSignIn, setSignIn } = props;
-    
+
+    const URL = 'https://ppsr-api.herokuapp.com';
 
     const { 
       handleInputChange, 
       toggleSignInLinks,
     //   handleCheckboxChange,
     //   setErrorMessages, 
+    clearSigninInputs,
     //   clearInputs, 
     //   toggleMissingInfoMessage, 
       senderEmail, 
@@ -115,10 +118,114 @@ const SignIn = props => {
     //   onVerify,
     isSelected
     } = props;
+
+
+    const SignupLoginRequest = event => {
+        // event.preventDefault();
+        // console.log(senderFirstName + " " + senderLastName + " " + senderEmail + " " + credentials)
+        if (isSelected) {
+            axios({
+                method: "post",
+                url: `${URL}/users/register`,
+                headers: {
+                    
+                },
+                data: {
+                    firstName: `${senderFirstName}`,
+                    lastName: `${senderLastName}`,
+                    email: `${senderEmail}`,
+                    // senderConfirmEmail: senderConfirmEmail,
+                    password: `${credentials}`
+                    // confirmCredentials: confirmCredentials
+                },
+                responseType: 'json'
+            })
+            .then(response => {
+                console.log('isSelected: ' + isSelected);
+                // console.log('register response: ' + response.data);
+                console.log('register response: ' + JSON.stringify(response.data));
+                clearSigninInputs();
+                toggleSignInLinks();
+            })
+            .catch(err => {
+                console.log('isSelected: ' + isSelected);
+                // console.log('register error: ' + JSON.stringify(err));
+                console.log('register error: ' + JSON.stringify(err.response.data));
+            })
+        } else {
+            console.log('confirmation: ' + confirmationKey)
+            if(confirmationKey.length === 0) {
+                axios({
+                    method: 'post',
+                    url: `https://ppsr-api.herokuapp.com/users/login`,
+                    data: {
+                        email: senderEmail,
+                        password: credentials,
+                        // confirmationKey: confirmationKey
+                    },
+                    responseType: 'json'
+                })
+                .then(response => {
+                    console.log('isSelected: ' + isSelected);
+                    console.log('login response: ' + JSON.stringify(response.data));
+                    localStorage.setItem('ppsr', JSON.stringify(response.data.token))
+                    localStorage.setItem('ppsr_user', JSON.stringify(response.data.user))
+                    setSignIn(false);
+                    clearSigninInputs();
+                })
+                .catch(err => {
+                    console.log('isSelected: ' + isSelected);
+                    console.log('login error: ' + JSON.stringify(err.response.data));
+                })
+            } else {
+                axios({
+                    method: 'put',
+                    url: `${URL}/users/confirmUser`,
+                    data: {
+                        email: senderEmail,
+                        password: credentials,
+                        activationKey: parseInt(confirmationKey)
+                    }
+                })
+                .then(response => {
+                    console.log('isSelected: ' + isSelected);
+                    console.log('confirm response: ' + JSON.stringify(response.data))
+                    axios({
+                        method: 'post',
+                        url: `https://ppsr-api.herokuapp.com/users/login`,
+                        data: {
+                            email: senderEmail,
+                            password: credentials,
+                            // confirmationKey: confirmationKey
+                        },
+                        responseType: 'json'
+                    })
+                    .then(response => {
+                        console.log('isSelected: ' + isSelected);
+                        console.log('login response: ' + JSON.stringify(response.data));
+                        localStorage.setItem('ppsr', JSON.stringify(response.data.token))
+                        localStorage.setItem('ppsr_user', JSON.stringify(response.data.user))
+                        setSignIn(false);
+                        clearSigninInputs();
+                    })
+                    .catch(err => {
+                        console.log('isSelected: ' + isSelected);
+                        console.log('login error: ' + JSON.stringify(err.response.data));
+                    })
+                })
+                .catch(err => {
+                    console.log('isSelected: ' + isSelected);
+                    console.log('confirm error: ' + JSON.stringify(err.response.data))
+                })
+            }
+        }
+    }
     
     return (
         <div>
             {console.log('selected: ', isSelected)}
+            {console.log('lgSignIn: ' + lgSignIn)}
+            {console.log('setSignIn: ' + setSignIn)}
             <Modal size='lg' show={lgSignIn} onHide={() => setSignIn(false)} centered >
                 
                 <Modal.Body>
@@ -149,6 +256,7 @@ const SignIn = props => {
                             <Login 
                                 handleInputChange={handleInputChange}
                                 senderEmail={senderEmail}
+                                credentials={credentials}
                                 confirmationKey={confirmationKey}
                             />
                         </LoginDiv>
@@ -157,7 +265,8 @@ const SignIn = props => {
 
                     <Button
                         type='button'
-                        name='submit'
+                        // name='submit'
+                        onClick={() => SignupLoginRequest()}
                     >
                         Send
                     </Button>

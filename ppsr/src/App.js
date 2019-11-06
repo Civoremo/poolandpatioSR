@@ -85,6 +85,18 @@ class App extends Component {
     })
   }
 
+  clearSigninInputs = event => {
+    this.setState({
+      senderEmail: '',
+      senderConfirmEmail: '',
+      senderFirstName: '',
+      senderLastName: '',
+      credentials: '',
+      confirmCredentials: '',
+      confirmationKey: ''
+    })
+  }
+
   handleCheckboxChange = (event, name) => {
 
     console.log('Name ' + event.target.name)
@@ -210,7 +222,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.senderServices)
+    // console.log(this.state.senderServices)
     return (
       <div style={{height: '2000px'}}>
         <Navigation 
@@ -219,6 +231,7 @@ class App extends Component {
           toggleSignInLinks={this.toggleSignInLinks}
           // handleCheckboxChange={this.handleCheckboxChange}
           // setErrorMessages={this.setErrorMessages}
+          clearSigninInputs={this.clearSigninInputs}
           clearInputs={this.clearInputs}
           // toggleMissingInfoMessage={this.toggleMissingInfoMessage}
           senderEmail={this.state.senderEmail}
@@ -242,7 +255,7 @@ class App extends Component {
           // onVerify={this.onVerify}
           isSelected={this.state.isSelected}
         />
-        {console.log('APP: ', this.state.isSelected)}
+        {/* {console.log('APP: ', this.state.isSelected)} */}
         <div className='callToActionSpacer' />
         <AboutUs />
         <ServicesPage 

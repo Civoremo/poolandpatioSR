@@ -116,7 +116,8 @@ const SignIn = props => {
     //   insufficientInfo,
     //   verified,
     //   onVerify,
-    isSelected
+    isSelected,
+    loggedIn
     } = props;
 
 
@@ -169,13 +170,14 @@ const SignIn = props => {
                     console.log('isSelected: ' + isSelected);
                     console.log('login response: ' + JSON.stringify(response.data));
                     localStorage.setItem('ppsr', JSON.stringify(response.data.token))
-                    localStorage.setItem('ppsr_user', JSON.stringify(response.data.user))
+                    localStorage.setItem('ppsr_user', JSON.stringify(response.data.user.firstName))
                     setSignIn(false);
+                    loggedIn(true);
                     clearSigninInputs();
                 })
                 .catch(err => {
                     console.log('isSelected: ' + isSelected);
-                    console.log('login error: ' + JSON.stringify(err.response.data));
+                    console.log('login error: ' + JSON.stringify(err.response));
                 })
             } else {
                 axios({
@@ -204,8 +206,9 @@ const SignIn = props => {
                         console.log('isSelected: ' + isSelected);
                         console.log('login response: ' + JSON.stringify(response.data));
                         localStorage.setItem('ppsr', JSON.stringify(response.data.token))
-                        localStorage.setItem('ppsr_user', JSON.stringify(response.data.user))
+                        localStorage.setItem('ppsr_user', JSON.stringify(response.data.user.firstName))
                         setSignIn(false);
+                        loggedIn(true);
                         clearSigninInputs();
                     })
                     .catch(err => {
@@ -226,6 +229,7 @@ const SignIn = props => {
             {console.log('selected: ', isSelected)}
             {console.log('lgSignIn: ' + lgSignIn)}
             {console.log('setSignIn: ' + setSignIn)}
+            {console.log('loggedIn: ' + loggedIn)}
             <Modal size='lg' show={lgSignIn} onHide={() => setSignIn(false)} centered >
                 
                 <Modal.Body>

@@ -51,7 +51,8 @@ class App extends Component {
     },
     insufficientInfo: false,
     verified: false,
-    isSelected: true
+    isSelected: true,
+    // loggedIn: false,
   }
 
   componentDidMount() {
@@ -254,6 +255,7 @@ class App extends Component {
           // verified={this.state.verified}
           // onVerify={this.onVerify}
           isSelected={this.state.isSelected}
+          // loggedIn={this.state.loggedIn}
         />
         {/* {console.log('APP: ', this.state.isSelected)} */}
         <div className='callToActionSpacer' />

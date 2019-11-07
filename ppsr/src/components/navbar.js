@@ -72,15 +72,24 @@ const ActionTextSpan = styled.span `
   }
 `
 
+const LoginNavLinkDiv = styled.div `
+  display: ${props => props.showing === null ? 'block' : 'none' };
+`
+
+const ProfileNavLinkDiv = styled.div `
+  display: ${props => props.showing !== null ? 'block' : 'none'};
+`
+
+const LinkBorder = styled.div `
+  border-left: 1px solid #fff;
+  padding-left: 10px;
+`
+
 const Navigationbar = props  => {
   const { imageArray } = props;
   const [lgGallery, setGallery] = useState(false);
   const [lgSignIn, setSignIn] = useState(false);
-
-  const handleCloseSigninModal = () =>  {
-    console.log('should be closing the modal')
-    setSignIn(false);
-  };
+  const [ loggedIn ] = useState(false);
 
   const { 
     handleInputChange, 
@@ -109,13 +118,15 @@ const Navigationbar = props  => {
   //   insufficientInfo,
   //   verified,
   //   onVerify,
-  isSelected
+  isSelected,
+  // loggedIn
   } = props;
+
 
   return (
     <div>
       
-      <Navbar fixed='top' expand='sm' style={{backgroundColor: '#1759aa'}}>
+      <Navbar fixed='top' expand='lg' style={{backgroundColor: '#1759aa'}}>
         <Container>
           <Navbar.Brand href="#home">
             <img
@@ -124,11 +135,11 @@ const Navigationbar = props  => {
               style={{maxWidth: '120px', height: 'auto', marginRight: '30px'}}
             />
           </Navbar.Brand>
-          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'baseline'}}>
+          {/* <div style={{display: 'flex', justifyContent: 'center', alignItems: 'baseline'}}>
             <ActionTextSpan style={{ marginRight: '10px'}}>Call </ActionTextSpan>
             <PhoneNumberA href='tel:4078008116'>407-800-8116</PhoneNumberA>
             <ActionTextSpan style={{ marginLeft: '10px'}}> for a Free Estimate!</ActionTextSpan>
-          </div>
+          </div> */}
           <Navbar.Toggle className='hamburger-custom' aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto" />
@@ -139,7 +150,26 @@ const Navigationbar = props  => {
               <Nav.Link href="#gallery"><NavLinkColor onClick={() => setGallery(true)}>Gallery</NavLinkColor></Nav.Link>
               <Nav.Link href="#contact"><NavLinkColor>Contact</NavLinkColor></Nav.Link>
               <Nav.Link href='#shop'><NavLinkColor>SHOP</NavLinkColor></Nav.Link>
-              <Nav.Link href="#signin"><NavLinkColor onClick={() => setSignIn(true)}>Log In</NavLinkColor></Nav.Link>
+              <Nav.Link href="#signin" >
+                {console.log('logged: ' + loggedIn)}
+                <LoginNavLinkDiv showing={localStorage.getItem('ppsr_user')}>
+                  <NavLinkColor onClick={() => setSignIn(true)}>
+                    <LinkBorder>
+                      Log In
+                    </LinkBorder>
+                  </NavLinkColor>
+                </LoginNavLinkDiv>
+                <ProfileNavLinkDiv showing={localStorage.getItem('ppsr_user')}>
+                  <NavLinkColor>
+                    {/* {console.log("HERE: " + JSON.parse(localStorage.getItem('ppsr_user')).firstName)} */}
+                    {console.log(JSON.parse(`${localStorage.getItem('ppsr_user')}`))}
+                    <LinkBorder>
+                      Hi, {JSON.parse(`${localStorage.getItem('ppsr_user')}`)}
+                      {/* Hi, {`${localStorage.getItem('ppsr_user')}`} */}
+                    </LinkBorder>
+                  </NavLinkColor>
+                </ProfileNavLinkDiv>
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -162,7 +192,7 @@ const Navigationbar = props  => {
       <SignIn 
         lgSignIn={lgSignIn}
         setSignIn={setSignIn}
-        handleCloseSigninModal={handleCloseSigninModal}
+        loggedIn={loggedIn}
 
         handleInputChange={handleInputChange}
         toggleSignInLinks={toggleSignInLinks}

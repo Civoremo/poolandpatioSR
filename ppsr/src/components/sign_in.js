@@ -158,7 +158,7 @@ const SignIn = props => {
             if(confirmationKey.length === 0) {
                 axios({
                     method: 'post',
-                    url: `https://ppsr-api.herokuapp.com/users/login`,
+                    url: `${URL}/users/login`,
                     data: {
                         email: senderEmail,
                         password: credentials,
@@ -194,7 +194,7 @@ const SignIn = props => {
                     console.log('confirm response: ' + JSON.stringify(response.data))
                     axios({
                         method: 'post',
-                        url: `https://ppsr-api.herokuapp.com/users/login`,
+                        url: `${URL}/users/login`,
                         data: {
                             email: senderEmail,
                             password: credentials,
@@ -226,11 +226,14 @@ const SignIn = props => {
     
     return (
         <div>
-            {console.log('selected: ', isSelected)}
+            {/* {console.log('selected: ', isSelected)}
             {console.log('lgSignIn: ' + lgSignIn)}
             {console.log('setSignIn: ' + setSignIn)}
-            {console.log('loggedIn: ' + loggedIn)}
+            {console.log('loggedIn: ' + loggedIn)} */}
             <Modal size='lg' show={lgSignIn} onHide={() => setSignIn(false)} centered >
+                <Modal.Header closeButton>
+
+                </Modal.Header>
                 
                 <Modal.Body>
                     <SignUpInputForm method='post' action='submit'>

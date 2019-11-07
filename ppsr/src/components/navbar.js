@@ -8,6 +8,8 @@ import styled from 'styled-components';
 import logoImgWhite from './images/logo/logo_lg_alt_white.png';
 import Gallery from './gallery';
 import SignIn from './sign_in';
+import Profile from './profile';
+import ShopPage from './shop';
 
 /*
   colors
@@ -90,6 +92,8 @@ const Navigationbar = props  => {
   const [lgGallery, setGallery] = useState(false);
   const [lgSignIn, setSignIn] = useState(false);
   const [ loggedIn ] = useState(false);
+  const [lgProfile, setProfile] = useState(false);
+  const [lgShop, setShop] = useState(false);
 
   const { 
     handleInputChange, 
@@ -149,7 +153,7 @@ const Navigationbar = props  => {
               <Nav.Link href="#financing"><NavLinkColor>Financing</NavLinkColor></Nav.Link>
               <Nav.Link href="#gallery"><NavLinkColor onClick={() => setGallery(true)}>Gallery</NavLinkColor></Nav.Link>
               <Nav.Link href="#contact"><NavLinkColor>Contact</NavLinkColor></Nav.Link>
-              <Nav.Link href='#shop'><NavLinkColor>SHOP</NavLinkColor></Nav.Link>
+              <Nav.Link href='#shop'><NavLinkColor onClick={() => setShop(true)}>SHOP</NavLinkColor></Nav.Link>
               <Nav.Link href="#signin" >
                 {console.log('logged: ' + loggedIn)}
                 <LoginNavLinkDiv showing={localStorage.getItem('ppsr_user')}>
@@ -160,12 +164,9 @@ const Navigationbar = props  => {
                   </NavLinkColor>
                 </LoginNavLinkDiv>
                 <ProfileNavLinkDiv showing={localStorage.getItem('ppsr_user')}>
-                  <NavLinkColor>
-                    {/* {console.log("HERE: " + JSON.parse(localStorage.getItem('ppsr_user')).firstName)} */}
-                    {console.log(JSON.parse(`${localStorage.getItem('ppsr_user')}`))}
+                  <NavLinkColor onClick={() => setProfile(true)}>
                     <LinkBorder>
                       Hi, {JSON.parse(`${localStorage.getItem('ppsr_user')}`)}
-                      {/* Hi, {`${localStorage.getItem('ppsr_user')}`} */}
                     </LinkBorder>
                   </NavLinkColor>
                 </ProfileNavLinkDiv>
@@ -189,6 +190,11 @@ const Navigationbar = props  => {
         setGallery={setGallery}
       />
 
+      <ShopPage 
+        lgShop={lgShop}
+        setShop={setShop}
+      />
+
       <SignIn 
         lgSignIn={lgSignIn}
         setSignIn={setSignIn}
@@ -206,6 +212,12 @@ const Navigationbar = props  => {
         confirmCredentials={confirmCredentials}
         confirmationKey={confirmationKey}
         isSelected={isSelected}
+      />
+
+      <Profile 
+        lgProfile={lgProfile}
+        setProfile={setProfile}
+        loggedIn={loggedIn}
       />
     </div>
   )

@@ -92,7 +92,7 @@ const Navigationbar = props  => {
   const [lgGallery, setGallery] = useState(false);
   const [lgSignIn, setSignIn] = useState(false);
   const [ loggedIn ] = useState(false);
-  const [lgProfile, setProfile] = useState(false);
+  const [lgProfile, setProfile] = useState(true);
   const [lgShop, setShop] = useState(false);
 
   const { 
@@ -110,12 +110,12 @@ const Navigationbar = props  => {
     credentials,
     confirmCredentials,
     confirmationKey,
-  //   senderPhone,
-  //   senderStreet,
-  //   senderCity,
-  //   senderState,
-  //   senderZipcode,
-  //   senderGateCode,
+    senderPhone,
+    senderStreet,
+    senderCity,
+    senderState,
+    senderZipcode,
+    senderGateCode,
   //   senderServices,
   //   senderMessage, 
   //   senderError, 
@@ -159,7 +159,7 @@ const Navigationbar = props  => {
                 <LoginNavLinkDiv showing={localStorage.getItem('ppsr_user')}>
                   <NavLinkColor onClick={() => setSignIn(true)}>
                     <LinkBorder>
-                      Log In
+                      Login
                     </LinkBorder>
                   </NavLinkColor>
                 </LoginNavLinkDiv>
@@ -218,6 +218,19 @@ const Navigationbar = props  => {
         lgProfile={lgProfile}
         setProfile={setProfile}
         loggedIn={loggedIn}
+
+        handleInputChange={handleInputChange}
+        senderEmail={senderEmail}
+        senderFirstName={senderFirstName}
+        senderLastName={senderLastName}
+        credentials={credentials}
+        confirmCredentials={confirmCredentials}
+        senderPhone={senderPhone}
+        senderStreet={senderStreet}
+        senderCity={senderCity}
+        senderState={senderState}
+        senderZipcode={senderZipcode}
+        senderGateCode={senderGateCode}
       />
     </div>
   )

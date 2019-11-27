@@ -45,9 +45,10 @@ const HideErrorDiv = styled.div `
 const HoursOfOperationDiv = styled.div `
   display: flex;
   /* align-items: center; */
+  flex-direction: column;
 
   @media (max-width: 767px) {
-    flex-direction: row;
+    /* flex-direction: row; */
     justify-content: center;
     margin-top: 30px;
   }
@@ -55,9 +56,9 @@ const HoursOfOperationDiv = styled.div `
 
 const FormInputContainer = styled.form `
   width: 100%;
-  border: 3px solid #1759AA;
+  border: 2px solid #1759AA;
   border-radius: 5px;
-  padding: 40px 20px 20px 20px;
+  padding: 40px 20px 10px 20px;
 
   @media (min-width: 1200px) {
     width: 800px;
@@ -66,7 +67,7 @@ const FormInputContainer = styled.form `
 
 const LineSeperatorDiv = styled.div `
   width: 25px;
-  border-right: 1px solid #A9A9A9;
+  /* border-right: 1px solid #A9A9A9; */
   margin-right: 25px;
 `
 
@@ -76,10 +77,11 @@ const InputField = styled.input `
 `
 
 const InputDiv = styled.div `
-  min-width: 350px;
+  min-width: 300px;
 
   @media (max-width: 1199px) {
-    min-width: 250px
+    /* min-width: 250px; */
+    min-width: 100%;
   }
 
   @media (max-width: 991px) {
@@ -523,7 +525,7 @@ const ContactForm = props => {
                 name='submit'
                 // required='required'
                 disabled={!verified}
-                style={{marginBottom: '10px'}}
+                style={{marginTop: '30px', marginBottom: '10px'}}
               >
                 Submit
               </Button>
@@ -552,13 +554,12 @@ const ContactForm = props => {
           <LineSeperatorDiv />
 
           <HoursOfOperationDiv>
-            <div>
+            <div style={{marginBottom: '50px'}}>
               <div style={{borderBottom: '1px solid #A9A9A9', marginBottom: '15px'}}>
                 <span style={{fontWeight: 'bold'}}>
                   Business Hours
                 </span>
               </div>
-              <div style={{marginBottom: '10px', textAlign: 'center'}}><span style={{fontWeight: 'bold'}}>407-800-8116</span></div>
               <div style={{minWidth: '250px'}}>
                 <div style={{display: 'flex', justifyContent: 'space-between'}}>
                   <span>Sunday:</span>
@@ -589,7 +590,37 @@ const ContactForm = props => {
                   <span>8:00am - 6:00pm</span>
                 </div>
               </div>
+              <div style={{marginBottom: '10px', textAlign: 'center'}}><span style={{fontWeight: 'bold', fontSize: '1.6rem'}}><a href="tel:4078008116">407-800-8116</a></span></div>
             </div>
+
+            {/* BBB Seal */}
+            <div style={{marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+              <a id="bbblink" className="ruhzbum" href="https://www.bbb.org/us/fl/orlando/profile/screen-repair/pool-and-patio-screen-repair-0733-90324909#bbbseal" title="Pool & Patio Screen Repair, Screen Repair, Orlando, FL" style={{display: 'block', position: 'relative', overflow: "hidden", width: '150px', height: '68px', margin: '0px', padding: '0px'}}><img style={{padding: '0px', border: 'none'}} id="bbblinkimg" src="https://seal-centralflorida.bbb.org/logo/ruhzbum/pool-and-patio-screen-repair-90324909.png" width="300" height="68" alt="Pool & Patio Screen Repair, Screen Repair, Orlando, FL" /></a>
+            {/* <script type="text/javascript">var bbbprotocol = ( ("https:" == document.location.protocol) ? "https://" : "http://" ); (function(){var s=document.createElement('script');s.src=bbbprotocol + 'seal-centralflorida.bbb.org' + unescape('%2Flogo%2Fpool-and-patio-screen-repair-90324909.js');s.type='text/javascript';s.async=true;var st=document.getElementsByTagName('script');st=st[st.length-1];var pt=st.parentNode;pt.insertBefore(s,pt.nextSibling);})();</script> */}
+              <div style={{display: 'flex', marginTop: '20px'}}>
+                <a href="http://www.homeadvisor.com/rated.PoolPatioScreenRepair.52286437.html" style={{display: 'block', margin: '0 auto'}}><img alt="HomeAdvisor Screened Pro" style={{display: 'block', width: '90px'}} src="http://www.homeadvisor.com/images/sp-badges/soap-solid-border.png?sp=52286437&key=e44235517ac1e785d1c17c477b5bfd2c" /></a>
+                <a href="http://www.homeadvisor.com/c.Swimming-Pools.Orlando.FL.-12070.html#spid=52286437" style={{display: 'block', margin: '0 auto'}}><img alt="HomeAdvisor Top Rated Service" style={{display: 'block', width: '75px'}} src="http://www.homeadvisor.com/images/sp-badges/toprated-solid-border.png?sp=52286437&key=e44235517ac1e785d1c17c477b5bfd2c" /></a>
+                <a href="http://www.homeadvisor.com/c.Swimming-Pools.Orlando.FL.-12070.html#spid=52286437" style={{display: 'block', margin: '0 auto'}}><img alt="HomeAdvisor Elite Service Award - Pool & Patio Screen Repair" style={{display: 'block', width: '75px'}} src="http://www.homeadvisor.com/images/sp-badges/elite-solid-border.png?sp=52286437&key=e44235517ac1e785d1c17c477b5bfd2c" /></a>
+                <a href="http://www.homeadvisor.com/rated.PoolPatioScreenRepair.52286437.html" style={{display: 'block', margin: '0 auto'}}><img alt="Screened & Approved HomeAdvisor Pro" style={{display: 'block', width: '75px'}} src="http://www.homeadvisor.com/images/sp-badges/3year-solid-border.png?sp=52286437&key=e44235517ac1e785d1c17c477b5bfd2c" /></a>
+              </div>
+            </div>
+
+            {/* Home Advisor Badges  */}
+
+
+            {/* Home Advisor Reviews  */}
+            <div style={{position: 'relative', display: 'flex', justifyContent: 'center'}}>
+              <div style={{position: 'absolute', background: '#f1f2f2', border: '1px solid #ccc', borderRadius: '3px', padding: '20px 15px 10px', margin: '0 auto', width: '300px', height: '780px', boxSizing: 'border-box'}}>
+                <img alt="Review Pros" src="//cdn2.homeadvisor.com/images/consumer/home/ha-logo-title.png" width="259" />
+
+                <h4 style={{background: '#3d4549', color: '#fff', margin: '15px -16px', padding: '6px 0 4px', textAlign: 'center', fontFamily:' helvetica, arial, san-serif'}}>RATINGS & REVIEWS</h4>
+
+                <iframe src="https://www.homeadvisor.com/ratings/embed/iframe/52286437/?orientation=vertical&reviewSort=highest" title='Home Advisor Reviews' style={{width: '100%', height: '607px', background: 'transparent'}} frameBorder="0" scrolling="no"></iframe>
+
+                <a href="http://www.homeadvisor.com/rated.PoolPatioScreenRepair.52286437.html" style={{color: '#5486a3', fontSize: '11px', fontFamily: 'helvetica, arial, san-serif', textAalign: 'center', textDecoration: 'none'}}>See More Reviews on HomeAdvisor</a>
+              </div>
+            </div>
+
           </HoursOfOperationDiv>
 
         </FormContainer>

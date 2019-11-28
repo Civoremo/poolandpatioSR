@@ -7,6 +7,10 @@ import ServicesPage from "./components/services";
 import AboutUs from "./components/aboutus";
 import ContactUs from "./components/contact";
 import Footer from "./components/footer";
+import PageBreakOne from "./components/pageBreakOne";
+import PageBreakTwo from "./components/pageBreakTwo";
+import Header from "./components/header";
+import Badges from "./components/badges";
 
 const URL = `http://res.cloudinary.com/ppscreens/image/list/ppsr.json`;
 
@@ -215,7 +219,7 @@ class App extends Component {
 	render() {
 		// console.log(this.state.senderServices)
 		return (
-			<div style={{ height: "2000px" }}>
+			<div>
 				<Navigation
 					imageArray={this.state.imageArray}
 					handleInputChange={this.handleInputChange}
@@ -249,8 +253,12 @@ class App extends Component {
 				/>
 				{/* {console.log('APP: ', this.state.isSelected)} */}
 				<div className="callToActionSpacer" />
+				<Header />
+				<Badges />
 				<AboutUs />
+				<PageBreakOne />
 				<ServicesPage collapsedID={this.state.collapsedID} toggleAccordion={this.toggleAccordion} />
+				<PageBreakTwo />
 				<ContactUs
 					handleInputChange={this.handleInputChange}
 					handleCheckboxChange={this.handleCheckboxChange}

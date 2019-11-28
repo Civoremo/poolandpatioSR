@@ -1,1 +1,3 @@
-[build] base = "ppsr"
+[build] 
+  base = "ppsr/"
+  publish = "ppsr/build/"

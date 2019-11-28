@@ -6,19 +6,27 @@ const Financing = props => {
 	const { lgFinancing, setFinancing } = props;
 
 	return (
-		<Modal size="lg" show={lgFinancing} onHide={() => setFinancing(false)}>
+		<Modal size="lg" show={lgFinancing} onHide={() => setFinancing(false)} centered>
 			<Modal.Header closeButton>
 				{/* <Modal.Title id="example-modal-sizes-title-sm">
 					Pool & Patio Screen Repair Finance Options
 				</Modal.Title> */}
 			</Modal.Header>
 			<Modal.Body>
-				<div style={{ display: "flex", justifyContent: "space-between", padding: "20px 20px" }}>
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "center",
+						alignItems: "center",
+						flexWrap: "wrap",
+						padding: "20px 20px",
+					}}
+				>
 					<div
 						class="financing-module"
 						style={{
 							boxSizing: "border-box",
-							margin: "0px",
+							margin: "10px",
 							textAlign: "left",
 							borderWidth: "5px",
 							borderStyle: "solid",
@@ -73,7 +81,7 @@ const Financing = props => {
 						class="financing-module"
 						style={{
 							boxSizing: "border-box",
-							margin: "0px",
+							margin: "10px",
 							textAlign: "left",
 							borderWidth: "5px",
 							borderStyle: "solid",

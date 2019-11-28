@@ -554,7 +554,7 @@ const ContactForm = props => {
           <LineSeperatorDiv />
 
           <HoursOfOperationDiv>
-            <div style={{marginBottom: '50px'}}>
+            <div style={{marginBottom: '20px'}}>
               <div style={{borderBottom: '1px solid #A9A9A9', marginBottom: '15px'}}>
                 <span style={{fontWeight: 'bold'}}>
                   Business Hours
@@ -594,23 +594,23 @@ const ContactForm = props => {
             </div>
 
             {/* BBB Seal */}
-            <div style={{marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-              <a id="bbblink" className="ruhzbum" href="https://www.bbb.org/us/fl/orlando/profile/screen-repair/pool-and-patio-screen-repair-0733-90324909#bbbseal" title="Pool & Patio Screen Repair, Screen Repair, Orlando, FL" style={{display: 'block', position: 'relative', overflow: "hidden", width: '150px', height: '68px', margin: '0px', padding: '0px'}}><img style={{padding: '0px', border: 'none'}} id="bbblinkimg" src="https://seal-centralflorida.bbb.org/logo/ruhzbum/pool-and-patio-screen-repair-90324909.png" width="300" height="68" alt="Pool & Patio Screen Repair, Screen Repair, Orlando, FL" /></a>
+            {/* <div style={{marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+              <a id="bbblink" className="ruhzbum" href="https://www.bbb.org/us/fl/orlando/profile/screen-repair/pool-and-patio-screen-repair-0733-90324909#bbbseal" title="Pool & Patio Screen Repair, Screen Repair, Orlando, FL" style={{display: 'block', position: 'relative', overflow: "hidden", width: '150px', height: '68px', margin: '0px', padding: '0px'}}><img style={{padding: '0px', border: 'none'}} id="bbblinkimg" src="https://seal-centralflorida.bbb.org/logo/ruhzbum/pool-and-patio-screen-repair-90324909.png" width="300" height="68" alt="Pool & Patio Screen Repair, Screen Repair, Orlando, FL" /></a> */}
             {/* <script type="text/javascript">var bbbprotocol = ( ("https:" == document.location.protocol) ? "https://" : "http://" ); (function(){var s=document.createElement('script');s.src=bbbprotocol + 'seal-centralflorida.bbb.org' + unescape('%2Flogo%2Fpool-and-patio-screen-repair-90324909.js');s.type='text/javascript';s.async=true;var st=document.getElementsByTagName('script');st=st[st.length-1];var pt=st.parentNode;pt.insertBefore(s,pt.nextSibling);})();</script> */}
-              <div style={{display: 'flex', marginTop: '20px'}}>
+              {/* <div style={{display: 'flex', marginTop: '20px'}}>
                 <a href="http://www.homeadvisor.com/rated.PoolPatioScreenRepair.52286437.html" style={{display: 'block', margin: '0 auto'}}><img alt="HomeAdvisor Screened Pro" style={{display: 'block', width: '90px'}} src="http://www.homeadvisor.com/images/sp-badges/soap-solid-border.png?sp=52286437&key=e44235517ac1e785d1c17c477b5bfd2c" /></a>
                 <a href="http://www.homeadvisor.com/c.Swimming-Pools.Orlando.FL.-12070.html#spid=52286437" style={{display: 'block', margin: '0 auto'}}><img alt="HomeAdvisor Top Rated Service" style={{display: 'block', width: '75px'}} src="http://www.homeadvisor.com/images/sp-badges/toprated-solid-border.png?sp=52286437&key=e44235517ac1e785d1c17c477b5bfd2c" /></a>
                 <a href="http://www.homeadvisor.com/c.Swimming-Pools.Orlando.FL.-12070.html#spid=52286437" style={{display: 'block', margin: '0 auto'}}><img alt="HomeAdvisor Elite Service Award - Pool & Patio Screen Repair" style={{display: 'block', width: '75px'}} src="http://www.homeadvisor.com/images/sp-badges/elite-solid-border.png?sp=52286437&key=e44235517ac1e785d1c17c477b5bfd2c" /></a>
                 <a href="http://www.homeadvisor.com/rated.PoolPatioScreenRepair.52286437.html" style={{display: 'block', margin: '0 auto'}}><img alt="Screened & Approved HomeAdvisor Pro" style={{display: 'block', width: '75px'}} src="http://www.homeadvisor.com/images/sp-badges/3year-solid-border.png?sp=52286437&key=e44235517ac1e785d1c17c477b5bfd2c" /></a>
               </div>
-            </div>
+            </div> */}
 
             {/* Home Advisor Badges  */}
 
 
             {/* Home Advisor Reviews  */}
-            <div style={{position: 'relative', display: 'flex', justifyContent: 'center'}}>
-              <div style={{position: 'absolute', background: '#f1f2f2', border: '1px solid #ccc', borderRadius: '3px', padding: '20px 15px 10px', margin: '0 auto', width: '300px', height: '780px', boxSizing: 'border-box'}}>
+            <div style={{ display: 'flex', justifyContent: 'center'}}>
+              <div style={{ background: '#f1f2f2', border: '1px solid #ccc', borderRadius: '3px', padding: '20px 15px 10px', margin: '0 auto', width: '300px', height: '780px', boxSizing: 'border-box'}}>
                 <img alt="Review Pros" src="//cdn2.homeadvisor.com/images/consumer/home/ha-logo-title.png" width="259" />
 
                 <h4 style={{background: '#3d4549', color: '#fff', margin: '15px -16px', padding: '6px 0 4px', textAlign: 'center', fontFamily:' helvetica, arial, san-serif'}}>RATINGS & REVIEWS</h4>

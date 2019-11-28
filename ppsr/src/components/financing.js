@@ -36,13 +36,13 @@ const Financing = props => {
 							/>
 						</div>
 						<div>
-							<img
+							{/* <img
 								src="https://www.greensky.com/merchantkit/images/finance_buttons/product_headers/sunroom_product_header_320.jpg?v=1.0.1011"
 								width="320"
 								height="100"
 								alt="Finance Your Sun Room Project"
 								tabindex="0"
-							/>
+							/> */}
 						</div>
 						<div>
 							<a
@@ -91,13 +91,13 @@ const Financing = props => {
 							/>
 						</div>
 						<div>
-							<img
+							{/* <img
 								src="https://www.greensky.com/merchantkit/images/finance_buttons/product_headers/windows_product_header_320.jpg?v=1.0.1011"
 								width="320"
 								height="100"
 								alt="Finance Your Window Project"
 								tabindex="0"
-							/>
+							/> */}
 						</div>
 						<div>
 							<a

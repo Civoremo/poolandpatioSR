@@ -191,38 +191,16 @@ class App extends Component {
 
 	onVerify = recaptchaResponse => {
 		let reResponse = `${document.querySelector("#g-recaptcha-response").value}`;
+		console.log(reResponse);
 
-		axios({
-			method: "post",
-			// mode: "no-cors",
-			url: `${URLAPI}/users/recaptchaPPSR`,
-			data: {
-				response: reResponse,
-			},
-			responseType: "json",
-		})
-			.then(res => {
-				console.log("recaptcha res: " + JSON.stringify(res));
-				this.setState({
-					verified: true,
-				});
-			})
-			.catch(err => {
-				console.log("recaptcha error " + err);
-			});
-
-		// fetch("https://www.google.com/recaptcha/api/siteverify", {
-		// 	method: "POST",
-		// 	mode: "no-cors",
-		// 	// headers: {
-		// 	//   'Content-Type': 'application/x-www-form-urlencoded'
-		// 	// },
-		// 	// headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-		// 	body: JSON.stringify({
-		// 		secret: `${process.env.REACT_APP_CAPTCHASECRET}`,
-		// 		response: `${document.querySelector("#g-recaptcha-response").value}`,
-		// 		// remoteip: 'localhost'
-		// 	}),
+		// axios({
+		// 	method: "post",
+		// 	// mode: "no-cors",
+		// 	url: `${URLAPI}/users/recaptchaPPSR`,
+		// 	data: {
+		// 		response: reResponse,
+		// 	},
+		// 	responseType: "json",
 		// })
 		// 	.then(res => {
 		// 		console.log("recaptcha res: " + JSON.stringify(res));
@@ -233,6 +211,29 @@ class App extends Component {
 		// 	.catch(err => {
 		// 		console.log("recaptcha error " + err);
 		// 	});
+
+		fetch("https://www.google.com/recaptcha/api/siteverify", {
+			method: "POST",
+			mode: "no-cors",
+			// headers: {
+			//   'Content-Type': 'application/x-www-form-urlencoded'
+			// },
+			// headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+			body: JSON.stringify({
+				secret: `${process.env.REACT_APP_CAPTCHASECRET}`,
+				response: `${document.querySelector("#g-recaptcha-response").value}`,
+				// remoteip: 'localhost'
+			}),
+		})
+			.then(res => {
+				console.log("recaptcha res: " + JSON.stringify(res));
+				this.setState({
+					verified: true,
+				});
+			})
+			.catch(err => {
+				console.log("recaptcha error " + err);
+			});
 
 		// let res = document.querySelector('#g-recaptcha-response').value;
 		// console.log(res)

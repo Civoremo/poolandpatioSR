@@ -10,7 +10,7 @@ const FormContainer = styled.div `
   /* justify-content: center; */
   flex-direction: 'row';
   width: 100%;
-  min-width: 450px;
+  /* min-width: 450px; */
 
   @media (max-width: 767px) {
     display: flex;

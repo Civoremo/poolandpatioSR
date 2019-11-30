@@ -201,7 +201,7 @@ const Navigationbar = props => {
 							height: "3rem",
 						}}
 					>
-						<span style={{ fontSize: "1.4rem" }}>
+						<span style={{ fontSize: "1.2rem" }}>
 							{" "}
 							Call{" "}
 							<a href="tel:4078008116" style={{ color: "#fff" }}>

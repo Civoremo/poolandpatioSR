@@ -191,7 +191,8 @@ class App extends Component {
 
 	onVerify = recaptchaResponse => {
 		axios({
-			method: "get",
+			method: "post",
+			mode: "no-cors",
 			url: `${URLAPI}/users/recaptchaPPSR`,
 			data: {
 				response: `${document.querySelector("#g-recaptcha-response").value}`,

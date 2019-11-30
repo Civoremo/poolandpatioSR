@@ -12,7 +12,8 @@ import PageBreakTwo from "./components/pageBreakTwo";
 import Header from "./components/header";
 import Badges from "./components/badges";
 
-const URL = `http://res.cloudinary.com/ppscreens/image/list/ppsr.json`;
+const URL = `https://res.cloudinary.com/ppscreens/image/list/ppsr.json`;
+const URLAPI = "https://ppsr-api.herokuapp.com";
 
 class App extends Component {
 	state = {
@@ -189,12 +190,26 @@ class App extends Component {
 	};
 
 	onVerify = recaptchaResponse => {
-		this.setState({
-			verified: true,
-		});
+		// axios({
+		// 	method: "get",
+		// 	url: `${URLAPI}/users/recaptchaPPSR`,
+		// 	data: {
+		// 		response: `${document.querySelector("#g-recaptcha-response").value}`,
+		// 	},
+		// })
+		// 	.then(res => {
+		// 		console.log("recaptcha res: " + JSON.stringify(res));
+		// 		this.setState({
+		// 			verified: true,
+		// 		});
+		// 	})
+		// 	.catch(err => {
+		// 		console.log("recaptcha error " + err);
+		// 	});
 
 		fetch("https://www.google.com/recaptcha/api/siteverify", {
 			method: "POST",
+			mode: "no-cors",
 			// headers: {
 			//   'Content-Type': 'application/x-www-form-urlencoded'
 			// },
@@ -206,10 +221,13 @@ class App extends Component {
 			}),
 		})
 			.then(res => {
-				console.log(res);
+				console.log("recaptcha res: " + JSON.stringify(res));
+				this.setState({
+					verified: true,
+				});
 			})
 			.catch(err => {
-				console.log("error " + err);
+				console.log("recaptcha error " + err);
 			});
 
 		// let res = document.querySelector('#g-recaptcha-response').value;

@@ -1,9 +1,12 @@
 import React from 'react';
+import axios from 'axios';
 import * as emailjs from 'emailjs-com';
 import Reaptcha from 'reaptcha';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import styled from 'styled-components';
+
+const URLAPI = 'https://ppsr-api.herokuapp.com';
 
 const FormContainer = styled.div `
   display: flex;
@@ -218,6 +221,34 @@ const ContactForm = props => {
       // get_action()
       return
     }
+
+    // axios({
+    //   method: 'get',
+    //   url: `${URLAPI}/users/estimate`,
+    //   data: {
+    //     senderFirstName: senderFirstName,
+    //     senderLastName: senderLastName,
+    //     senderEmail: senderEmail,
+    //     senderPhone: senderPhone,
+    //     senderStreet: senderStreet,
+    //     senderCity: senderCity,
+    //     senderState: senderState,
+    //     senderZipcode: senderZipcode,
+    //     senderGateCode: senderGateCode,
+    //     senderServices: senderServices
+    //   },
+    //   responseType: 'json'
+
+    // })
+    // .then(response => {
+    //   console.log(response)
+    //   alert("Message send successfully.")
+    //   clearInputs();
+    // })
+    // .catch(error => {
+    //   console.log(error)
+    //   alert("Message failed, try again.")
+    // })
 
     let templateParams = {
       from_name: senderFirstName + ' ' + senderLastName + ' ( ' + senderEmail + ' ) ',

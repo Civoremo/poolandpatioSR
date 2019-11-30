@@ -587,7 +587,7 @@ const ContactForm = props => {
                 </div>
                 <div style={{display: 'flex', justifyContent: 'space-between'}}>
                   <span>Saturday:</span>
-                  <span>8:00am - 6:00pm</span>
+                  <span>Closed</span>
                 </div>
               </div>
               <div style={{marginBottom: '10px', textAlign: 'center'}}><span style={{fontWeight: 'bold', fontSize: '1.6rem'}}><a href="tel:4078008116">407-800-8116</a></span></div>

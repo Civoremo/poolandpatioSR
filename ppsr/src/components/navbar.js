@@ -28,6 +28,10 @@ const NavLinkColor = styled.span`
 
 	font-family: "Raleway", sans-serif;
 
+	@media (max-width: 991px) {
+		font-size: 1.2rem;
+	}
+
 	:hover {
 		color: #c8c8c8;
 		text-decoration: underline;

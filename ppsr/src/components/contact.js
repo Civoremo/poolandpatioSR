@@ -222,75 +222,77 @@ const ContactForm = props => {
       return
     }
 
-    axios({
-      method: 'get',
-      url: `${URLAPI}/users/estimate`,
-      data: {
-        senderFirstName: senderFirstName,
-        senderLastName: senderLastName,
-        senderEmail: senderEmail,
-        senderPhone: senderPhone,
-        senderStreet: senderStreet,
-        senderCity: senderCity,
-        senderState: senderState,
-        senderZipcode: senderZipcode,
-        senderGateCode: senderGateCode,
-        senderServices: senderServices
-      },
-      responseType: 'json'
+    // axios({
+    //   method: 'get',
+    //   // url: `${URLAPI}/users/estimate`,
+    //   url: `http://localhost:4000/users/estimate`,
+    //   body: {
+    //     senderFirstName: senderFirstName,
+    //     senderLastName: senderLastName,
+    //     senderEmail: senderEmail,
+    //     senderPhone: senderPhone,
+    //     senderStreet: senderStreet,
+    //     senderCity: senderCity,
+    //     senderState: senderState,
+    //     senderZipcode: senderZipcode,
+    //     senderGateCode: senderGateCode,
+    //     senderServices: senderServices,
+    //     senderMessage: senderMessage,
+    //   },
+    //   responseType: 'json'
 
-    })
-    .then(response => {
-      console.log(response)
-      alert("Message send successfully.")
-      clearInputs();
-    })
-    .catch(error => {
-      console.log(error)
-      alert("Message failed, try again.")
-    })
+    // })
+    // .then(response => {
+    //   console.log(response)
+    //   alert("Message send successfully.")
+    //   clearInputs();
+    // })
+    // .catch(error => {
+    //   console.log(error)
+    //   alert("Message failed, try again.")
+    // })
 
-    // let templateParams = {
-    //   from_name: senderFirstName + ' ' + senderLastName + ' ( ' + senderEmail + ' ) ',
-    //   from_email: senderEmail,
-    //   to_name: 'PPSR',
-    //   subject: 'PPSR Contact Form',
-    //   message_html:{ 
-    //     customer: `Customer: ${senderFirstName} ${senderLastName}`,
-    //     phone: `Phone: ${senderPhone}`,
-    //     email: `Email: ${senderEmail}`,
+    let templateParams = {
+      from_name: senderFirstName + ' ' + senderLastName + ' ( ' + senderEmail + ' ) ',
+      from_email: senderEmail,
+      to_name: 'PPSR',
+      subject: 'PPSR Contact Form',
+      message_html:{ 
+        customer: `Customer: ${senderFirstName} ${senderLastName}`,
+        phone: `Phone: ${senderPhone}`,
+        email: `Email: ${senderEmail}`,
         
-    //     address: `Address:`,
-    //     street: `${senderStreet}`,
-    //     cityStateZip: `${senderCity}, ${senderState}, ${senderZipcode}`,
+        address: `Address:`,
+        street: `${senderStreet}`,
+        cityStateZip: `${senderCity}, ${senderState}, ${senderZipcode}`,
 
-    //     gateCode: `Gate Code: ${senderGateCode}`,
+        gateCode: `Gate Code: ${senderGateCode}`,
 
-    //     services: `Services:`,
-    //     complete: `Complete Re-Screen: ${senderServices.complete}`,
-    //     individual: `Individual Panels: ${senderServices.individual}`,
-    //     window: `Window Screens: ${senderServices.window}`,
-    //     lanai: `New Lanai Insert: ${senderServices.lanai}`,
-    //     entry: `New Entry Way Insert: ${senderServices.entry}`,
-    //     washing: `Pressure Washing: ${senderServices.washing}`,
-    //     gutter: `Gutter Cleaning: ${senderServices.gutter}`,
-    //     misc: `Misc. Repairs: ${senderServices.misc}`,
+        services: `Services:`,
+        complete: `Complete Re-Screen: ${senderServices.complete}`,
+        individual: `Individual Panels: ${senderServices.individual}`,
+        window: `Window Screens: ${senderServices.window}`,
+        lanai: `New Lanai Insert: ${senderServices.lanai}`,
+        entry: `New Entry Way Insert: ${senderServices.entry}`,
+        washing: `Pressure Washing: ${senderServices.washing}`,
+        gutter: `Gutter Cleaning: ${senderServices.gutter}`,
+        misc: `Misc. Repairs: ${senderServices.misc}`,
 
-    //     message: `Message:`,
-    //     details: `${senderMessage}`
-    //   }
-    // }
+        message: `Message:`,
+        details: `${senderMessage}`
+      }
+    }
 
-    // emailjs.send(process.env.REACT_APP_EMAILJS_SERVICEID, process.env.REACT_APP_EMAILJS_TEMPLATE, templateParams, process.env.REACT_APP_EMAILJS_USER)
-    //   .then(response => {
-    //     console.log(response)
-    //     alert("Message send successfully.")
-    //     clearInputs();
-    //   })
-    //   .catch(error => {
-    //     console.log(error)
-    //     alert("Message failed, try again.")
-    //   })
+    emailjs.send(process.env.REACT_APP_EMAILJS_SERVICEID, process.env.REACT_APP_EMAILJS_TEMPLATE, templateParams, process.env.REACT_APP_EMAILJS_USER)
+      .then(response => {
+        console.log(response)
+        alert("Message send successfully.")
+        clearInputs();
+      })
+      .catch(error => {
+        console.log(error)
+        alert("Message failed, try again.")
+      })
   }
 
 

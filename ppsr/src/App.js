@@ -193,48 +193,48 @@ class App extends Component {
 		let reResponse = `${document.querySelector("#g-recaptcha-response").value}`;
 		console.log(reResponse);
 
-		axios({
-			method: "post",
-			mode: "no-cors",
-			url: "https://www.google.com/recaptcha/api/siteverify",
-			// headers: { "Content-Type": "application/json", Accept: "application/json" },
-			body: JSON.stringify({
-				secret: `${process.env.REACT_APP_CAPTCHASECRET}`,
-				response: `${document.querySelector("#g-recaptcha-response").value}`,
-			}),
-		})
-			.then(res => {
-				console.log("recaptcha success");
-				this.setState({
-					verified: true,
-				});
-			})
-			.catch(err => {
-				console.log("recaptcha failure");
-			});
-
-		// fetch("https://www.google.com/recaptcha/api/siteverify", {
-		// 	method: "POST",
+		// axios({
+		// 	method: "post",
 		// 	mode: "no-cors",
-		// 	// headers: {
-		// 	//   'Content-Type': 'application/x-www-form-urlencoded'
-		// 	// },
-		// 	// headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+		// 	url: "https://www.google.com/recaptcha/api/siteverify",
+		// 	// headers: { "Content-Type": "application/json", Accept: "application/json" },
 		// 	body: JSON.stringify({
 		// 		secret: `${process.env.REACT_APP_CAPTCHASECRET}`,
 		// 		response: `${document.querySelector("#g-recaptcha-response").value}`,
-		// 		// remoteip: 'localhost'
 		// 	}),
 		// })
 		// 	.then(res => {
-		// 		console.log("recaptcha res: " + JSON.stringify(res));
+		// 		console.log("recaptcha success");
 		// 		this.setState({
 		// 			verified: true,
 		// 		});
 		// 	})
 		// 	.catch(err => {
-		// 		console.log("recaptcha error " + err);
+		// 		console.log("recaptcha failure");
 		// 	});
+
+		fetch("https://www.google.com/recaptcha/api/siteverify", {
+			method: "POST",
+			mode: "no-cors",
+			// headers: {
+			//   'Content-Type': 'application/x-www-form-urlencoded'
+			// },
+			// headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+			body: JSON.stringify({
+				secret: `${process.env.REACT_APP_CAPTCHASECRET}`,
+				response: `${document.querySelector("#g-recaptcha-response").value}`,
+				// remoteip: 'localhost'
+			}),
+		})
+			.then(res => {
+				console.log("recaptcha res: " + JSON.stringify(res));
+				this.setState({
+					verified: true,
+				});
+			})
+			.catch(err => {
+				console.log("recaptcha error " + err);
+			});
 	};
 
 	render() {

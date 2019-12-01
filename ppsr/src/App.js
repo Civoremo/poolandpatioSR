@@ -195,21 +195,22 @@ class App extends Component {
 
 		axios({
 			method: "post",
-			// mode: "no-cors",
-			url: `${URLAPI}/users/recaptchaPPSR`,
-			data: {
-				response: reResponse,
-			},
-			responseType: "json",
+			mode: "no-cors",
+			url: "https://www.google.com/recaptcha/api/siteverify",
+			// headers: { "Content-Type": "application/json", Accept: "application/json" },
+			body: JSON.stringify({
+				secret: `${process.env.REACT_APP_CAPTCHASECRET}`,
+				response: `${document.querySelector("#g-recaptcha-response").value}`,
+			}),
 		})
 			.then(res => {
-				console.log("recaptcha res: " + JSON.stringify(res));
+				console.log("recaptcha success");
 				this.setState({
 					verified: true,
 				});
 			})
 			.catch(err => {
-				console.log("recaptcha error " + err);
+				console.log("recaptcha failure");
 			});
 
 		// fetch("https://www.google.com/recaptcha/api/siteverify", {
@@ -234,9 +235,6 @@ class App extends Component {
 		// 	.catch(err => {
 		// 		console.log("recaptcha error " + err);
 		// 	});
-
-		// let res = document.querySelector('#g-recaptcha-response').value;
-		// console.log(res)
 	};
 
 	render() {

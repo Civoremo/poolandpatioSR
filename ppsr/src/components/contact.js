@@ -1,9 +1,9 @@
-import React from 'react';
-import axios from 'axios';
+import React, {useState} from 'react';
 import * as emailjs from 'emailjs-com';
 import Reaptcha from 'reaptcha';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 import styled from 'styled-components';
 
 
@@ -42,6 +42,14 @@ const DisplayErrorDiv = styled.div `
 const HideErrorDiv = styled.div `
   display: none;
   height: 30px;
+`
+
+const ShowButtonSubmit = styled.div `
+  display: block;
+`
+
+const LoadingButton = styled.div `
+  display: block;
 `
 
 const HoursOfOperationDiv = styled.div `
@@ -117,6 +125,8 @@ const CheckboxInput = styled.input `
 `
 
 const ContactForm = props => {
+  const [dataRequesting, setDataRequesting] = useState(false);
+  const [sendMessageResponse, setSendMessageResponse] = useState('');
   const { 
     handleInputChange, 
     handleCheckboxChange,
@@ -221,35 +231,9 @@ const ContactForm = props => {
       return
     }
 
-    // axios({
-    //   method: 'get',
-    //   // url: `${URLAPI}/users/estimate`,
-    //   url: `http://localhost:4000/users/estimate`,
-    //   body: {
-    //     senderFirstName: senderFirstName,
-    //     senderLastName: senderLastName,
-    //     senderEmail: senderEmail,
-    //     senderPhone: senderPhone,
-    //     senderStreet: senderStreet,
-    //     senderCity: senderCity,
-    //     senderState: senderState,
-    //     senderZipcode: senderZipcode,
-    //     senderGateCode: senderGateCode,
-    //     senderServices: senderServices,
-    //     senderMessage: senderMessage,
-    //   },
-    //   responseType: 'json'
-
-    // })
-    // .then(response => {
-    //   console.log(response)
-    //   alert("Message send successfully.")
-    //   clearInputs();
-    // })
-    // .catch(error => {
-    //   console.log(error)
-    //   alert("Message failed, try again.")
-    // })
+    console.log('click button: ' + dataRequesting)
+    setDataRequesting(true);
+    console.log('before send: ' + dataRequesting)
 
     let templateParams = {
       from_name: senderFirstName + ' ' + senderLastName + ' ( ' + senderEmail + ' ) ',
@@ -285,18 +269,25 @@ const ContactForm = props => {
     emailjs.send(process.env.REACT_APP_EMAILJS_SERVICEID, process.env.REACT_APP_EMAILJS_TEMPLATE, templateParams, process.env.REACT_APP_EMAILJS_USER)
       .then(response => {
         console.log(response)
-        alert("Message send successfully.")
+        setDataRequesting(false);
+        setSendMessageResponse('Successful')
+        console.log('after send: ' + dataRequesting)
+        // alert("Message send successfully.")
         clearInputs();
       })
       .catch(error => {
         console.log(error)
-        alert("Message failed, try again.")
+        setDataRequesting(false);
+        setSendMessageResponse('Failed, try again')
+        console.log('after send: ' + dataRequesting)
+        // alert("Message failed, try again.")
       })
   }
 
 
   return (
     <div className='contact' style={{padding: '40px 0'}}>
+    {console.log(dataRequesting)}
       <Container>
 
         <div style={{fontSize: '2rem', marginBottom: '15px'}}>
@@ -551,16 +542,31 @@ const ContactForm = props => {
 
               <Reaptcha sitekey={process.env.REACT_APP_RECAPTCHA} onVerify={onVerify} />
 
-              <Button
-                onClick={sendMessage}
-                type='button'
-                name='submit'
-                // required='required'
-                disabled={!verified}
-                style={{marginTop: '30px', marginBottom: '10px'}}
-              >
-                Submit
-              </Button>
+              <ShowButtonSubmit style={{display: (dataRequesting ? 'none' : 'block')}}>
+                <Button
+                  onClick={sendMessage}
+                  // onClick={() => setDataRequesting(true)}
+                  type='button'
+                  name='submit'
+                  // required='required'
+                  disabled={!verified}
+                  style={{marginTop: '30px', marginBottom: '10px', width: '200px', height: '50px'}}
+                >
+                  Submit
+                </Button>
+              </ShowButtonSubmit>
+              <LoadingButton  style={{display: (dataRequesting ? 'block' : 'none')}}>
+                <Button disabled style={{marginTop: '30px', marginBottom: '10px', width: '200px', height: '50px'}}>
+                  <Spinner 
+                    as='span'
+                    animation='border'
+                    role='status'
+                    // aria-hide='true'
+                  />
+                  <span className='sr-only'>Loading...</span>
+                </Button>
+              </LoadingButton>
+              <div style={{color: (sendMessageResponse === 'Successful' ? 'green' : 'red'), fontWeight: 'bold'}}>{sendMessageResponse}</div>
               <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.incomplete}</div>
             </FormSubmitButtonContainer>
 

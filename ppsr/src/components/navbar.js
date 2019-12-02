@@ -141,16 +141,16 @@ const Navigationbar = props => {
 		<div id="home">
 			<Navbar fixed="top" expand="lg" style={{ backgroundColor: "#1759aa" }}>
 				<Container>
-					<Navbar.Brand href="#home">
-						<Link to="home" smooth={true} duration={500}>
-							{" "}
-							<img
-								src={logoImgWhite}
-								alt={"PPSR"}
-								style={{ maxWidth: "120px", height: "auto", marginRight: "30px" }}
-							/>
-						</Link>
-					</Navbar.Brand>
+					{/* <Navbar.Brand href="#home"> */}
+					<Link to="home" smooth={true} duration={500}>
+						{" "}
+						<img
+							src={logoImgWhite}
+							alt={"PPSR"}
+							style={{ maxWidth: "120px", height: "auto", marginRight: "30px", cursor: "pointer" }}
+						/>
+					</Link>
+					{/* </Navbar.Brand> */}
 					{/* <div style={{display: 'flex', justifyContent: 'center', alignItems: 'baseline'}}>
             <ActionTextSpan style={{ marginRight: '10px'}}>Call </ActionTextSpan>
             <PhoneNumberA href='tel:4078008116'>407-800-8116</PhoneNumberA>
@@ -159,37 +159,62 @@ const Navigationbar = props => {
 					<Navbar.Toggle className="hamburger-custom" aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav">
 						<Nav className="mr-auto" />
-						<Nav className="navbar-custom">
-							<Nav.Link href="">
-								<Link to="about" smooth={true} offset={-30} duration={500}>
-									<NavLinkColor>About</NavLinkColor>
-								</Link>
-							</Nav.Link>
-							<Nav.Link href="">
-								<Link to="services" smooth={true} offset={-30} duration={500}>
-									<NavLinkColor>Services</NavLinkColor>
-								</Link>
-							</Nav.Link>
-							<Nav.Link href="">
-								<Link>
-									<NavLinkColor onClick={() => setFinancing(true)}>Financing</NavLinkColor>
-								</Link>
-							</Nav.Link>
-							<Nav.Link href="">
-								<Link>
-									<NavLinkColor onClick={() => setGallery(true)}>Gallery</NavLinkColor>
-								</Link>
-							</Nav.Link>
-							<Nav.Link href="">
-								<Link to="contact" smooth={true} offset={-30} duration={500}>
-									<NavLinkColor>Contact</NavLinkColor>
-								</Link>
-							</Nav.Link>
-							<Nav.Link href="">
-								<Link>
-									<NavLinkColor onClick={() => setShop(true)}>SHOP</NavLinkColor>
-								</Link>
-							</Nav.Link>
+						<Nav
+							className="navbar-custom"
+							style={{
+								display: "flex",
+								alignItems: "center",
+								justifyContent: "center",
+							}}
+						>
+							{/* <Nav.Link href=""> */}
+							<Link
+								to="about"
+								smooth={true}
+								offset={-30}
+								duration={500}
+								style={{ margin: "5px 10px", cursor: "pointer" }}
+							>
+								<NavLinkColor>About</NavLinkColor>
+							</Link>
+							{/* </Nav.Link> */}
+							{/* <Nav.Link href=""> */}
+							<Link
+								to="services"
+								smooth={true}
+								offset={-30}
+								duration={500}
+								style={{ margin: "5px 10px", cursor: "pointer" }}
+							>
+								<NavLinkColor>Services</NavLinkColor>
+							</Link>
+							{/* </Nav.Link> */}
+							{/* <Nav.Link href=""> */}
+							<Link to="" style={{ margin: "5px 10px", cursor: "pointer" }}>
+								<NavLinkColor onClick={() => setFinancing(true)}>Financing</NavLinkColor>
+							</Link>
+							{/* </Nav.Link> */}
+							{/* <Nav.Link href=""> */}
+							<Link to="" style={{ margin: "5px 10px", cursor: "pointer" }}>
+								<NavLinkColor onClick={() => setGallery(true)}>Gallery</NavLinkColor>
+							</Link>
+							{/* </Nav.Link> */}
+							{/* <Nav.Link href=""> */}
+							<Link
+								to="contact"
+								smooth={true}
+								offset={-30}
+								duration={500}
+								style={{ margin: "5px 15px", cursor: "pointer" }}
+							>
+								<NavLinkColor>Contact</NavLinkColor>
+							</Link>
+							{/* </Nav.Link> */}
+							{/* <Nav.Link href=""> */}
+							<Link to="" style={{ margin: "5px 10px", cursor: "pointer" }}>
+								<NavLinkColor onClick={() => setShop(true)}>SHOP</NavLinkColor>
+							</Link>
+							{/* </Nav.Link> */}
 							<Nav.Link href="">
 								<LoginNavLinkDiv showing={localStorage.getItem("ppsr_user")}>
 									<NavLinkColor onClick={() => setSignIn(true)}>

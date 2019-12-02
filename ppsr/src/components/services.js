@@ -11,6 +11,13 @@ import individualPanelsImage from './images/accordionImages/individualPanels.jpg
 import floridaGlassImage from './images/accordionImages/floridaGlass.jpg';
 import frameInImage from './images/accordionImages/frameIn.jpg';
 import petScreenImage from './images/accordionImages/petScreen.jpg';
+import pressureWashing from './images/accordionImages/pressure_washing.jpg';
+import gutterCleaning from './images/accordionImages/gutter_cleaning.png';
+import petDoor from './images/accordionImages/pride_pet_door.png';
+import hurricaneCable from './images/accordionImages/hurricane_cable.jpg';
+import tapcons from './images/accordionImages/enclosure_concrete_tapcons.jpg';
+import doorHardware from './images/accordionImages/door_hardware.jpg';
+import bugSweep from './images/accordionImages/door_bug_sweep.jpg';
 
 
 const CardDisplayDiv = styled.div `
@@ -52,7 +59,7 @@ const ServicesPage = props => {
   const { collapsedID, toggleAccordion } = props;
 
   return (
-    <div style={{padding: '40px 0'}}>
+    <div id='services' style={{padding: '40px 0'}}>
 
       <Container>
         <div style={{fontSize: '2rem', marginBottom: '15px'}}>
@@ -221,7 +228,7 @@ const ServicesPage = props => {
               <Card.Body>
                 <CardContentDiv>
                   <CardContentImageDiv>
-                    <img src={frameInImage} alt='Frame In' style={{width: '300px', height: 'auto'}} />
+                    <img src={doorHardware} alt='Frame In' style={{width: '300px', height: 'auto'}} />
                   </CardContentImageDiv>
                   <CardContentTextDiv>
                     <p>
@@ -248,7 +255,7 @@ const ServicesPage = props => {
               <Card.Body>
                 <CardContentDiv>
                   <CardContentImageDiv>
-                    <img src={frameInImage} alt='Frame In' style={{width: '300px', height: 'auto'}} />
+                    <img src={petDoor} alt='Frame In' style={{width: '300px', height: 'auto'}} />
                   </CardContentImageDiv>
                   <CardContentTextDiv>
                     <p>
@@ -275,7 +282,7 @@ const ServicesPage = props => {
               <Card.Body>
                 <CardContentDiv>
                   <CardContentImageDiv>
-                    <img src={frameInImage} alt='Frame In' style={{width: '300px', height: 'auto'}} />
+                    <img src={hurricaneCable} alt='Frame In' style={{width: '300px', height: 'auto'}} />
                   </CardContentImageDiv>
                   <CardContentTextDiv>
                     <p>
@@ -302,7 +309,7 @@ const ServicesPage = props => {
               <Card.Body>
                 <CardContentDiv>
                   <CardContentImageDiv>
-                    <img src={frameInImage} alt='Frame In' style={{width: '300px', height: 'auto'}} />
+                    <img src={tapcons} alt='Frame In' style={{width: '300px', height: 'auto'}} />
                   </CardContentImageDiv>
                   <CardContentTextDiv>
                     <p>
@@ -329,7 +336,7 @@ const ServicesPage = props => {
               <Card.Body>
                 <CardContentDiv>
                   <CardContentImageDiv>
-                    <img src={frameInImage} alt='Frame In' style={{width: '300px', height: 'auto'}} />
+                    <img src={pressureWashing} alt='Frame In' style={{width: '300px', height: 'auto'}} />
                   </CardContentImageDiv>
                   <CardContentTextDiv>
                     <p>We offer a wide variety of pressure washing services: </p>
@@ -362,7 +369,7 @@ const ServicesPage = props => {
               <Card.Body>
                 <CardContentDiv>
                   <CardContentImageDiv>
-                    <img src={frameInImage} alt='Frame In' style={{width: '300px', height: 'auto'}} />
+                    <img src={gutterCleaning} alt='Frame In' style={{width: '300px', height: 'auto'}} />
                   </CardContentImageDiv>
                   <CardContentTextDiv>
                     <p>

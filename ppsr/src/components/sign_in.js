@@ -1,22 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import Spinner from "react-bootstrap/Spinner";
 import styled from "styled-components";
 
 import SignUp from "./signup";
 import Login from "./login";
 
 const SignUpInputForm = styled.form`
-	// display: flex;
-	// justify-items: space-between;
-	// align-items: center;
+	/* display: flex;
+	justify-items: space-between;
+	align-items: center; */
 `;
 
 const SignUpDiv = styled.div`
 	position: relative;
 	z-index: ${props => (props.showing ? "10" : "1")};
 	display: ${props => (props.showing ? "flex" : "none")};
+	width: 100%;
 `;
 
 const LoginDiv = styled.div`
@@ -86,6 +88,7 @@ const SignInContainer = styled.div`
 
 const SignIn = props => {
 	const { lgSignIn, setSignIn } = props;
+	const [signinDataRequesting, setSigninDataRequesting] = useState(false);
 
 	const URL = "https://ppsr-api.herokuapp.com";
 
@@ -123,6 +126,8 @@ const SignIn = props => {
 	const SignupLoginRequest = event => {
 		// event.preventDefault();
 		// console.log(senderFirstName + " " + senderLastName + " " + senderEmail + " " + credentials)
+		setSigninDataRequesting(true);
+
 		if (isSelected) {
 			axios({
 				method: "post",
@@ -143,6 +148,7 @@ const SignIn = props => {
 					console.log("isSelected: " + isSelected);
 					// console.log('register response: ' + response.data);
 					console.log("register response: " + JSON.stringify(response.data));
+					setSigninDataRequesting(false);
 					clearSigninInputs();
 					toggleSignInLinks();
 				})
@@ -150,6 +156,7 @@ const SignIn = props => {
 					console.log("isSelected: " + isSelected);
 					// console.log('register error: ' + JSON.stringify(err));
 					console.log("register error: " + JSON.stringify(err.response.data));
+					setSigninDataRequesting(false);
 				});
 		} else {
 			console.log("confirmation: " + confirmationKey);
@@ -170,6 +177,7 @@ const SignIn = props => {
 						console.log("login response: " + JSON.stringify(response.data));
 						localStorage.setItem("ppsr", JSON.stringify(response.data.token));
 						localStorage.setItem("ppsr_user", JSON.stringify(response.data.user.firstName));
+						setSigninDataRequesting(false);
 						setSignIn(false);
 						loggedIn(true);
 						clearSigninInputs();
@@ -177,6 +185,7 @@ const SignIn = props => {
 					.catch(err => {
 						console.log("isSelected: " + isSelected);
 						console.log("login error: " + JSON.stringify(err.response));
+						setSigninDataRequesting(false);
 					});
 			} else {
 				axios({
@@ -207,6 +216,7 @@ const SignIn = props => {
 								console.log("login response: " + JSON.stringify(response.data));
 								localStorage.setItem("ppsr", JSON.stringify(response.data.token));
 								localStorage.setItem("ppsr_user", JSON.stringify(response.data.user.firstName));
+								setSigninDataRequesting(false);
 								setSignIn(false);
 								loggedIn(true);
 								clearSigninInputs();
@@ -214,11 +224,13 @@ const SignIn = props => {
 							.catch(err => {
 								console.log("isSelected: " + isSelected);
 								console.log("login error: " + JSON.stringify(err.response.data));
+								setSigninDataRequesting(false);
 							});
 					})
 					.catch(err => {
 						console.log("isSelected: " + isSelected);
 						console.log("confirm error: " + JSON.stringify(err.response.data));
+						setSigninDataRequesting(false);
 					});
 			}
 		}
@@ -270,13 +282,38 @@ const SignIn = props => {
 							</LoginDiv>
 						</SignInContainer>
 
-						<Button
-							type="button"
-							// name='submit'
-							onClick={() => SignupLoginRequest()}
-						>
-							Send
-						</Button>
+						<div style={{ textAlign: "center" }}>
+							<div style={{ display: signinDataRequesting ? "none" : "block" }}>
+								<Button
+									type="button"
+									// name='submit'
+									onClick={() => SignupLoginRequest()}
+									style={{
+										marginTop: "20px",
+										marginBottom: "30px",
+										width: "200px",
+										height: "50px",
+									}}
+								>
+									<span style={{ display: isSelected ? "block" : "none" }}>Register</span>
+									<span style={{ display: isSelected ? "none" : "block" }}>Login</span>
+								</Button>
+							</div>
+							<div style={{ display: signinDataRequesting ? "block" : "none" }}>
+								<Button
+									disabled
+									style={{
+										marginTop: "20px",
+										marginBottom: "30px",
+										width: "200px",
+										height: "50px",
+									}}
+								>
+									<Spinner as="span" animation="border" role="status" />
+									<span className="sr-only">Loading...</span>
+								</Button>
+							</div>
+						</div>
 					</SignUpInputForm>
 				</Modal.Body>
 			</Modal>

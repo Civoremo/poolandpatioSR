@@ -57,7 +57,7 @@ class App extends Component {
 		},
 		insufficientInfo: false,
 		verified: false,
-		isSelected: false,
+		isSelected: true,
 		lgFinancing: false,
 		lgShop: false,
 		// loggedIn: false,

@@ -48,7 +48,7 @@ const PriceLoginDiv = styled.div`
 `;
 
 const ShopPage = props => {
-	const { lgShop, toggleShopModal } = props;
+	const { lgShop, toggleShopModal, setSignIn } = props;
 
 	return (
 		<div>
@@ -60,7 +60,9 @@ const ShopPage = props => {
 						<ItemDescription>Top Panel Repair</ItemDescription>
 						<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
 						<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
-							<Button type="button">Log in</Button>
+							<Button type="button" onClick={() => setSignIn(true)}>
+								Log in
+							</Button>
 						</PriceLoginDiv>
 					</ItemContainer>
 				</Modal.Body>

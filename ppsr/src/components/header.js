@@ -2,7 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import styled from "styled-components";
-import { Link, animmateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 
 import headerImage from "./images/accordionImages/pool.jpg";
 

@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import styled from "styled-components";
-import { Link, animmateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 
 // import logoImg from './images/logo/logo_lg_alt.png';
 import logoImgWhite from "./images/logo/logo_lg_alt_white.png";
@@ -265,7 +265,7 @@ const Navigationbar = props => {
 
 			<Gallery imageArray={imageArray} lgGallery={lgGallery} setGallery={setGallery} />
 
-			<ShopPage lgShop={lgShop} toggleShopModal={toggleShopModal} />
+			<ShopPage lgShop={lgShop} toggleShopModal={toggleShopModal} setSignIn={setSignIn} />
 
 			<SignIn
 				lgSignIn={lgSignIn}

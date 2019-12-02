@@ -17,7 +17,7 @@ import petDoor from './images/accordionImages/pride_pet_door.png';
 import hurricaneCable from './images/accordionImages/hurricane_cable.jpg';
 import tapcons from './images/accordionImages/enclosure_concrete_tapcons.jpg';
 import doorHardware from './images/accordionImages/door_hardware.jpg';
-import bugSweep from './images/accordionImages/door_bug_sweep.jpg';
+// import bugSweep from './images/accordionImages/door_bug_sweep.jpg';
 
 
 const CardDisplayDiv = styled.div `

@@ -11,6 +11,10 @@ const HeaderDiv = styled.div`
 	/* border: 1px solid red; */
 	background: url(${headerImage}) center center no-repeat;
 	background-size: cover;
+
+	@media (max-width: 991px) {
+		height: 500px;
+	}
 `;
 
 const TextDiv = styled.div`
@@ -40,7 +44,7 @@ const Header = props => {
 						Is battling insects and debris from tears in your pool or patio screen enclosure driving
 						you crazy?
 					</TextDiv> */}
-					<Button variant="primary" size="lg" style={{ marginTop: "50px", fontWeight: "bold" }}>
+					<Button variant="primary" size="lg" style={{ marginTop: "50px" }}>
 						Learn how we can help
 					</Button>
 				</div>

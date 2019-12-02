@@ -43,7 +43,7 @@ const ActionDiv = styled.div`
 	background-color: #163e98;
 	color: whitesmoke;
 	position: absolute;
-	top: 4.3rem;
+	top: 3.7rem;
 	width: 100%;
 `;
 

@@ -3,10 +3,10 @@ import Modal from "react-bootstrap/Modal";
 // import styled from "styled-components";
 
 const Financing = props => {
-	const { lgFinancing, setFinancing } = props;
+	const { lgFinancing, toggleFinanceModal } = props;
 
 	return (
-		<Modal size="lg" show={lgFinancing} onHide={() => setFinancing(false)} centered>
+		<Modal size="lg" show={lgFinancing} onHide={() => toggleFinanceModal()} centered>
 			<Modal.Header closeButton>
 				{/* <Modal.Title id="example-modal-sizes-title-sm">
 					Pool & Patio Screen Repair Finance Options

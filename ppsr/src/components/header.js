@@ -2,6 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import styled from "styled-components";
+import { Link, animmateScroll as scroll } from "react-scroll";
 
 import headerImage from "./images/accordionImages/pool.jpg";
 
@@ -45,7 +46,9 @@ const Header = props => {
 						you crazy?
 					</TextDiv> */}
 					<Button variant="primary" size="lg" style={{ marginTop: "50px" }}>
-						Learn how we can help
+						<Link to="services" smooth={true} offset={-30} duration={500}>
+							Learn how we can help
+						</Link>
 					</Button>
 				</div>
 			</Container>

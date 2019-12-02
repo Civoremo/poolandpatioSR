@@ -103,8 +103,8 @@ const Navigationbar = props => {
 	const [lgSignIn, setSignIn] = useState(false);
 	const [loggedIn] = useState(false);
 	const [lgProfile, setProfile] = useState(false);
-	const [lgShop, setShop] = useState(false);
-	const [lgFinancing, setFinancing] = useState(false);
+	// const [lgShop, setShop] = useState(false);
+	// const [lgFinancing, setFinancing] = useState(false);
 
 	const {
 		handleInputChange,
@@ -135,6 +135,10 @@ const Navigationbar = props => {
 		//   onVerify,
 		isSelected,
 		// loggedIn
+		lgFinancing,
+		lgShop,
+		toggleFinanceModal,
+		toggleShopModal,
 	} = props;
 
 	return (
@@ -191,7 +195,7 @@ const Navigationbar = props => {
 							{/* </Nav.Link> */}
 							{/* <Nav.Link href=""> */}
 							<Link to="" style={{ margin: "5px 10px", cursor: "pointer" }}>
-								<NavLinkColor onClick={() => setFinancing(true)}>Financing</NavLinkColor>
+								<NavLinkColor onClick={() => toggleFinanceModal()}>Financing</NavLinkColor>
 							</Link>
 							{/* </Nav.Link> */}
 							{/* <Nav.Link href=""> */}
@@ -212,7 +216,7 @@ const Navigationbar = props => {
 							{/* </Nav.Link> */}
 							{/* <Nav.Link href=""> */}
 							<Link to="" style={{ margin: "5px 10px", cursor: "pointer" }}>
-								<NavLinkColor onClick={() => setShop(true)}>SHOP</NavLinkColor>
+								<NavLinkColor onClick={() => toggleShopModal()}>SHOP</NavLinkColor>
 							</Link>
 							{/* </Nav.Link> */}
 							<Nav.Link href="">
@@ -257,11 +261,11 @@ const Navigationbar = props => {
 				</Container>
 			</ActionDiv>
 
-			<Financing lgFinancing={lgFinancing} setFinancing={setFinancing} />
+			<Financing lgFinancing={lgFinancing} toggleFinanceModal={toggleFinanceModal} />
 
 			<Gallery imageArray={imageArray} lgGallery={lgGallery} setGallery={setGallery} />
 
-			<ShopPage lgShop={lgShop} setShop={setShop} />
+			<ShopPage lgShop={lgShop} toggleShopModal={toggleShopModal} />
 
 			<SignIn
 				lgSignIn={lgSignIn}

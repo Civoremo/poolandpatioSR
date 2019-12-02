@@ -48,11 +48,11 @@ const PriceLoginDiv = styled.div`
 `;
 
 const ShopPage = props => {
-	const { lgShop, setShop } = props;
+	const { lgShop, toggleShopModal } = props;
 
 	return (
 		<div>
-			<Modal size="lg" show={lgShop} onHide={() => setShop(false)}>
+			<Modal size="lg" show={lgShop} onHide={() => toggleShopModal()}>
 				<Modal.Header closeButton></Modal.Header>
 				<Modal.Body>
 					<ItemContainer>

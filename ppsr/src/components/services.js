@@ -59,7 +59,7 @@ const ServicesPage = props => {
   const { collapsedID, toggleAccordion } = props;
 
   return (
-    <div style={{padding: '40px 0'}}>
+    <div id='services' style={{padding: '40px 0'}}>
 
       <Container>
         <div style={{fontSize: '2rem', marginBottom: '15px'}}>

@@ -13,7 +13,7 @@ import Header from "./components/header";
 import Badges from "./components/badges";
 
 const URL = `https://res.cloudinary.com/ppscreens/image/list/ppsr.json`;
-const URLAPI = "https://ppsr-api.herokuapp.com";
+// const URLAPI = "https://ppsr-api.herokuapp.com";
 
 class App extends Component {
 	state = {

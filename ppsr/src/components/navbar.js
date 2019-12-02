@@ -3,6 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import styled from "styled-components";
+import { Link, animmateScroll as scroll } from "react-scroll";
 
 // import logoImg from './images/logo/logo_lg_alt.png';
 import logoImgWhite from "./images/logo/logo_lg_alt_white.png";
@@ -46,37 +47,37 @@ const ActionDiv = styled.div`
 	width: 100%;
 `;
 
-const PhoneNumberA = styled.a`
-	font-size: 1.6rem;
-	color: #fff;
+// const PhoneNumberA = styled.a`
+// 	font-size: 1.6rem;
+// 	color: #fff;
 
-	@media (min-width: 992px) {
-		display: block;
-	}
+// 	@media (min-width: 992px) {
+// 		display: block;
+// 	}
 
-	@media (max-width: 991px) {
-		display: none;
-	}
+// 	@media (max-width: 991px) {
+// 		display: none;
+// 	}
 
-	:hover {
-		text-decoration: underline;
-		color: #fff;
-	}
-`;
-const ActionTextSpan = styled.span`
-	font-size: 1rem;
-	color: #fff;
+// 	:hover {
+// 		text-decoration: underline;
+// 		color: #fff;
+// 	}
+// `;
+// const ActionTextSpan = styled.span`
+// 	font-size: 1rem;
+// 	color: #fff;
 
-	font-family: "Roboto", sans-serif;
+// 	font-family: "Roboto", sans-serif;
 
-	@media (max-width: 991px) {
-		display: none;
-	}
+// 	@media (max-width: 991px) {
+// 		display: none;
+// 	}
 
-	@media (min-width: 992px) {
-		display: block;
-	}
-`;
+// 	@media (min-width: 992px) {
+// 		display: block;
+// 	}
+// `;
 
 const LoginNavLinkDiv = styled.div`
 	display: ${props => (props.showing === null ? "block" : "none")};
@@ -137,15 +138,18 @@ const Navigationbar = props => {
 	} = props;
 
 	return (
-		<div>
+		<div id="home">
 			<Navbar fixed="top" expand="lg" style={{ backgroundColor: "#1759aa" }}>
 				<Container>
 					<Navbar.Brand href="#home">
-						<img
-							src={logoImgWhite}
-							alt={"PPSR"}
-							style={{ maxWidth: "120px", height: "auto", marginRight: "30px" }}
-						/>
+						<Link to="home" smooth={true} duration={500}>
+							{" "}
+							<img
+								src={logoImgWhite}
+								alt={"PPSR"}
+								style={{ maxWidth: "120px", height: "auto", marginRight: "30px" }}
+							/>
+						</Link>
 					</Navbar.Brand>
 					{/* <div style={{display: 'flex', justifyContent: 'center', alignItems: 'baseline'}}>
             <ActionTextSpan style={{ marginRight: '10px'}}>Call </ActionTextSpan>
@@ -156,26 +160,37 @@ const Navigationbar = props => {
 					<Navbar.Collapse id="responsive-navbar-nav">
 						<Nav className="mr-auto" />
 						<Nav className="navbar-custom">
-							<Nav.Link href="#about">
-								<NavLinkColor>About</NavLinkColor>
+							<Nav.Link href="">
+								<Link to="about" smooth={true} offset={-30} duration={500}>
+									<NavLinkColor>About</NavLinkColor>
+								</Link>
 							</Nav.Link>
-							<Nav.Link href="#services">
-								<NavLinkColor>Services</NavLinkColor>
+							<Nav.Link href="">
+								<Link to="services" smooth={true} offset={-30} duration={500}>
+									<NavLinkColor>Services</NavLinkColor>
+								</Link>
 							</Nav.Link>
-							<Nav.Link href="#financing">
-								<NavLinkColor onClick={() => setFinancing(true)}>Financing</NavLinkColor>
+							<Nav.Link href="">
+								<Link>
+									<NavLinkColor onClick={() => setFinancing(true)}>Financing</NavLinkColor>
+								</Link>
 							</Nav.Link>
-							<Nav.Link href="#gallery">
-								<NavLinkColor onClick={() => setGallery(true)}>Gallery</NavLinkColor>
+							<Nav.Link href="">
+								<Link>
+									<NavLinkColor onClick={() => setGallery(true)}>Gallery</NavLinkColor>
+								</Link>
 							</Nav.Link>
-							<Nav.Link href="#contact">
-								<NavLinkColor>Contact</NavLinkColor>
+							<Nav.Link href="">
+								<Link to="contact" smooth={true} offset={-30} duration={500}>
+									<NavLinkColor>Contact</NavLinkColor>
+								</Link>
 							</Nav.Link>
-							<Nav.Link href="#shop">
-								<NavLinkColor onClick={() => setShop(true)}>SHOP</NavLinkColor>
+							<Nav.Link href="">
+								<Link>
+									<NavLinkColor onClick={() => setShop(true)}>SHOP</NavLinkColor>
+								</Link>
 							</Nav.Link>
-							<Nav.Link href="#signin">
-								{console.log("logged: " + loggedIn)}
+							<Nav.Link href="">
 								<LoginNavLinkDiv showing={localStorage.getItem("ppsr_user")}>
 									<NavLinkColor onClick={() => setSignIn(true)}>
 										<LinkBorder>Login</LinkBorder>

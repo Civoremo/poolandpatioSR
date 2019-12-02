@@ -6,7 +6,6 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import styled from 'styled-components';
 
-const URLAPI = 'https://ppsr-api.herokuapp.com';
 
 const FormContainer = styled.div `
   display: flex;
@@ -297,7 +296,7 @@ const ContactForm = props => {
 
 
   return (
-    <div style={{padding: '40px 0'}}>
+    <div className='contact' style={{padding: '40px 0'}}>
       <Container>
 
         <div style={{fontSize: '2rem', marginBottom: '15px'}}>

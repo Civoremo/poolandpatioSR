@@ -64,6 +64,12 @@ class App extends Component {
 			confirmCredentials: "",
 			incomplete: "",
 		},
+		loginErrors: {
+			email: "",
+			credentials: "",
+			incomplete: "",
+			confirmationKey: "",
+		},
 		insufficientInfo: false,
 		verified: false,
 		isSelected: true,
@@ -132,6 +138,12 @@ class App extends Component {
 				credentials: "",
 				confirmCredentials: "",
 				incomplete: "",
+			},
+			loginErrors: {
+				email: "",
+				credentials: "",
+				incomplete: "",
+				confirmationKey: "",
 			},
 		});
 	};
@@ -214,6 +226,12 @@ class App extends Component {
 				confirmCredentials: "",
 				incomplete: "",
 			},
+			loginErrors: {
+				email: "",
+				credentials: "",
+				incomplete: "",
+				confirmationKey: "",
+			},
 			insufficientInfo: false,
 		});
 	};
@@ -227,6 +245,12 @@ class App extends Component {
 	setSignupErrorMessages = errors => {
 		this.setState({
 			signupErrors: errors,
+		});
+	};
+
+	setLoginErrorMessages = errors => {
+		this.setState({
+			loginErrors: errors,
 		});
 	};
 
@@ -324,6 +348,8 @@ class App extends Component {
 					toggleShopModal={this.toggleShopModal}
 					signupErrors={this.state.signupErrors}
 					setSignupErrorMessages={this.setSignupErrorMessages}
+					loginErrors={this.state.loginErrors}
+					setLoginErrorMessages={this.setLoginErrorMessages}
 					clearInputs={this.clearInputs}
 				/>
 				{/* {console.log('APP: ', this.state.isSelected)} */}

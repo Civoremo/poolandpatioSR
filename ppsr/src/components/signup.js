@@ -46,6 +46,7 @@ const SignUp = props => {
 				justifyContent: "center",
 				alignItems: "center",
 				width: "100%",
+				// border: "1px solid red",
 				// minHeight: "450px",
 			}}
 		>

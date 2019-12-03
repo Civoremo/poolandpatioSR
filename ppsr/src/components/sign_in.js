@@ -25,6 +25,7 @@ const LoginDiv = styled.div`
 	position: relative;
 	z-index: ${props => (!props.showing ? "10" : "1")};
 	display: ${props => (!props.showing ? "flex" : "none")};
+	width: 100%;
 `;
 
 const LinkDivContainer = styled.div`
@@ -78,7 +79,7 @@ const LinkStyle = styled.span`
 const SignInContainer = styled.div`
 	border-top: 1px solid silver;
 	background-color: #fff;
-	min-height: 450px;
+	/* min-height: 450px; */
 	display: flex;
 	align-items: center;
 	position: relative;
@@ -124,6 +125,8 @@ const SignIn = props => {
 		loggedIn,
 		signupErrors,
 		setSignupErrorMessages,
+		loginErrors,
+		setLoginErrorMessages,
 	} = props;
 
 	const validateSignupInfo = () => {
@@ -148,7 +151,7 @@ const SignIn = props => {
 			formIsValid = false;
 		}
 
-		if (!senderConfirmEmail || senderConfirmEmail < 3) {
+		if (!senderConfirmEmail || senderConfirmEmail.length < 3) {
 			errors.confirmEmail = "Not a valid email!";
 			errors.incomplete = "Incomplete, check input fields and try again!";
 			formIsValid = false;
@@ -182,25 +185,55 @@ const SignIn = props => {
 
 		if (!pattern.test(senderEmail)) {
 			errors.email = "Not a valid email!";
-			let pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+			// let pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 			errors.incomplete = "Incomplete, check input fields and try again!";
 			formIsValid = false;
 		}
 
 		setSignupErrorMessages(errors);
+		return formIsValid;
+	};
+
+	const validateLoginInfo = () => {
+		let errors = {};
+		let formIsValid = true;
+
+		let pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+
+		if (!senderEmail) {
+			errors.email = "Required!";
+			errors.incomplete = "Incomplete, check input fields and try again!";
+			formIsValid = false;
+		}
+
+		if (!credentials) {
+			errors.credentials = "Required!";
+			errors.incomplete = "Incomplete, check input fields and try again!";
+			formIsValid = false;
+		}
+
+		if (!pattern.test(senderEmail)) {
+			errors.email = "Not a valid email!";
+			// let pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+			errors.incomplete = "Incomplete, check input fields and try again!";
+			formIsValid = false;
+		}
+
+		setLoginErrorMessages(errors);
+
+		return formIsValid;
 	};
 
 	const SignupLoginRequest = event => {
 		// event.preventDefault();
 		// console.log(senderFirstName + " " + senderLastName + " " + senderEmail + " " + credentials)
 
-		if (!validateSignupInfo()) {
-			return;
-		}
-
-		setSigninDataRequesting(true);
-
 		if (isSelected) {
+			if (!validateSignupInfo()) {
+				return;
+			}
+			setSigninDataRequesting(true);
+
 			axios({
 				method: "post",
 				// mode: "no-cors",
@@ -234,6 +267,11 @@ const SignIn = props => {
 		} else {
 			console.log("confirmation: " + confirmationKey);
 			if (confirmationKey.length === 0) {
+				if (!validateLoginInfo()) {
+					return;
+				}
+				setSigninDataRequesting(true);
+
 				axios({
 					method: "post",
 					// mode: "no-cors",
@@ -262,6 +300,11 @@ const SignIn = props => {
 						setSigninDataRequesting(false);
 					});
 			} else {
+				if (!validateLoginInfo()) {
+					return;
+				}
+				setSigninDataRequesting(true);
+
 				axios({
 					method: "put",
 					// mode: "no-cors",
@@ -362,7 +405,8 @@ const SignIn = props => {
 									senderEmail={senderEmail}
 									credentials={credentials}
 									confirmationKey={confirmationKey}
-									signupErrors={signupErrors}
+									// signupErrors={signupErrors}
+									loginErrors={loginErrors}
 								/>
 							</LoginDiv>
 						</SignInContainer>
@@ -401,7 +445,12 @@ const SignIn = props => {
 							<div
 								style={{ color: "red", height: "20px", fontSize: ".8rem", marginBottom: "25px" }}
 							>
-								{signupErrors.incomplete}
+								<span style={{ display: isSelected ? "block" : "none" }}>
+									{signupErrors.incomplete}
+								</span>
+								<span style={{ display: isSelected ? "none" : "block" }}>
+									{loginErrors.incomplete}
+								</span>
 							</div>
 						</div>
 					</SignUpInputForm>

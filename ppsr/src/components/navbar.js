@@ -141,6 +141,8 @@ const Navigationbar = props => {
 		toggleShopModal,
 		signupErrors,
 		setSignupErrorMessages,
+		loginErrors,
+		setLoginErrorMessages,
 	} = props;
 
 	return (
@@ -287,6 +289,8 @@ const Navigationbar = props => {
 				isSelected={isSelected}
 				signupErrors={signupErrors}
 				setSignupErrorMessages={setSignupErrorMessages}
+				loginErrors={loginErrors}
+				setLoginErrorMessages={setLoginErrorMessages}
 				clearInputs={clearInputs}
 			/>
 

@@ -100,7 +100,7 @@ const LinkBorder = styled.div`
 const Navigationbar = props => {
 	const { imageArray } = props;
 	const [lgGallery, setGallery] = useState(false);
-	const [lgSignIn, setSignIn] = useState(true);
+	const [lgSignIn, setSignIn] = useState(false);
 	const [loggedIn] = useState(false);
 	const [lgProfile, setProfile] = useState(false);
 	// const [lgShop, setShop] = useState(false);

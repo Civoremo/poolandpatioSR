@@ -18,6 +18,14 @@ const HeaderDiv = styled.div`
 	}
 `;
 
+const HeaderContentDiv = styled.div`
+	height: 600px;
+
+	@media (max-width: 991px) {
+		height: 500px;
+	}
+`;
+
 const TextDiv = styled.div`
 	margin: 10px 0;
 	font-size: 2rem;
@@ -30,13 +38,15 @@ const Header = props => {
 	return (
 		<HeaderDiv>
 			<Container>
-				<div
+				<HeaderContentDiv
 					style={{
 						display: "flex",
 						flexDirection: "column",
 						justifyContent: "center",
 						alignItems: "center",
-						height: "600px",
+						// height: "600px",
+						// height: "100%",
+						// border: "1px solid red",
 					}}
 				>
 					<TextDiv>Are you tired of looking through worn or broken screens?</TextDiv>
@@ -50,7 +60,7 @@ const Header = props => {
 							Learn how we can help
 						</Link>
 					</Button>
-				</div>
+				</HeaderContentDiv>
 			</Container>
 		</HeaderDiv>
 	);

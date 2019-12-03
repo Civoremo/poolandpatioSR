@@ -71,13 +71,14 @@ const LinkLoginDiv = styled.div`
 `;
 
 const LinkStyle = styled.span`
-	color: ${props => (props.showing ? "blue" : "grey")};
+	color: ${props => (props.showing ? "#222" : "#222")};
+	font-weight: ${props => (props.showing ? "bold" : "normal")};
 `;
 
 const SignInContainer = styled.div`
 	border-top: 1px solid silver;
 	background-color: #fff;
-	min-height: 280px;
+	min-height: 450px;
 	display: flex;
 	align-items: center;
 	position: relative;
@@ -323,12 +324,20 @@ const SignIn = props => {
 					<SignUpInputForm method="post" action="submit">
 						<LinkDivContainer>
 							<LinkSignUpDiv showing={isSelected}>
-								<a href="#show" onClick={() => (!isSelected ? toggleSignInLinks() : "")}>
+								<a
+									href="#show"
+									style={{ textDecoration: "none" }}
+									onClick={() => (!isSelected ? toggleSignInLinks() : "")}
+								>
 									<LinkStyle showing={isSelected}>Sign Up</LinkStyle>
 								</a>
 							</LinkSignUpDiv>
 							<LinkLoginDiv showing={!isSelected}>
-								<a href="#hide" onClick={() => (isSelected ? toggleSignInLinks() : "")}>
+								<a
+									href="#hide"
+									style={{ textDecoration: "none" }}
+									onClick={() => (isSelected ? toggleSignInLinks() : "")}
+								>
 									<LinkStyle showing={!isSelected}>Log in</LinkStyle>
 								</a>
 							</LinkLoginDiv>

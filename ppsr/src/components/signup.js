@@ -46,6 +46,7 @@ const SignUp = props => {
 				justifyContent: "center",
 				alignItems: "center",
 				width: "100%",
+				// minHeight: "450px",
 			}}
 		>
 			<InputField

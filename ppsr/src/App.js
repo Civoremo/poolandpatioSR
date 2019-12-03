@@ -55,9 +55,20 @@ class App extends Component {
 			zipcode: "",
 			incomplete: "",
 		},
+		signupErrors: {
+			fName: "",
+			lName: "",
+			email: "",
+			confirmEmail: "",
+			credentials: "",
+			confirmCredentials: "",
+			incomplete: "",
+		},
 		insufficientInfo: false,
 		verified: false,
 		isSelected: true,
+		lgFinancing: false,
+		lgShop: false,
 		// loggedIn: false,
 	};
 
@@ -73,6 +84,18 @@ class App extends Component {
 				console.log("ERROR --> " + err);
 			});
 	}
+
+	toggleFinanceModal = event => {
+		this.setState({
+			lgFinancing: !this.state.lgFinancing,
+		});
+	};
+
+	toggleShopModal = event => {
+		this.setState({
+			lgShop: !this.state.lgShop,
+		});
+	};
 
 	toggleAccordion = collapsedID => () =>
 		this.setState(prevState => ({
@@ -101,6 +124,15 @@ class App extends Component {
 			credentials: "",
 			confirmCredentials: "",
 			confirmationKey: "",
+			signupErrors: {
+				fName: "",
+				lName: "",
+				email: "",
+				confirmEmail: "",
+				credentials: "",
+				confirmCredentials: "",
+				incomplete: "",
+			},
 		});
 	};
 
@@ -173,6 +205,15 @@ class App extends Component {
 				zipcode: "",
 				incomplete: "",
 			},
+			signupErrors: {
+				fName: "",
+				lName: "",
+				email: "",
+				confirmEmail: "",
+				credentials: "",
+				confirmCredentials: "",
+				incomplete: "",
+			},
 			insufficientInfo: false,
 		});
 	};
@@ -180,6 +221,12 @@ class App extends Component {
 	setErrorMessages = errors => {
 		this.setState({
 			error: errors,
+		});
+	};
+
+	setSignupErrorMessages = errors => {
+		this.setState({
+			signupErrors: errors,
 		});
 	};
 
@@ -271,15 +318,22 @@ class App extends Component {
 					// onVerify={this.onVerify}
 					isSelected={this.state.isSelected}
 					// loggedIn={this.state.loggedIn}
+					lgFinancing={this.state.lgFinancing}
+					lgShop={this.state.lgShop}
+					toggleFinanceModal={this.toggleFinanceModal}
+					toggleShopModal={this.toggleShopModal}
+					signupErrors={this.state.signupErrors}
+					setSignupErrorMessages={this.setSignupErrorMessages}
+					clearInputs={this.clearInputs}
 				/>
 				{/* {console.log('APP: ', this.state.isSelected)} */}
 				<div className="callToActionSpacer" />
 				<Header />
 				<Badges />
 				<AboutUs />
-				<PageBreakOne />
+				<PageBreakOne toggleFinanceModal={this.toggleFinanceModal} />
 				<ServicesPage collapsedID={this.state.collapsedID} toggleAccordion={this.toggleAccordion} />
-				<PageBreakTwo />
+				<PageBreakTwo toggleShopModal={this.toggleShopModal} />
 				<ContactUs
 					handleInputChange={this.handleInputChange}
 					handleCheckboxChange={this.handleCheckboxChange}

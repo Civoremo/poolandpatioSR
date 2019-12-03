@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import styled from "styled-components";
-import { Link, animmateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 
 // import logoImg from './images/logo/logo_lg_alt.png';
 import logoImgWhite from "./images/logo/logo_lg_alt_white.png";
@@ -43,7 +43,7 @@ const ActionDiv = styled.div`
 	background-color: #163e98;
 	color: whitesmoke;
 	position: absolute;
-	top: 4.3rem;
+	top: 3.7rem;
 	width: 100%;
 `;
 
@@ -103,8 +103,8 @@ const Navigationbar = props => {
 	const [lgSignIn, setSignIn] = useState(false);
 	const [loggedIn] = useState(false);
 	const [lgProfile, setProfile] = useState(false);
-	const [lgShop, setShop] = useState(false);
-	const [lgFinancing, setFinancing] = useState(false);
+	// const [lgShop, setShop] = useState(false);
+	// const [lgFinancing, setFinancing] = useState(false);
 
 	const {
 		handleInputChange,
@@ -135,6 +135,12 @@ const Navigationbar = props => {
 		//   onVerify,
 		isSelected,
 		// loggedIn
+		lgFinancing,
+		lgShop,
+		toggleFinanceModal,
+		toggleShopModal,
+		signupErrors,
+		setSignupErrorMessages,
 	} = props;
 
 	return (
@@ -191,7 +197,7 @@ const Navigationbar = props => {
 							{/* </Nav.Link> */}
 							{/* <Nav.Link href=""> */}
 							<Link to="" style={{ margin: "5px 10px", cursor: "pointer" }}>
-								<NavLinkColor onClick={() => setFinancing(true)}>Financing</NavLinkColor>
+								<NavLinkColor onClick={() => toggleFinanceModal()}>Financing</NavLinkColor>
 							</Link>
 							{/* </Nav.Link> */}
 							{/* <Nav.Link href=""> */}
@@ -212,7 +218,7 @@ const Navigationbar = props => {
 							{/* </Nav.Link> */}
 							{/* <Nav.Link href=""> */}
 							<Link to="" style={{ margin: "5px 10px", cursor: "pointer" }}>
-								<NavLinkColor onClick={() => setShop(true)}>SHOP</NavLinkColor>
+								<NavLinkColor onClick={() => toggleShopModal()}>SHOP</NavLinkColor>
 							</Link>
 							{/* </Nav.Link> */}
 							<Nav.Link href="">
@@ -257,11 +263,11 @@ const Navigationbar = props => {
 				</Container>
 			</ActionDiv>
 
-			<Financing lgFinancing={lgFinancing} setFinancing={setFinancing} />
+			<Financing lgFinancing={lgFinancing} toggleFinanceModal={toggleFinanceModal} />
 
 			<Gallery imageArray={imageArray} lgGallery={lgGallery} setGallery={setGallery} />
 
-			<ShopPage lgShop={lgShop} setShop={setShop} />
+			<ShopPage lgShop={lgShop} toggleShopModal={toggleShopModal} setSignIn={setSignIn} />
 
 			<SignIn
 				lgSignIn={lgSignIn}
@@ -279,6 +285,9 @@ const Navigationbar = props => {
 				confirmCredentials={confirmCredentials}
 				confirmationKey={confirmationKey}
 				isSelected={isSelected}
+				signupErrors={signupErrors}
+				setSignupErrorMessages={setSignupErrorMessages}
+				clearInputs={clearInputs}
 			/>
 
 			<Profile

@@ -25,6 +25,7 @@ const PageBreakContentTwo = styled.div`
 `;
 
 const PageBreakTwo = props => {
+	const { toggleShopModal } = props;
 	return (
 		<BackgroundTwoDiv>
 			<Container>
@@ -34,7 +35,7 @@ const PageBreakTwo = props => {
 					>
 						Browse our SHOP for pricing details
 					</div>
-					<Button>Learn about Pricing</Button>
+					<Button onClick={() => toggleShopModal()}>Learn about Pricing</Button>
 				</PageBreakContentTwo>
 			</Container>
 		</BackgroundTwoDiv>

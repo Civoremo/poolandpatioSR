@@ -25,6 +25,7 @@ const PageBreakContentOne = styled.div`
 `;
 
 const PageBreakOne = props => {
+	const { toggleFinanceModal } = props;
 	return (
 		<BackgroundDiv>
 			<Container>
@@ -34,7 +35,7 @@ const PageBreakOne = props => {
 					>
 						Finance Options Available
 					</div>
-					<Button>Learn about Financing</Button>
+					<Button onClick={() => toggleFinanceModal()}>Learn about Financing</Button>
 				</PageBreakContentOne>
 			</Container>
 		</BackgroundDiv>

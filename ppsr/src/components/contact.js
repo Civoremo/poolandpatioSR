@@ -36,12 +36,13 @@ const FormSubmitButtonContainer = styled.div `
 
 const DisplayErrorDiv = styled.div `
   display: block;
-  height: 30px;
+  height: 20px;
+  font-size: .8rem;
 `
 
 const HideErrorDiv = styled.div `
   display: none;
-  height: 30px;
+  height: 20px;
 `
 
 const ShowButtonSubmit = styled.div `
@@ -319,7 +320,7 @@ const ContactForm = props => {
                   value={senderFirstName}
                 >
                 </InputField>
-                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.fName}</div>
+                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '20px', fontSize: '.8rem'}}>{senderError.fName}</div>
               </InputDiv>
 
               <InputDiv>
@@ -332,7 +333,7 @@ const ContactForm = props => {
                   value={senderLastName}
                 >
                 </InputField>
-                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.lName}</div>
+                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '20px', fontSize: '.8rem'}}>{senderError.lName}</div>
               </InputDiv>
 
               <InputDiv>
@@ -345,7 +346,7 @@ const ContactForm = props => {
                   value={senderEmail}
                 >              
                 </InputField>
-                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.email}</div>
+                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '20px', fontSize: '.8rem'}}>{senderError.email}</div>
               </InputDiv>
 
               <InputDiv>
@@ -358,7 +359,7 @@ const ContactForm = props => {
                   value={senderPhone}
                 >
                 </InputField>
-                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.phone}</div>
+                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '20px', fontSize: '.8rem'}}>{senderError.phone}</div>
               </InputDiv>
 
               <InputDiv>
@@ -371,7 +372,7 @@ const ContactForm = props => {
                   value={senderStreet}
                 >
                 </InputField>
-                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.street}</div>
+                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '20px', fontSize: '.8rem'}}>{senderError.street}</div>
               </InputDiv>
 
               <InputDiv>
@@ -384,7 +385,7 @@ const ContactForm = props => {
                   value={senderCity}
                 >
                 </InputField>
-                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.city}</div>
+                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '20px', fontSize: '.8rem'}}>{senderError.city}</div>
               </InputDiv>
 
               <InputDiv>
@@ -397,7 +398,7 @@ const ContactForm = props => {
                   value={senderState}
                 >
                 </InputField>
-                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.state}</div>
+                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '20px', fontSize: '.8rem'}}>{senderError.state}</div>
               </InputDiv>
 
               <InputDiv>
@@ -410,7 +411,7 @@ const ContactForm = props => {
                   value={senderZipcode}
                 >
                 </InputField>
-                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.zipcode}</div>
+                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '20px', fontSize: '.8rem'}}>{senderError.zipcode}</div>
               </InputDiv>
 
               <InputDiv>
@@ -422,7 +423,7 @@ const ContactForm = props => {
                   value={senderGateCode}
                 >
                 </InputField>
-                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}></div>
+                <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '20px', fontSize: '.8rem'}}></div>
               </InputDiv>
             </InputFieldContainer>
             
@@ -533,7 +534,7 @@ const ContactForm = props => {
                 style={{resize: 'none', padding: '5px 10px', width: '100%'}}
               >
               </textarea>
-              <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.message}</div>
+              <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '20px', fontSize: '.8rem'}}>{senderError.message}</div>
             </MessageInputContainer>
 
             <FormSubmitButtonContainer>
@@ -567,7 +568,7 @@ const ContactForm = props => {
                 </Button>
               </LoadingButton>
               <div style={{color: (sendMessageResponse === 'Successful' ? 'green' : 'red'), fontWeight: 'bold'}}>{sendMessageResponse}</div>
-              <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '30px'}}>{senderError.incomplete}</div>
+              <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '20px', fontSize: '.8rem'}}>{senderError.incomplete}</div>
             </FormSubmitButtonContainer>
 
           </FormInputContainer>

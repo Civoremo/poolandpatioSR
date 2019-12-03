@@ -2,6 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import styled from "styled-components";
+import { Link } from "react-scroll";
 
 import headerImage from "./images/accordionImages/pool.jpg";
 
@@ -11,6 +12,18 @@ const HeaderDiv = styled.div`
 	/* border: 1px solid red; */
 	background: url(${headerImage}) center center no-repeat;
 	background-size: cover;
+
+	@media (max-width: 991px) {
+		height: 500px;
+	}
+`;
+
+const HeaderContentDiv = styled.div`
+	height: 600px;
+
+	@media (max-width: 991px) {
+		height: 500px;
+	}
 `;
 
 const TextDiv = styled.div`
@@ -25,13 +38,15 @@ const Header = props => {
 	return (
 		<HeaderDiv>
 			<Container>
-				<div
+				<HeaderContentDiv
 					style={{
 						display: "flex",
 						flexDirection: "column",
 						justifyContent: "center",
 						alignItems: "center",
-						height: "600px",
+						// height: "600px",
+						// height: "100%",
+						// border: "1px solid red",
 					}}
 				>
 					<TextDiv>Are you tired of looking through worn or broken screens?</TextDiv>
@@ -40,10 +55,12 @@ const Header = props => {
 						Is battling insects and debris from tears in your pool or patio screen enclosure driving
 						you crazy?
 					</TextDiv> */}
-					<Button variant="primary" size="lg" style={{ marginTop: "50px", fontWeight: "bold" }}>
-						Learn how we can help
+					<Button variant="primary" size="lg" style={{ marginTop: "50px" }}>
+						<Link to="services" smooth={true} offset={-30} duration={500}>
+							Learn how we can help
+						</Link>
 					</Button>
-				</div>
+				</HeaderContentDiv>
 			</Container>
 		</HeaderDiv>
 	);

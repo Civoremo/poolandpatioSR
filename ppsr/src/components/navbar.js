@@ -139,6 +139,8 @@ const Navigationbar = props => {
 		lgShop,
 		toggleFinanceModal,
 		toggleShopModal,
+		signupErrors,
+		setSignupErrorMessages,
 	} = props;
 
 	return (
@@ -283,6 +285,9 @@ const Navigationbar = props => {
 				confirmCredentials={confirmCredentials}
 				confirmationKey={confirmationKey}
 				isSelected={isSelected}
+				signupErrors={signupErrors}
+				setSignupErrorMessages={setSignupErrorMessages}
+				clearInputs={clearInputs}
 			/>
 
 			<Profile

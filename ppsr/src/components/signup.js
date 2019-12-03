@@ -5,7 +5,7 @@ import styled from "styled-components";
 const InputField = styled.input`
 	width: 100%;
 	padding: 5px 5px;
-	margin: 5px 0;
+	/* margin: 5px 0; */
 `;
 
 const SignUp = props => {
@@ -34,6 +34,7 @@ const SignUp = props => {
 		//   insufficientInfo,
 		//   verified,
 		//   onVerify
+		signupErrors,
 	} = props;
 
 	return (
@@ -55,6 +56,19 @@ const SignUp = props => {
 				onChange={handleInputChange}
 				value={senderFirstName}
 			></InputField>
+			<div
+				style={{
+					width: "100%",
+					display: "flex",
+					justifyContent: "flex-start",
+					color: "red",
+					height: "20px",
+					fontSize: ".8rem",
+					margin: "5px 0",
+				}}
+			>
+				{signupErrors.fName}
+			</div>
 			<InputField
 				type="text"
 				name="senderLastName"
@@ -63,6 +77,19 @@ const SignUp = props => {
 				onChange={handleInputChange}
 				value={senderLastName}
 			></InputField>
+			<div
+				style={{
+					width: "100%",
+					display: "flex",
+					justifyContent: "flex-start",
+					color: "red",
+					height: "20px",
+					fontSize: ".8rem",
+					margin: "5px 0",
+				}}
+			>
+				{signupErrors.lName}
+			</div>
 			<InputField
 				type="text"
 				name="senderEmail"
@@ -71,6 +98,19 @@ const SignUp = props => {
 				onChange={handleInputChange}
 				value={senderEmail}
 			></InputField>
+			<div
+				style={{
+					width: "100%",
+					display: "flex",
+					justifyContent: "flex-start",
+					color: "red",
+					height: "20px",
+					fontSize: ".8rem",
+					margin: "5px 0",
+				}}
+			>
+				{signupErrors.email}
+			</div>
 			<InputField
 				type="text"
 				name="senderConfirmEmail"
@@ -79,6 +119,19 @@ const SignUp = props => {
 				onChange={handleInputChange}
 				value={senderConfirmEmail}
 			></InputField>
+			<div
+				style={{
+					width: "100%",
+					display: "flex",
+					justifyContent: "flex-start",
+					color: "red",
+					height: "20px",
+					fontSize: ".8rem",
+					margin: "5px 0",
+				}}
+			>
+				{signupErrors.confirmEmail}
+			</div>
 			<InputField
 				type="text"
 				name="credentials"
@@ -87,6 +140,19 @@ const SignUp = props => {
 				onChange={handleInputChange}
 				value={credentials}
 			></InputField>
+			<div
+				style={{
+					width: "100%",
+					display: "flex",
+					justifyContent: "flex-start",
+					color: "red",
+					height: "20px",
+					fontSize: ".8rem",
+					margin: "5px 0",
+				}}
+			>
+				{signupErrors.credentials}
+			</div>
 			<InputField
 				type="text"
 				name="confirmCredentials"
@@ -95,6 +161,19 @@ const SignUp = props => {
 				onChange={handleInputChange}
 				value={confirmCredentials}
 			></InputField>
+			<div
+				style={{
+					width: "100%",
+					display: "flex",
+					justifyContent: "flex-start",
+					color: "red",
+					height: "20px",
+					fontSize: ".8rem",
+					margin: "5px 0",
+				}}
+			>
+				{signupErrors.confirmCredentials}
+			</div>
 		</div>
 	);
 };

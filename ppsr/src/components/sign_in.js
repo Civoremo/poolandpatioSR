@@ -98,7 +98,7 @@ const SignIn = props => {
 		//   handleCheckboxChange,
 		//   setErrorMessages,
 		clearSigninInputs,
-		//   clearInputs,
+		clearInputs,
 		//   toggleMissingInfoMessage,
 		senderEmail,
 		senderFirstName,
@@ -121,11 +121,82 @@ const SignIn = props => {
 		//   onVerify,
 		isSelected,
 		loggedIn,
+		signupErrors,
+		setSignupErrorMessages,
 	} = props;
+
+	const validateSignupInfo = () => {
+		let errors = {};
+		let formIsValid = true;
+
+		if (!senderFirstName || senderFirstName.length < 2) {
+			errors.fName = "Required!";
+			errors.incomplete = "Incomplete, check input fields and try again!";
+			formIsValid = false;
+		}
+
+		if (!senderLastName || senderLastName.length < 2) {
+			errors.lName = "Required!";
+			errors.incomplete = "Incomplete, check input fields and try again!";
+			formIsValid = false;
+		}
+
+		if (!senderEmail || senderEmail.length < 3) {
+			errors.email = "Not a valid email!";
+			errors.incomplete = "Incomplete, check input fields and try again!";
+			formIsValid = false;
+		}
+
+		if (!senderConfirmEmail || senderConfirmEmail < 3) {
+			errors.confirmEmail = "Not a valid email!";
+			errors.incomplete = "Incomplete, check input fields and try again!";
+			formIsValid = false;
+		}
+
+		if (senderEmail !== senderConfirmEmail) {
+			errors.confirmEmail = "Does not match email!";
+			errors.incomplete = "Incomplete, check input fields and try again!";
+			formIsValid = false;
+		}
+
+		if (!credentials || credentials.length < 8) {
+			errors.credentials = "Must be at least 8 characters!";
+			errors.incomplete = "Incomplete, check input fields and try again!";
+			formIsValid = false;
+		}
+
+		if (!confirmCredentials || confirmCredentials.length < 8) {
+			errors.confirmCredentials = "Must be at least 8 characters!";
+			errors.incomplete = "Incomplete, check input fields and try again!";
+			formIsValid = false;
+		}
+
+		if (credentials !== confirmCredentials) {
+			errors.confirmCredentials = "Does not match password!";
+			errors.incomplete = "Incomplete, check input fields and try again!";
+			formIsValid = false;
+		}
+
+		let pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+
+		if (!pattern.test(senderEmail)) {
+			errors.email = "Not a valid email!";
+			let pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+			errors.incomplete = "Incomplete, check input fields and try again!";
+			formIsValid = false;
+		}
+
+		setSignupErrorMessages(errors);
+	};
 
 	const SignupLoginRequest = event => {
 		// event.preventDefault();
 		// console.log(senderFirstName + " " + senderLastName + " " + senderEmail + " " + credentials)
+
+		if (!validateSignupInfo()) {
+			return;
+		}
+
 		setSigninDataRequesting(true);
 
 		if (isSelected) {
@@ -149,7 +220,8 @@ const SignIn = props => {
 					// console.log('register response: ' + response.data);
 					console.log("register response: " + JSON.stringify(response.data));
 					setSigninDataRequesting(false);
-					clearSigninInputs();
+					// clearSigninInputs();
+					clearInputs();
 					toggleSignInLinks();
 				})
 				.catch(err => {
@@ -180,7 +252,8 @@ const SignIn = props => {
 						setSigninDataRequesting(false);
 						setSignIn(false);
 						loggedIn(true);
-						clearSigninInputs();
+						// clearSigninInputs();
+						clearInputs();
 					})
 					.catch(err => {
 						console.log("isSelected: " + isSelected);
@@ -219,7 +292,8 @@ const SignIn = props => {
 								setSigninDataRequesting(false);
 								setSignIn(false);
 								loggedIn(true);
-								clearSigninInputs();
+								// clearSigninInputs();
+								clearInputs();
 							})
 							.catch(err => {
 								console.log("isSelected: " + isSelected);
@@ -270,6 +344,7 @@ const SignIn = props => {
 									senderConfirmEmail={senderConfirmEmail}
 									credentials={credentials}
 									confirmCredentials={confirmCredentials}
+									signupErrors={signupErrors}
 								/>
 							</SignUpDiv>
 							<LoginDiv showing={isSelected}>
@@ -278,6 +353,7 @@ const SignIn = props => {
 									senderEmail={senderEmail}
 									credentials={credentials}
 									confirmationKey={confirmationKey}
+									signupErrors={signupErrors}
 								/>
 							</LoginDiv>
 						</SignInContainer>
@@ -289,8 +365,8 @@ const SignIn = props => {
 									// name='submit'
 									onClick={() => SignupLoginRequest()}
 									style={{
-										marginTop: "20px",
-										marginBottom: "30px",
+										// marginTop: "10px",
+										marginBottom: "5px",
 										width: "200px",
 										height: "50px",
 									}}
@@ -304,7 +380,7 @@ const SignIn = props => {
 									disabled
 									style={{
 										marginTop: "20px",
-										marginBottom: "30px",
+										marginBottom: "5px",
 										width: "200px",
 										height: "50px",
 									}}
@@ -312,6 +388,11 @@ const SignIn = props => {
 									<Spinner as="span" animation="border" role="status" />
 									<span className="sr-only">Loading...</span>
 								</Button>
+							</div>
+							<div
+								style={{ color: "red", height: "20px", fontSize: ".8rem", marginBottom: "25px" }}
+							>
+								{signupErrors.incomplete}
 							</div>
 						</div>
 					</SignUpInputForm>

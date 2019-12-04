@@ -94,9 +94,10 @@ const SignIn = props => {
 	const [confirmedUser, setConfirmedUser] = useState(false);
 	const [registrationError, setRegistrationError] = useState("");
 	const [registrationConfirmedMessage, setregistrationConfirmedMessage] = useState("");
+	const [loginError, setLoginError] = useState(false);
 
-	const URL = "https://ppsr-api.herokuapp.com";
-	// const URL = "http://localhost:4000";
+	// const URL = "https://ppsr-api.herokuapp.com";
+	const URL = "http://localhost:4000";
 
 	const {
 		handleInputChange,
@@ -232,6 +233,7 @@ const SignIn = props => {
 		// event.preventDefault();
 		// console.log(senderFirstName + " " + senderLastName + " " + senderEmail + " " + credentials)
 		setRegistrationError("");
+		setLoginError(false);
 
 		if (isSelected) {
 			if (!validateSignupInfo()) {
@@ -311,7 +313,14 @@ const SignIn = props => {
 							setConfirmedUser(true);
 							setregistrationConfirmedMessage(JSON.stringify(response.data.message));
 							setRegistrationError(JSON.stringify(response.data.alert));
+							setLoginError(true);
 							// confirmedUser(true);
+						} else if (response.data.login === 4) {
+							console.log("error finding the email provided");
+							console.log(response.data.login);
+							setRegistrationError(JSON.stringify(response.data.message));
+							setSigninDataRequesting(false);
+							setLoginError(true);
 						} else {
 							localStorage.setItem("ppsr", JSON.stringify(response.data.token));
 							localStorage.setItem("ppsr_user", JSON.stringify(response.data.user.firstName));
@@ -484,9 +493,7 @@ const SignIn = props => {
 								<span style={{ display: isSelected ? "none" : "block" }}>
 									{loginErrors.incomplete}
 								</span>
-								<span style={{ display: registrationError.length > 0 ? "block" : "none" }}>
-									{registrationError}
-								</span>
+								<span style={{ display: loginError ? "block" : "none" }}>{registrationError}</span>
 							</div>
 						</div>
 					</SignUpInputForm>

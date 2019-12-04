@@ -324,7 +324,10 @@ const SignIn = props => {
 							setLoginError(true);
 						} else {
 							localStorage.setItem("ppsr", JSON.stringify(response.data.token));
+							// localStorage.setItem("ppsr_user", JSON.stringify(response.data.user.firstName));
 							localStorage.setItem("ppsr_user", JSON.stringify(response.data.user.firstName));
+							localStorage.setItem("lName", JSON.stringify(response.data.user.lastName));
+							localStorage.setItem("email", JSON.stringify(response.data.user.email));
 							setSigninDataRequesting(false);
 							setSignIn(false);
 							loggedIn(true);
@@ -372,6 +375,8 @@ const SignIn = props => {
 								console.log("login response2: " + JSON.stringify(response.data));
 								localStorage.setItem("ppsr", JSON.stringify(response.data.token));
 								localStorage.setItem("ppsr_user", JSON.stringify(response.data.user.firstName));
+								localStorage.setItem("lName", JSON.stringify(response.data.user.lastName));
+								localStorage.setItem("email", JSON.stringify(response.data.user.email));
 								setSigninDataRequesting(false);
 								setSignIn(false);
 								loggedIn(true);

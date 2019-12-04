@@ -105,6 +105,7 @@ const Navigationbar = props => {
 	const [lgProfile, setProfile] = useState(false);
 	// const [lgShop, setShop] = useState(false);
 	// const [lgFinancing, setFinancing] = useState(false);
+	const [userData, setUserData] = useState([]);
 
 	const {
 		handleInputChange,
@@ -143,6 +144,7 @@ const Navigationbar = props => {
 		setSignupErrorMessages,
 		loginErrors,
 		setLoginErrorMessages,
+		setProfileInfo,
 	} = props;
 
 	return (
@@ -231,9 +233,7 @@ const Navigationbar = props => {
 								</LoginNavLinkDiv>
 								<ProfileNavLinkDiv showing={localStorage.getItem("ppsr_user")}>
 									<NavLinkColor onClick={() => setProfile(true)}>
-										<LinkBorder>
-											Hi, {JSON.parse(`${localStorage.getItem("ppsr_user")}`)}
-										</LinkBorder>
+										<LinkBorder>Hi, {JSON.parse(localStorage.getItem("ppsr_user"))}</LinkBorder>
 									</NavLinkColor>
 								</ProfileNavLinkDiv>
 							</Nav.Link>
@@ -310,6 +310,7 @@ const Navigationbar = props => {
 				senderState={senderState}
 				senderZipcode={senderZipcode}
 				senderGateCode={senderGateCode}
+				setProfileInfo={setProfileInfo}
 			/>
 		</div>
 	);

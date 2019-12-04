@@ -242,6 +242,14 @@ class App extends Component {
 		});
 	};
 
+	setProfileInfo = userInfo => {
+		this.setState({
+			senderFirstName: userInfo.firstName,
+			senderLastName: userInfo.lastName,
+			senderEmail: userInfo.email,
+		});
+	};
+
 	setSignupErrorMessages = errors => {
 		this.setState({
 			signupErrors: errors,
@@ -351,6 +359,7 @@ class App extends Component {
 					loginErrors={this.state.loginErrors}
 					setLoginErrorMessages={this.setLoginErrorMessages}
 					clearInputs={this.clearInputs}
+					setProfileInfo={this.setProfileInfo}
 				/>
 				{/* {console.log('APP: ', this.state.isSelected)} */}
 				<div className="callToActionSpacer" />

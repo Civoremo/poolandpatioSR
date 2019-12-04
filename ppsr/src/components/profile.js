@@ -27,6 +27,7 @@ const ProfilePage = props => {
 		senderState,
 		senderZipcode,
 		senderGateCode,
+		setProfileInfo,
 	} = props;
 
 	const logoutHandler = event => {
@@ -38,6 +39,13 @@ const ProfilePage = props => {
 
 	const editHandler = event => {
 		setenableEdit(!enableEdit);
+		let userData = {
+			firstName: JSON.parse(localStorage.getItem("ppsr_user")),
+			lastName: JSON.parse(localStorage.getItem("lName")),
+			email: JSON.parse(localStorage.getItem("email")),
+		};
+
+		setProfileInfo(userData);
 	};
 
 	return (
@@ -73,7 +81,7 @@ const ProfilePage = props => {
 						<InputField
 							type="text"
 							name="senderFirstName"
-							placeholder="First Name"
+							placeholder={JSON.parse(localStorage.getItem("ppsr_user"))}
 							required="required"
 							onChange={handleInputChange}
 							value={senderFirstName}
@@ -85,7 +93,7 @@ const ProfilePage = props => {
 						<InputField
 							type="text"
 							name="senderLastName"
-							placeholder="Last Name"
+							placeholder={JSON.parse(localStorage.getItem("lName"))}
 							required="required"
 							onChange={handleInputChange}
 							value={senderLastName}
@@ -98,7 +106,7 @@ const ProfilePage = props => {
 						<InputField
 							type="text"
 							name="senderEmail"
-							placeholder="Email"
+							placeholder={JSON.parse(localStorage.getItem("email"))}
 							required="required"
 							onChange={handleInputChange}
 							value={senderEmail}

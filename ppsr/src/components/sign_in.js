@@ -95,8 +95,8 @@ const SignIn = props => {
 	const [registrationError, setRegistrationError] = useState("");
 	const [registrationConfirmedMessage, setregistrationConfirmedMessage] = useState("");
 
-	// const URL = "https://ppsr-api.herokuapp.com";
-	const URL = "http://localhost:4000";
+	const URL = "https://ppsr-api.herokuapp.com";
+	// const URL = "http://localhost:4000";
 
 	const {
 		handleInputChange,

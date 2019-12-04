@@ -95,6 +95,7 @@ const SignIn = props => {
 	const [registrationError, setRegistrationError] = useState("");
 	const [registrationConfirmedMessage, setregistrationConfirmedMessage] = useState("");
 	const [loginError, setLoginError] = useState(false);
+	const [profileInfo, setProfileInfo] = useState({ firstName: "", lastName: "", userEmail: "" });
 
 	// const URL = "https://ppsr-api.herokuapp.com";
 	const URL = "http://localhost:4000";

@@ -1,87 +1,114 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import axios from "axios";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import styled from "styled-components";
 
-const InputField = styled.input `
-    width: 100%;
-    padding: 5px 5px;
-    disabled: ${props => props.working ? true : false};
-`
+const InputField = styled.input`
+	width: 100%;
+	padding: 5px 5px;
+`;
 
 const ProfilePage = props => {
-  const { lgProfile, setProfile, loggedIn } = props;
+	const { lgProfile, setProfile, loggedIn } = props;
 
-  const [ enableEdit ] = useState(false);
+	const [enableEdit, setenableEdit] = useState(true);
 
-  const {
-    handleInputChange,
-    senderEmail, 
-    senderFirstName, 
-    senderLastName,
-    credentials,
-    confirmCredentials,
-    senderPhone,
-    senderStreet,
-    senderCity,
-    senderState,
-    senderZipcode,
-    senderGateCode,
-  } = props
+	const {
+		handleInputChange,
+		senderEmail,
+		senderFirstName,
+		senderLastName,
+		credentials,
+		confirmCredentials,
+		senderPhone,
+		senderStreet,
+		senderCity,
+		senderState,
+		senderZipcode,
+		senderGateCode,
+	} = props;
 
-  const logoutHandler = event => {
-    console.log(loggedIn)
-    // loggedIn(false);
-    setProfile(false);
-    localStorage.clear();
-  }
+	const logoutHandler = event => {
+		console.log(loggedIn);
+		// loggedIn(false);
+		setProfile(false);
+		localStorage.clear();
+	};
 
-  const editHandler = event => {
-    enableEdit(true)
-  }
-  
-  return (
-    <div>
-      <Modal size='lg' show={lgProfile} onHide={() => setProfile(false)} >
-        <Modal.Header closeButton>
+	const editHandler = event => {
+		setenableEdit(!enableEdit);
+	};
 
-        </Modal.Header>
-        <Modal.Body>
-          <div style={{float: 'right', height: '30px'}}>
-            <a href='#profile-edit' style={{marginRight: '25px'}} onClick={() => editHandler()} >edit</a>
-            <a href='#logout' onClick={() => logoutHandler()}>logout</a>
-          </div>
-          <InputField
-            type='text'
-            name='senderFirstName'
-            placeholder='First Name'
-            required='required'
-            onChange={handleInputChange}
-            value={senderFirstName}
-            working={enableEdit}
-          >
-          </InputField>
-          <InputField
-            type='text'
-            name='senderLastName'
-            placeholder='Last Name'
-            required='required'
-            onChange={handleInputChange}
-            value={senderLastName}
-            working={enableEdit}
-          ></InputField>
-          <InputField
-            type='text'
-            name='senderEmail'
-            placeholder='Email'
-            required="required"
-            onChange={handleInputChange}
-            value={senderEmail}
-            working={enableEdit}
-          >              
-          </InputField>
-          <InputField
+	return (
+		<div>
+			<Modal size="lg" show={lgProfile} onHide={() => setProfile(false)}>
+				<Modal.Header closeButton></Modal.Header>
+				<Modal.Body>
+					<div
+						style={{
+							display: "flex",
+							justifyContent: "flex-end",
+							height: "30px",
+							fontSize: "1.1rem",
+						}}
+					>
+						<a href="#profile-edit" style={{ marginRight: "25px" }} onClick={() => editHandler()}>
+							<span style={{ display: enableEdit ? "none" : "block" }}>cancel</span>
+							<span style={{ display: enableEdit ? "block" : "none" }}>edit</span>
+						</a>
+						<a href="#logout" onClick={() => logoutHandler()}>
+							<span>logout</span>
+						</a>
+					</div>
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "column",
+							justifyContent: "center",
+							alignItems: "center",
+							margin: "20px 0",
+						}}
+					>
+						<InputField
+							type="text"
+							name="senderFirstName"
+							placeholder="First Name"
+							required="required"
+							onChange={handleInputChange}
+							value={senderFirstName}
+							disabled={enableEdit}
+						></InputField>
+						<div style={{ fontSize: "1.4rem", marginBottom: "30px" }}>
+							{/* {registrationConfirmedMessage} */}
+						</div>
+						<InputField
+							type="text"
+							name="senderLastName"
+							placeholder="Last Name"
+							required="required"
+							onChange={handleInputChange}
+							value={senderLastName}
+							disabled={enableEdit}
+						></InputField>
+						<div style={{ fontSize: "1.4rem", marginBottom: "30px" }}>
+							{/* {registrationConfirmedMessage} */}
+						</div>
+
+						<InputField
+							type="text"
+							name="senderEmail"
+							placeholder="Email"
+							required="required"
+							onChange={handleInputChange}
+							value={senderEmail}
+							disabled={enableEdit}
+						></InputField>
+						<div style={{ fontSize: "1.4rem", marginBottom: "30px" }}>
+							{/* {registrationConfirmedMessage} */}
+						</div>
+
+						{/* <InputField
             type="text"
             name='senderPhone'
             placeholder='Phone #'
@@ -159,17 +186,24 @@ const ProfilePage = props => {
             value={confirmCredentials}
             working={enableEdit}
           >              
-          </InputField>
-          <Button
-            type='button'
-            disabled={enableEdit}
-          >
-            Save
-          </Button>
-        </Modal.Body>
-      </Modal>
-    </div>
-  )
-}
+          </InputField> */}
+						<Button
+							type="button"
+							disabled={enableEdit}
+							style={{
+								marginTop: "20px",
+								marginBottom: "5px",
+								width: "200px",
+								height: "50px",
+							}}
+						>
+							Save
+						</Button>
+					</div>
+				</Modal.Body>
+			</Modal>
+		</div>
+	);
+};
 
 export default ProfilePage;

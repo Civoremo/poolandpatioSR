@@ -33,6 +33,8 @@ const Login = props => {
 		//   verified,
 		//   onVerify
 		loginErrors,
+		confirmedUser,
+		registrationConfirmedMessage,
 	} = props;
 
 	return (
@@ -48,6 +50,7 @@ const Login = props => {
 				// minHeight: "450px",
 			}}
 		>
+			<div style={{ fontSize: "1.4rem", marginBottom: "30px" }}>{registrationConfirmedMessage}</div>
 			<InputField
 				type="text"
 				name="senderEmail"
@@ -90,7 +93,7 @@ const Login = props => {
 			>
 				{loginErrors.credentials}
 			</div>
-			<div style={{ display: loginErrors.confirmationKey ? "block" : "none" }}>
+			<div style={{ display: confirmedUser ? "block" : "none" }}>
 				<InputField
 					type="text"
 					name="confirmationKey"

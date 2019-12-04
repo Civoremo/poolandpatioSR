@@ -91,8 +91,12 @@ const SignInContainer = styled.div`
 const SignIn = props => {
 	const { lgSignIn, setSignIn } = props;
 	const [signinDataRequesting, setSigninDataRequesting] = useState(false);
+	const [confirmedUser, setConfirmedUser] = useState(false);
+	const [registrationError, setRegistrationError] = useState("");
+	const [registrationConfirmedMessage, setregistrationConfirmedMessage] = useState("");
 
-	const URL = "https://ppsr-api.herokuapp.com";
+	// const URL = "https://ppsr-api.herokuapp.com";
+	const URL = "http://localhost:4000";
 
 	const {
 		handleInputChange,
@@ -227,6 +231,7 @@ const SignIn = props => {
 	const SignupLoginRequest = event => {
 		// event.preventDefault();
 		// console.log(senderFirstName + " " + senderLastName + " " + senderEmail + " " + credentials)
+		setRegistrationError("");
 
 		if (isSelected) {
 			if (!validateSignupInfo()) {
@@ -236,7 +241,7 @@ const SignIn = props => {
 
 			axios({
 				method: "post",
-				// mode: "no-cors",
+				mode: "no-cors",
 				url: `${URL}/users/register`,
 				headers: {},
 				data: {
@@ -255,13 +260,23 @@ const SignIn = props => {
 					console.log("register response: " + JSON.stringify(response.data));
 					setSigninDataRequesting(false);
 					// clearSigninInputs();
-					clearInputs();
-					toggleSignInLinks();
+					const result = JSON.stringify(response.data);
+					console.log(JSON.stringify(response.data.registered));
+					if (JSON.stringify(response.data.registered) === "2") {
+						console.log("EMAIL ALREADY EXISTS");
+						setRegistrationError(JSON.stringify(response.data.message));
+					} else {
+						clearInputs();
+						setRegistrationError("");
+						setregistrationConfirmedMessage(JSON.stringify(response.data.message));
+						setConfirmedUser(true);
+						toggleSignInLinks();
+					}
 				})
 				.catch(err => {
 					console.log("isSelected: " + isSelected);
 					// console.log('register error: ' + JSON.stringify(err));
-					console.log("register error: " + JSON.stringify(err.response.data));
+					console.log("register error: " + JSON.stringify(err));
 					setSigninDataRequesting(false);
 				});
 		} else {
@@ -271,6 +286,7 @@ const SignIn = props => {
 					return;
 				}
 				setSigninDataRequesting(true);
+				setregistrationConfirmedMessage("");
 
 				axios({
 					method: "post",
@@ -285,18 +301,31 @@ const SignIn = props => {
 				})
 					.then(response => {
 						console.log("isSelected: " + isSelected);
-						console.log("login response: " + JSON.stringify(response.data));
-						localStorage.setItem("ppsr", JSON.stringify(response.data.token));
-						localStorage.setItem("ppsr_user", JSON.stringify(response.data.user.firstName));
-						setSigninDataRequesting(false);
-						setSignIn(false);
-						loggedIn(true);
-						// clearSigninInputs();
-						clearInputs();
+						console.log("login response1: " + JSON.stringify(response.data.confirmation));
+						console.log("login response1: " + JSON.stringify(response.data.alert));
+						console.log("login response1: " + JSON.stringify(response.data.message));
+
+						if (JSON.stringify(response.data.confirmation) === "1") {
+							console.log("resent confirmation key email");
+							setSigninDataRequesting(false);
+							setConfirmedUser(true);
+							setregistrationConfirmedMessage(JSON.stringify(response.data.message));
+							setRegistrationError(JSON.stringify(response.data.alert));
+							// confirmedUser(true);
+						} else {
+							localStorage.setItem("ppsr", JSON.stringify(response.data.token));
+							localStorage.setItem("ppsr_user", JSON.stringify(response.data.user.firstName));
+							setSigninDataRequesting(false);
+							setSignIn(false);
+							loggedIn(true);
+							// clearSigninInputs();
+							clearInputs();
+						}
 					})
 					.catch(err => {
 						console.log("isSelected: " + isSelected);
-						console.log("login error: " + JSON.stringify(err.response));
+						console.log("login error1: " + JSON.stringify(err));
+						setConfirmedUser(true);
 						setSigninDataRequesting(false);
 					});
 			} else {
@@ -330,7 +359,7 @@ const SignIn = props => {
 						})
 							.then(response => {
 								console.log("isSelected: " + isSelected);
-								console.log("login response: " + JSON.stringify(response.data));
+								console.log("login response2: " + JSON.stringify(response.data));
 								localStorage.setItem("ppsr", JSON.stringify(response.data.token));
 								localStorage.setItem("ppsr_user", JSON.stringify(response.data.user.firstName));
 								setSigninDataRequesting(false);
@@ -341,7 +370,7 @@ const SignIn = props => {
 							})
 							.catch(err => {
 								console.log("isSelected: " + isSelected);
-								console.log("login error: " + JSON.stringify(err.response.data));
+								console.log("login error2: " + JSON.stringify(err.response.data));
 								setSigninDataRequesting(false);
 							});
 					})
@@ -397,6 +426,7 @@ const SignIn = props => {
 									credentials={credentials}
 									confirmCredentials={confirmCredentials}
 									signupErrors={signupErrors}
+									registrationError={registrationError}
 								/>
 							</SignUpDiv>
 							<LoginDiv showing={isSelected}>
@@ -407,6 +437,9 @@ const SignIn = props => {
 									confirmationKey={confirmationKey}
 									// signupErrors={signupErrors}
 									loginErrors={loginErrors}
+									confirmedUser={confirmedUser}
+									setConfirmedUser={setConfirmedUser}
+									registrationConfirmedMessage={registrationConfirmedMessage}
 								/>
 							</LoginDiv>
 						</SignInContainer>
@@ -450,6 +483,9 @@ const SignIn = props => {
 								</span>
 								<span style={{ display: isSelected ? "none" : "block" }}>
 									{loginErrors.incomplete}
+								</span>
+								<span style={{ display: registrationError.length > 0 ? "block" : "none" }}>
+									{registrationError}
 								</span>
 							</div>
 						</div>

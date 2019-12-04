@@ -370,13 +370,13 @@ const SignIn = props => {
 							})
 							.catch(err => {
 								console.log("isSelected: " + isSelected);
-								console.log("login error2: " + JSON.stringify(err.response.data));
+								console.log("login error2: " + JSON.stringify(err));
 								setSigninDataRequesting(false);
 							});
 					})
 					.catch(err => {
 						console.log("isSelected: " + isSelected);
-						console.log("confirm error: " + JSON.stringify(err.response.data));
+						console.log("confirm error: " + JSON.stringify(err));
 						setSigninDataRequesting(false);
 					});
 			}

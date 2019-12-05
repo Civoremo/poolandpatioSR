@@ -103,9 +103,6 @@ const Navigationbar = props => {
 	const [lgSignIn, setSignIn] = useState(false);
 	const [loggedIn] = useState(false);
 	const [lgProfile, setProfile] = useState(false);
-	// const [lgShop, setShop] = useState(false);
-	// const [lgFinancing, setFinancing] = useState(false);
-	const [userData, setUserData] = useState([]);
 
 	const {
 		handleInputChange,
@@ -145,6 +142,9 @@ const Navigationbar = props => {
 		loginErrors,
 		setLoginErrorMessages,
 		setProfileInfo,
+		validateUpdateInfo,
+		profileErrors,
+		setProfileErrorMessage,
 	} = props;
 
 	return (
@@ -291,7 +291,6 @@ const Navigationbar = props => {
 				setSignupErrorMessages={setSignupErrorMessages}
 				loginErrors={loginErrors}
 				setLoginErrorMessages={setLoginErrorMessages}
-				clearInputs={clearInputs}
 			/>
 
 			<Profile
@@ -299,6 +298,7 @@ const Navigationbar = props => {
 				setProfile={setProfile}
 				loggedIn={loggedIn}
 				handleInputChange={handleInputChange}
+				clearInputs={clearInputs}
 				senderEmail={senderEmail}
 				senderFirstName={senderFirstName}
 				senderLastName={senderLastName}
@@ -311,6 +311,9 @@ const Navigationbar = props => {
 				senderZipcode={senderZipcode}
 				senderGateCode={senderGateCode}
 				setProfileInfo={setProfileInfo}
+				validateUpdateInfo={validateUpdateInfo}
+				profileErrors={profileErrors}
+				setProfileErrorMessage={setProfileErrorMessage}
 			/>
 		</div>
 	);

@@ -14,6 +14,7 @@ import Badges from "./components/badges";
 
 const URL = `https://res.cloudinary.com/ppscreens/image/list/ppsr.json`;
 // const URLAPI = "https://ppsr-api.herokuapp.com";
+// const URLAPI = "http://localhost:4000";
 
 class App extends Component {
 	state = {
@@ -69,6 +70,11 @@ class App extends Component {
 			credentials: "",
 			incomplete: "",
 			confirmationKey: "",
+		},
+		profileErrors: {
+			email: "",
+			fName: "",
+			lName: "",
 		},
 		insufficientInfo: false,
 		verified: false,
@@ -144,6 +150,11 @@ class App extends Component {
 				credentials: "",
 				incomplete: "",
 				confirmationKey: "",
+			},
+			profileErrors: {
+				email: "",
+				fName: "",
+				lName: "",
 			},
 		});
 	};
@@ -232,6 +243,11 @@ class App extends Component {
 				incomplete: "",
 				confirmationKey: "",
 			},
+			profileErrors: {
+				email: "",
+				fName: "",
+				lName: "",
+			},
 			insufficientInfo: false,
 		});
 	};
@@ -239,6 +255,12 @@ class App extends Component {
 	setErrorMessages = errors => {
 		this.setState({
 			error: errors,
+		});
+	};
+
+	setProfileErrorMessage = errors => {
+		this.setState({
+			profileErrors: errors,
 		});
 	};
 
@@ -316,6 +338,22 @@ class App extends Component {
 			});
 	};
 
+	validateUpdateInfo = event => {
+		console.log(this.state.senderFirstName);
+		console.log(this.state.senderLastName);
+		if (!this.state.senderFirstName || this.state.senderFirstName.length < 2) {
+			this.setState({
+				senderFirstName: JSON.parse(localStorage.getItem("ppsr_user")),
+			});
+		}
+
+		if (!this.state.senderLastName || this.state.senderLastName.length < 2) {
+			this.setState({
+				senderLastName: JSON.parse(localStorage.getItem("lName")),
+			});
+		}
+	};
+
 	render() {
 		// console.log(this.state.senderServices)
 		return (
@@ -358,8 +396,10 @@ class App extends Component {
 					setSignupErrorMessages={this.setSignupErrorMessages}
 					loginErrors={this.state.loginErrors}
 					setLoginErrorMessages={this.setLoginErrorMessages}
-					clearInputs={this.clearInputs}
 					setProfileInfo={this.setProfileInfo}
+					validateUpdateInfo={this.validateUpdateInfo}
+					profileErrors={this.state.profileErrors}
+					setProfileErrorMessage={this.setProfileErrorMessage}
 				/>
 				{/* {console.log('APP: ', this.state.isSelected)} */}
 				<div className="callToActionSpacer" />

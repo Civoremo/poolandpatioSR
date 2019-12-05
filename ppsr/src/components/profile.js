@@ -9,25 +9,34 @@ const InputField = styled.input`
 	padding: 5px 5px;
 `;
 
+const URL = "https://ppsr-api.herokuapp.com";
+// const URL = "http://localhost:4000";
+
 const ProfilePage = props => {
 	const { lgProfile, setProfile, loggedIn } = props;
 
 	const [enableEdit, setenableEdit] = useState(true);
+	const [updateMessage, setUpdateMessage] = useState("");
+	const [updateError, setUpdateError] = useState("");
 
 	const {
 		handleInputChange,
+		clearInputs,
 		senderEmail,
 		senderFirstName,
 		senderLastName,
-		credentials,
-		confirmCredentials,
-		senderPhone,
-		senderStreet,
-		senderCity,
-		senderState,
-		senderZipcode,
-		senderGateCode,
+		// credentials,
+		// confirmCredentials,
+		// senderPhone,
+		// senderStreet,
+		// senderCity,
+		// senderState,
+		// senderZipcode,
+		// senderGateCode,
 		setProfileInfo,
+		// validateUpdateInfo,
+		profileErrors,
+		setProfileErrorMessage,
 	} = props;
 
 	const logoutHandler = event => {
@@ -46,6 +55,74 @@ const ProfilePage = props => {
 		};
 
 		setProfileInfo(userData);
+	};
+
+	const validateProfileInfo = event => {
+		let errors = {};
+		let formIsValid = true;
+
+		setUpdateMessage("");
+		setUpdateError("");
+
+		if (!senderEmail || senderEmail.length < 2) {
+			errors.email = "Not a valid email!";
+			formIsValid = false;
+		}
+
+		if (!senderFirstName || senderFirstName.length < 2) {
+			errors.fName = "Not enough characters!";
+			formIsValid = false;
+		}
+
+		if (!senderLastName || senderLastName.length < 2) {
+			errors.lName = "Not enough characters!";
+			formIsValid = false;
+		}
+
+		let pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+
+		if (!pattern.test(senderEmail)) {
+			errors.email = "Not a valid email.";
+			// errors.incomplete = 'Incomplete, check input fields and try again!';
+			formIsValid = false;
+		}
+
+		setProfileErrorMessage(errors);
+		// validateUpdateInfo();
+		return formIsValid;
+	};
+
+	const updateProfileInfo = event => {
+		// event.preventDefault();
+		if (!validateProfileInfo()) {
+			return;
+		}
+
+		// validateUpdateInfo();
+
+		axios({
+			method: "put",
+			url: `${URL}/users/update`,
+			headers: { authorization: JSON.parse(localStorage.getItem("ppsr")) },
+			data: {
+				firstName: senderFirstName,
+				lastName: senderLastName,
+				email: senderEmail,
+			},
+			responseType: "json",
+		})
+			.then(response => {
+				localStorage.setItem("ppsr_user", JSON.stringify(senderFirstName));
+				localStorage.setItem("lName", JSON.stringify(senderLastName));
+				localStorage.setItem("email", JSON.stringify(senderEmail));
+				clearInputs();
+				setUpdateMessage(JSON.stringify(response.data.message));
+				editHandler();
+			})
+			.catch(err => {
+				console.log(JSON.stringify("Update failed: " + err));
+				setUpdateError("Update failed.");
+			});
 	};
 
 	return (
@@ -78,6 +155,10 @@ const ProfilePage = props => {
 							margin: "20px 0",
 						}}
 					>
+						<div style={{ fontSize: "1.2rem", marginBottom: "30px", color: "red" }}>
+							{updateError}
+						</div>
+
 						<InputField
 							type="text"
 							name="senderFirstName"
@@ -87,8 +168,18 @@ const ProfilePage = props => {
 							value={senderFirstName}
 							disabled={enableEdit}
 						></InputField>
-						<div style={{ fontSize: "1.4rem", marginBottom: "30px" }}>
-							{/* {registrationConfirmedMessage} */}
+						<div
+							style={{
+								width: "100%",
+								display: "flex",
+								justifyContent: "flex-start",
+								color: "red",
+								height: "20px",
+								fontSize: ".8rem",
+								margin: "5px 0",
+							}}
+						>
+							{profileErrors.fName}
 						</div>
 						<InputField
 							type="text"
@@ -99,8 +190,18 @@ const ProfilePage = props => {
 							value={senderLastName}
 							disabled={enableEdit}
 						></InputField>
-						<div style={{ fontSize: "1.4rem", marginBottom: "30px" }}>
-							{/* {registrationConfirmedMessage} */}
+						<div
+							style={{
+								width: "100%",
+								display: "flex",
+								justifyContent: "flex-start",
+								color: "red",
+								height: "20px",
+								fontSize: ".8rem",
+								margin: "5px 0",
+							}}
+						>
+							{profileErrors.lName}
 						</div>
 
 						<InputField
@@ -112,8 +213,18 @@ const ProfilePage = props => {
 							value={senderEmail}
 							disabled={enableEdit}
 						></InputField>
-						<div style={{ fontSize: "1.4rem", marginBottom: "30px" }}>
-							{/* {registrationConfirmedMessage} */}
+						<div
+							style={{
+								width: "100%",
+								display: "flex",
+								justifyContent: "flex-start",
+								color: "red",
+								height: "20px",
+								fontSize: ".8rem",
+								margin: "5px 0",
+							}}
+						>
+							{profileErrors.email}
 						</div>
 
 						{/* <InputField
@@ -204,9 +315,25 @@ const ProfilePage = props => {
 								width: "200px",
 								height: "50px",
 							}}
+							onClick={() => updateProfileInfo()}
 						>
 							Save
 						</Button>
+						<div
+							style={{
+								// width: "100%",
+								// display: "flex",
+								// justifyContent: "center",
+								// alignItems: "center",
+								color: "green",
+								height: "20px",
+								fontSize: ".8rem",
+								margin: "5px 0",
+								// border: "1px solid red",
+							}}
+						>
+							{updateMessage}
+						</div>
 					</div>
 				</Modal.Body>
 			</Modal>

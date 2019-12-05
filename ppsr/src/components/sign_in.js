@@ -95,17 +95,17 @@ const SignIn = props => {
 	const [registrationError, setRegistrationError] = useState("");
 	const [registrationConfirmedMessage, setregistrationConfirmedMessage] = useState("");
 	const [loginError, setLoginError] = useState(false);
-	const [profileInfo, setProfileInfo] = useState({ firstName: "", lastName: "", userEmail: "" });
+	// const [profileInfo, setProfileInfo] = useState({ firstName: "", lastName: "", userEmail: "" });
 
-	// const URL = "https://ppsr-api.herokuapp.com";
-	const URL = "http://localhost:4000";
+	const URL = "https://ppsr-api.herokuapp.com";
+	// const URL = "http://localhost:4000";
 
 	const {
 		handleInputChange,
 		toggleSignInLinks,
 		//   handleCheckboxChange,
 		//   setErrorMessages,
-		clearSigninInputs,
+		// clearSigninInputs,
 		clearInputs,
 		//   toggleMissingInfoMessage,
 		senderEmail,
@@ -133,6 +133,7 @@ const SignIn = props => {
 		setSignupErrorMessages,
 		loginErrors,
 		setLoginErrorMessages,
+		// setProfileErrorMessage,
 	} = props;
 
 	const validateSignupInfo = () => {
@@ -263,7 +264,6 @@ const SignIn = props => {
 					console.log("register response: " + JSON.stringify(response.data));
 					setSigninDataRequesting(false);
 					// clearSigninInputs();
-					const result = JSON.stringify(response.data);
 					console.log(JSON.stringify(response.data.registered));
 					if (JSON.stringify(response.data.registered) === "2") {
 						console.log("EMAIL ALREADY EXISTS");

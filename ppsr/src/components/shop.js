@@ -1,54 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import styled from "styled-components";
 import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
-const ItemContainer = styled.div`
-	border: 1px solid red;
-	width: 100%;
-	height: 150px;
-	display: flex;
-`;
-
-const ItemImage = styled.div`
-	border: 1px solid blue;
-	width: 30%;
-	// height: 150px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: yellow;
-`;
-
-const ItemDescription = styled.div`
-	border: 1px solid yellow;
-	width: 40%;
-	// height: 150px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-`;
-
-const ItemPriceDiv = styled.div`
-	border: 1px solid green;
-	width: 30%;
-	// height: 150px;
-	display: ${props => (props.showing !== null ? "flex" : "none")};
-	justify-content: center;
-	align-items: center;
-`;
-
-const PriceLoginDiv = styled.div`
-	border: 1px solid grey;
-	width: 30%;
-	// height: 150px;
-	display: ${props => (props.showing === null ? "flex" : "none")};
-	justify-content: center;
-	align-items: center;
-`;
+import DomeShop from "./domeShop";
+import GabelShop from "./gabelShop";
 
 const ShopPage = props => {
 	const { lgShop, toggleShopModal, setSignIn } = props;
+
+	const [domeCage, setDomeCage] = useState(true);
+	const [gabelCage, setGabelCage] = useState(false);
 
 	return (
 		<div>
@@ -62,16 +25,23 @@ const ShopPage = props => {
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<ItemContainer>
-						<ItemImage>image</ItemImage>
-						<ItemDescription>Top Panel Repair</ItemDescription>
-						<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
-						<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
-							<Button type="button" onClick={() => setSignIn(true)}>
-								Log in
-							</Button>
-						</PriceLoginDiv>
-					</ItemContainer>
+					<div
+						style={{
+							margin: "0 0 20px 0",
+							display: "flex",
+							justifyContent: "space-around",
+							alignItems: "center",
+						}}
+					>
+						<Button onClick={() => (setDomeCage(true), setGabelCage(false))}>Dome Cage</Button>
+						<Button onClick={() => (setGabelCage(true), setDomeCage(false))}>Gabe Cage</Button>
+					</div>
+					<div style={{ display: domeCage ? "block" : "none" }}>
+						<DomeShop setSignIn={setSignIn} />
+					</div>
+					<div style={{ display: gabelCage ? "block" : "none" }}>
+						<GabelShop setSignIn={setSignIn} />
+					</div>
 				</Modal.Body>
 			</Modal>
 		</div>

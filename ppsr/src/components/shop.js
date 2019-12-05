@@ -53,7 +53,14 @@ const ShopPage = props => {
 	return (
 		<div>
 			<Modal size="lg" show={lgShop} onHide={() => toggleShopModal()}>
-				<Modal.Header closeButton></Modal.Header>
+				<Modal.Header closeButton>
+					<Modal.Title
+						id="example-modal-sizes-title-sm"
+						style={{ width: "100%", textAlign: "center" }}
+					>
+						Pricing
+					</Modal.Title>
+				</Modal.Header>
 				<Modal.Body>
 					<ItemContainer>
 						<ItemImage>image</ItemImage>

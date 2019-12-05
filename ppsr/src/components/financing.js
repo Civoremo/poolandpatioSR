@@ -8,11 +8,20 @@ const Financing = props => {
 	return (
 		<Modal size="lg" show={lgFinancing} onHide={() => toggleFinanceModal()} centered>
 			<Modal.Header closeButton>
-				{/* <Modal.Title id="example-modal-sizes-title-sm">
-					Pool & Patio Screen Repair Finance Options
-				</Modal.Title> */}
+				<Modal.Title
+					id="example-modal-sizes-title-sm"
+					style={{ textAlign: "center", width: "100%" }}
+				>
+					Finance Options
+				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
+				<div style={{ textAlign: "center" }}>
+					At GreenSky, our focus is simple. We want to help you finance your next home improvement
+					project. Whether you as the customer wants to pay using a deferred interest plan or have a
+					fixed monthly budget, the GreenSky programs offer flexible consumer financing options to
+					meet various needs.
+				</div>
 				<div
 					style={{
 						display: "flex",
@@ -36,6 +45,10 @@ const Financing = props => {
 							paddingTop: "4px",
 						}}
 					>
+						<div style={{ textAlign: "center", fontWeight: "bold", marginBottom: "20px" }}>
+							Option #1
+						</div>
+						<div style={{ textAlign: "center", marginBottom: "10px" }}>Reference #11111</div>
 						<div>
 							<img
 								src="https://www.greensky.com/merchantkit/images/finance_buttons/headers/header_320.jpg?v=1.0.1011"
@@ -92,6 +105,10 @@ const Financing = props => {
 							paddingTop: "4px",
 						}}
 					>
+						<div style={{ textAlign: "center", fontWeight: "bold", marginBottom: "20px" }}>
+							Option #2
+						</div>
+						<div style={{ textAlign: "center", marginBottom: "10px" }}>Reference #11111</div>
 						<div>
 							<img
 								src="https://www.greensky.com/merchantkit/images/finance_buttons/headers/header_320.jpg?v=1.0.1011"

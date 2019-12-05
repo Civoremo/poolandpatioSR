@@ -101,7 +101,7 @@ const Navigationbar = props => {
 	const { imageArray } = props;
 	const [lgGallery, setGallery] = useState(false);
 	const [lgSignIn, setSignIn] = useState(false);
-	const [loggedIn] = useState(false);
+	const [loggedIn, setLoggedIn] = useState(false);
 	const [lgProfile, setProfile] = useState(false);
 
 	const {
@@ -275,6 +275,7 @@ const Navigationbar = props => {
 				lgSignIn={lgSignIn}
 				setSignIn={setSignIn}
 				loggedIn={loggedIn}
+				setLoggedIn={setLoggedIn}
 				handleInputChange={handleInputChange}
 				toggleSignInLinks={toggleSignInLinks}
 				clearSigninInputs={clearSigninInputs}
@@ -297,6 +298,7 @@ const Navigationbar = props => {
 				lgProfile={lgProfile}
 				setProfile={setProfile}
 				loggedIn={loggedIn}
+				setLoggedIn={setLoggedIn}
 				handleInputChange={handleInputChange}
 				clearInputs={clearInputs}
 				senderEmail={senderEmail}

@@ -129,6 +129,7 @@ const SignIn = props => {
 		//   onVerify,
 		isSelected,
 		loggedIn,
+		setLoggedIn,
 		signupErrors,
 		setSignupErrorMessages,
 		loginErrors,
@@ -330,7 +331,7 @@ const SignIn = props => {
 							localStorage.setItem("email", JSON.stringify(response.data.user.email));
 							setSigninDataRequesting(false);
 							setSignIn(false);
-							loggedIn(true);
+							setLoggedIn(true);
 							// clearSigninInputs();
 							clearInputs();
 						}
@@ -379,7 +380,7 @@ const SignIn = props => {
 								localStorage.setItem("email", JSON.stringify(response.data.user.email));
 								setSigninDataRequesting(false);
 								setSignIn(false);
-								loggedIn(true);
+								setLoggedIn(true);
 								// clearSigninInputs();
 								clearInputs();
 							})

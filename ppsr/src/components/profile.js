@@ -13,7 +13,7 @@ const URL = "https://ppsr-api.herokuapp.com";
 // const URL = "http://localhost:4000";
 
 const ProfilePage = props => {
-	const { lgProfile, setProfile, loggedIn } = props;
+	const { lgProfile, setProfile, loggedIn, setLoggedIn } = props;
 
 	const [enableEdit, setenableEdit] = useState(true);
 	const [updateMessage, setUpdateMessage] = useState("");
@@ -42,6 +42,7 @@ const ProfilePage = props => {
 	const logoutHandler = event => {
 		console.log(loggedIn);
 		// loggedIn(false);
+		setLoggedIn(false);
 		setProfile(false);
 		localStorage.clear();
 	};

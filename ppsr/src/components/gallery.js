@@ -23,9 +23,12 @@ const GalleryPage = props => {
 
 			<Modal size="lg" show={lgGallery} onHide={() => setGallery(false)} scrollable="true">
 				<Modal.Header closeButton>
-					{/* <Modal.Title id="example-modal-sizes-title-sm">
-            Pool & Patio Screen Repair Gallery
-          </Modal.Title> */}
+					<Modal.Title
+						id="example-modal-sizes-title-sm"
+						style={{ width: "100%", textAlign: "center" }}
+					>
+						Gallery
+					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					<ImageModalDiv>

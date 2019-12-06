@@ -101,10 +101,8 @@ const Navigationbar = props => {
 	const { imageArray } = props;
 	const [lgGallery, setGallery] = useState(false);
 	const [lgSignIn, setSignIn] = useState(false);
-	const [loggedIn] = useState(false);
+	const [loggedIn, setLoggedIn] = useState(false);
 	const [lgProfile, setProfile] = useState(false);
-	// const [lgShop, setShop] = useState(false);
-	// const [lgFinancing, setFinancing] = useState(false);
 
 	const {
 		handleInputChange,
@@ -141,6 +139,12 @@ const Navigationbar = props => {
 		toggleShopModal,
 		signupErrors,
 		setSignupErrorMessages,
+		loginErrors,
+		setLoginErrorMessages,
+		setProfileInfo,
+		validateUpdateInfo,
+		profileErrors,
+		setProfileErrorMessage,
 	} = props;
 
 	return (
@@ -229,9 +233,7 @@ const Navigationbar = props => {
 								</LoginNavLinkDiv>
 								<ProfileNavLinkDiv showing={localStorage.getItem("ppsr_user")}>
 									<NavLinkColor onClick={() => setProfile(true)}>
-										<LinkBorder>
-											Hi, {JSON.parse(`${localStorage.getItem("ppsr_user")}`)}
-										</LinkBorder>
+										<LinkBorder>Hi, {JSON.parse(localStorage.getItem("ppsr_user"))}</LinkBorder>
 									</NavLinkColor>
 								</ProfileNavLinkDiv>
 							</Nav.Link>
@@ -273,6 +275,7 @@ const Navigationbar = props => {
 				lgSignIn={lgSignIn}
 				setSignIn={setSignIn}
 				loggedIn={loggedIn}
+				setLoggedIn={setLoggedIn}
 				handleInputChange={handleInputChange}
 				toggleSignInLinks={toggleSignInLinks}
 				clearSigninInputs={clearSigninInputs}
@@ -287,14 +290,17 @@ const Navigationbar = props => {
 				isSelected={isSelected}
 				signupErrors={signupErrors}
 				setSignupErrorMessages={setSignupErrorMessages}
-				clearInputs={clearInputs}
+				loginErrors={loginErrors}
+				setLoginErrorMessages={setLoginErrorMessages}
 			/>
 
 			<Profile
 				lgProfile={lgProfile}
 				setProfile={setProfile}
 				loggedIn={loggedIn}
+				setLoggedIn={setLoggedIn}
 				handleInputChange={handleInputChange}
+				clearInputs={clearInputs}
 				senderEmail={senderEmail}
 				senderFirstName={senderFirstName}
 				senderLastName={senderLastName}
@@ -306,6 +312,10 @@ const Navigationbar = props => {
 				senderState={senderState}
 				senderZipcode={senderZipcode}
 				senderGateCode={senderGateCode}
+				setProfileInfo={setProfileInfo}
+				validateUpdateInfo={validateUpdateInfo}
+				profileErrors={profileErrors}
+				setProfileErrorMessage={setProfileErrorMessage}
 			/>
 		</div>
 	);

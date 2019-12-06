@@ -14,6 +14,7 @@ import Badges from "./components/badges";
 
 const URL = `https://res.cloudinary.com/ppscreens/image/list/ppsr.json`;
 // const URLAPI = "https://ppsr-api.herokuapp.com";
+// const URLAPI = "http://localhost:4000";
 
 class App extends Component {
 	state = {
@@ -63,6 +64,17 @@ class App extends Component {
 			credentials: "",
 			confirmCredentials: "",
 			incomplete: "",
+		},
+		loginErrors: {
+			email: "",
+			credentials: "",
+			incomplete: "",
+			confirmationKey: "",
+		},
+		profileErrors: {
+			email: "",
+			fName: "",
+			lName: "",
 		},
 		insufficientInfo: false,
 		verified: false,
@@ -132,6 +144,17 @@ class App extends Component {
 				credentials: "",
 				confirmCredentials: "",
 				incomplete: "",
+			},
+			loginErrors: {
+				email: "",
+				credentials: "",
+				incomplete: "",
+				confirmationKey: "",
+			},
+			profileErrors: {
+				email: "",
+				fName: "",
+				lName: "",
 			},
 		});
 	};
@@ -214,6 +237,17 @@ class App extends Component {
 				confirmCredentials: "",
 				incomplete: "",
 			},
+			loginErrors: {
+				email: "",
+				credentials: "",
+				incomplete: "",
+				confirmationKey: "",
+			},
+			profileErrors: {
+				email: "",
+				fName: "",
+				lName: "",
+			},
 			insufficientInfo: false,
 		});
 	};
@@ -224,9 +258,29 @@ class App extends Component {
 		});
 	};
 
+	setProfileErrorMessage = errors => {
+		this.setState({
+			profileErrors: errors,
+		});
+	};
+
+	setProfileInfo = userInfo => {
+		this.setState({
+			senderFirstName: userInfo.firstName,
+			senderLastName: userInfo.lastName,
+			senderEmail: userInfo.email,
+		});
+	};
+
 	setSignupErrorMessages = errors => {
 		this.setState({
 			signupErrors: errors,
+		});
+	};
+
+	setLoginErrorMessages = errors => {
+		this.setState({
+			loginErrors: errors,
 		});
 	};
 
@@ -284,6 +338,22 @@ class App extends Component {
 			});
 	};
 
+	validateUpdateInfo = event => {
+		console.log(this.state.senderFirstName);
+		console.log(this.state.senderLastName);
+		if (!this.state.senderFirstName || this.state.senderFirstName.length < 2) {
+			this.setState({
+				senderFirstName: JSON.parse(localStorage.getItem("ppsr_user")),
+			});
+		}
+
+		if (!this.state.senderLastName || this.state.senderLastName.length < 2) {
+			this.setState({
+				senderLastName: JSON.parse(localStorage.getItem("lName")),
+			});
+		}
+	};
+
 	render() {
 		// console.log(this.state.senderServices)
 		return (
@@ -324,7 +394,12 @@ class App extends Component {
 					toggleShopModal={this.toggleShopModal}
 					signupErrors={this.state.signupErrors}
 					setSignupErrorMessages={this.setSignupErrorMessages}
-					clearInputs={this.clearInputs}
+					loginErrors={this.state.loginErrors}
+					setLoginErrorMessages={this.setLoginErrorMessages}
+					setProfileInfo={this.setProfileInfo}
+					validateUpdateInfo={this.validateUpdateInfo}
+					profileErrors={this.state.profileErrors}
+					setProfileErrorMessage={this.setProfileErrorMessage}
 				/>
 				{/* {console.log('APP: ', this.state.isSelected)} */}
 				<div className="callToActionSpacer" />

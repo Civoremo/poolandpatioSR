@@ -7,7 +7,7 @@ import { Link } from "react-scroll";
 import headerImage from "./images/accordionImages/pool.jpg";
 
 const HeaderDiv = styled.div`
-	width: 100vw;
+	/* width: 100vw; */
 	height: 600px;
 	/* border: 1px solid red; */
 	background: url(${headerImage}) center center no-repeat;

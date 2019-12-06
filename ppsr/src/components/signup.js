@@ -46,6 +46,7 @@ const SignUp = props => {
 				justifyContent: "center",
 				alignItems: "center",
 				width: "100%",
+				// border: "1px solid red",
 				// minHeight: "450px",
 			}}
 		>
@@ -134,7 +135,7 @@ const SignUp = props => {
 				{signupErrors.confirmEmail}
 			</div>
 			<InputField
-				type="text"
+				type="password"
 				name="credentials"
 				placeholder="Password"
 				required="required"
@@ -155,7 +156,7 @@ const SignUp = props => {
 				{signupErrors.credentials}
 			</div>
 			<InputField
-				type="text"
+				type="password"
 				name="confirmCredentials"
 				placeholder="Confirm Password"
 				required="required"

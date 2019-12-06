@@ -73,7 +73,7 @@ const Login = props => {
 				{loginErrors.email}
 			</div>
 			<InputField
-				type="text"
+				type="password"
 				name="credentials"
 				placeholder="Password"
 				required="required"

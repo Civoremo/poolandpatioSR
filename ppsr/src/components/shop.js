@@ -34,7 +34,7 @@ const ShopPage = props => {
 						}}
 					>
 						<Button onClick={() => (setDomeCage(true), setGabelCage(false))}>Dome Cage</Button>
-						<Button onClick={() => (setGabelCage(true), setDomeCage(false))}>Gabe Cage</Button>
+						<Button onClick={() => (setGabelCage(true), setDomeCage(false))}>Gabel Cage</Button>
 					</div>
 					<div style={{ display: domeCage ? "block" : "none" }}>
 						<DomeShop setSignIn={setSignIn} />

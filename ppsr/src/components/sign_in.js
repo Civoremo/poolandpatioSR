@@ -238,6 +238,8 @@ const SignIn = props => {
 		setRegistrationError("");
 		setLoginError(false);
 
+		console.log("firstname " + senderFirstName.toLowerCase());
+
 		if (isSelected) {
 			if (!validateSignupInfo()) {
 				return;
@@ -250,11 +252,11 @@ const SignIn = props => {
 				url: `${URL}/users/register`,
 				headers: {},
 				data: {
-					firstName: `${senderFirstName}`,
-					lastName: `${senderLastName}`,
-					email: `${senderEmail}`,
+					firstName: senderFirstName,
+					lastName: senderLastName,
+					email: senderEmail.toLowerCase(),
 					// senderConfirmEmail: senderConfirmEmail,
-					password: `${credentials}`,
+					password: credentials,
 					// confirmCredentials: confirmCredentials
 				},
 				responseType: "json",

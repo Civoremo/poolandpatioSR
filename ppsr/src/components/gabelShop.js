@@ -69,7 +69,7 @@ const GabelShop = props => {
 							backgroundSize: "cover",
 						}}
 					></ItemImage>
-					<ItemDescription>Top Panel Repair</ItemDescription>
+					<ItemDescription>Door Panel</ItemDescription>
 					<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
 					<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
 						<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
@@ -89,7 +89,7 @@ const GabelShop = props => {
 							backgroundSize: "cover",
 						}}
 					></ItemImage>
-					<ItemDescription>Top Panel Repair</ItemDescription>
+					<ItemDescription>Bottom Panel</ItemDescription>
 					<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
 					<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
 						<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
@@ -109,7 +109,7 @@ const GabelShop = props => {
 							backgroundSize: "cover",
 						}}
 					></ItemImage>
-					<ItemDescription>Top Panel Repair</ItemDescription>
+					<ItemDescription>Side Panel</ItemDescription>
 					<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
 					<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
 						<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
@@ -129,7 +129,7 @@ const GabelShop = props => {
 							backgroundSize: "cover",
 						}}
 					></ItemImage>
-					<ItemDescription>Top Panel Repair</ItemDescription>
+					<ItemDescription>Low Riser Panel</ItemDescription>
 					<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
 					<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
 						<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
@@ -149,7 +149,7 @@ const GabelShop = props => {
 							backgroundSize: "cover",
 						}}
 					></ItemImage>
-					<ItemDescription>Top Panel Repair</ItemDescription>
+					<ItemDescription>High Riser Panel</ItemDescription>
 					<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
 					<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
 						<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
@@ -169,7 +169,7 @@ const GabelShop = props => {
 							backgroundSize: "cover",
 						}}
 					></ItemImage>
-					<ItemDescription>Top Panel Repair</ItemDescription>
+					<ItemDescription>Low Roof Panel</ItemDescription>
 					<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
 					<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
 						<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
@@ -189,7 +189,7 @@ const GabelShop = props => {
 							backgroundSize: "cover",
 						}}
 					></ItemImage>
-					<ItemDescription>Top Panel Repair</ItemDescription>
+					<ItemDescription>High Roof Panel</ItemDescription>
 					<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
 					<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
 						<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>

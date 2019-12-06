@@ -135,7 +135,7 @@ const SignUp = props => {
 				{signupErrors.confirmEmail}
 			</div>
 			<InputField
-				type="text"
+				type="password"
 				name="credentials"
 				placeholder="Password"
 				required="required"
@@ -156,7 +156,7 @@ const SignUp = props => {
 				{signupErrors.credentials}
 			</div>
 			<InputField
-				type="text"
+				type="password"
 				name="confirmCredentials"
 				placeholder="Confirm Password"
 				required="required"

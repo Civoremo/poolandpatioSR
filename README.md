@@ -4,31 +4,27 @@ Local business website
 
 ## Stack
 
-### React
+#### React
 
 React offers a lightweight and modular component structure for rapid implementation and scaling of our application.<br/>[React info](https://reactjs.org/docs/getting-started.html)
 
-### React-Bootstrap
+#### React-Bootstrap
 
 React bootstrap replaces the Bootstrap javascript. Each component has been built from scratch as a true React component, without unneeded dependencies like jQuery.<br>[React-Bootstrap](https://react-bootstrap.github.io)
 
-### React-Scroll
+#### React-Scroll
 
 Component for animating vertical scrolling.<br>[React-Scroll](https://github.com/fisshy/react-scroll)
 
-### Emailjs-com
+#### Emailjs-com
 
 EmailJS helps sending emails using client side technologies only.<br>[Emailjs-com](https://www.emailjs.com/docs/)
 
-### SendGrid
-
-SendGrid’s APIs allow you to customize, measure and automate your email program.<br>[SendGrid](https://sendgrid.com/docs/api-reference/)
-
-### Reaptcha
+#### Reaptcha
 
 A clean, modern and simple React wrapper for Google reCAPTCHA.<br>[Reaptcha](https://github.com/sarneeh/reaptcha#readme)
 
-### Styled-Components
+#### Styled-Components
 
 Styled Components is a popular CSS-in-JS library that provides flexibility and seamless integration with React allowing for customizable themes and styling that responds to props and JS logic.<br/>[Styled Components info](https://www.styled-components.com/docs/)
 

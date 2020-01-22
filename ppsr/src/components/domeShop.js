@@ -3,6 +3,12 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import styled from "styled-components";
 
+import BottomPanel from "./images/dome/Bottom_panel.jpg";
+import DoorPanel from "./images/dome/Door_size_panels.jpg";
+import RiserPanel from "./images/dome/Riser_Panel.jpg";
+import RoofPanel from "./images/dome/Roof_panel.jpg";
+import SidePanel from "./images/dome/Side_panel.jpg";
+
 const ItemContainer = styled.div`
 	/* border: 1px solid red; */
 	width: 100%;
@@ -52,10 +58,96 @@ const DomeShop = props => {
 	const { setSignIn } = props;
 	return (
 		<div>
+			{/* Door Panel */}
 			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
 				<ItemContainer>
-					<ItemImage>image</ItemImage>
-					<ItemDescription>Top Panel Repair</ItemDescription>
+					<ItemImage
+						style={{
+							background: `url(${DoorPanel}) center center no-repeat`,
+							backgroundSize: "cover",
+						}}
+					></ItemImage>
+					<ItemDescription>Door Panel</ItemDescription>
+					<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
+					<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
+						<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
+						<Button type="button" onClick={() => setSignIn(true)}>
+							Log in
+						</Button>
+					</PriceLoginDiv>
+				</ItemContainer>
+			</Card>
+
+			{/* Bottom Panel */}
+			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
+				<ItemContainer>
+					<ItemImage
+						style={{
+							background: `url(${BottomPanel}) center center no-repeat`,
+							backgroundSize: "cover",
+						}}
+					></ItemImage>
+					<ItemDescription>Bottom Panel</ItemDescription>
+					<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
+					<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
+						<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
+						<Button type="button" onClick={() => setSignIn(true)}>
+							Log in
+						</Button>
+					</PriceLoginDiv>
+				</ItemContainer>
+			</Card>
+
+			{/* Side Panel */}
+			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
+				<ItemContainer>
+					<ItemImage
+						style={{
+							background: `url(${SidePanel}) center center no-repeat`,
+							backgroundSize: "cover",
+						}}
+					></ItemImage>
+					<ItemDescription>Side Panel</ItemDescription>
+					<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
+					<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
+						<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
+						<Button type="button" onClick={() => setSignIn(true)}>
+							Log in
+						</Button>
+					</PriceLoginDiv>
+				</ItemContainer>
+			</Card>
+
+			{/* Riser Panel */}
+			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
+				<ItemContainer>
+					<ItemImage
+						style={{
+							background: `url(${RiserPanel}) center center no-repeat`,
+							backgroundSize: "cover",
+						}}
+					></ItemImage>
+					<ItemDescription>Riser Panel</ItemDescription>
+					<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
+					<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
+						<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
+						<Button type="button" onClick={() => setSignIn(true)}>
+							Log in
+						</Button>
+					</PriceLoginDiv>
+				</ItemContainer>
+			</Card>
+
+			{/* Roof Panel */}
+			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
+				<ItemContainer>
+					<ItemImage
+						style={{
+							background: `url(${RoofPanel}) center center no-repeat`,
+							backgroundSize: "cover",
+						}}
+					></ItemImage>
+					<ItemDescription>Roof Panel</ItemDescription>
 					<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
 					<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
 						<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>

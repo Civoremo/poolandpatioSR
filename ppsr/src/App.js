@@ -88,6 +88,7 @@ class App extends Component {
 		axios
 			.get(URL)
 			.then(res => {
+				// console.log(res);
 				this.setState({
 					imageArray: res.data.resources,
 				});

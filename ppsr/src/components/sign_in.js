@@ -499,6 +499,7 @@ const SignIn = props => {
 								<span style={{ display: isSelected ? "block" : "none" }}>
 									{signupErrors.incomplete}
 								</span>
+								<span style={{ display: isSelected ? "block" : "none" }}>{registrationError}</span>
 								<span style={{ display: isSelected ? "none" : "block" }}>
 									{loginErrors.incomplete}
 								</span>

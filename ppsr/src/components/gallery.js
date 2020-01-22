@@ -17,6 +17,7 @@ const GalleryPage = props => {
 
 	return (
 		<div>
+			{/* {console.log(imageArray)} */}
 			{/* <Container>
         <img style={{maxWidth: '100%'}} src={`https://res.cloudinary.com/ppscreens/image/upload/v${imageArray[0].version}/${imageArray[0].public_id}.${imageArray[0].format}`} />
       </Container> */}

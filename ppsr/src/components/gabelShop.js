@@ -33,8 +33,22 @@ const ItemDescription = styled.div`
 	width: 40%;
 	// height: 150px;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+`;
+
+const ItemTitleh3 = styled.h3`
+	font-size: 1.1rem;
+`;
+
+const ItemAlsoAvailableDiv = styled.div`
+	font-size: 0.7rem;
+	padding: 0 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 `;
 
 const ItemPriceDiv = styled.div`
@@ -69,7 +83,17 @@ const GabelShop = props => {
 							backgroundSize: "cover",
 						}}
 					></ItemImage>
-					<ItemDescription>Door Panel</ItemDescription>
+					<ItemDescription>
+						<ItemTitleh3>Gabel Door Panel</ItemTitleh3>
+						<p style={{ fontSize: ".9rem" }}>Standard 24x24 Screen</p>
+						<ItemAlsoAvailableDiv>
+							<span style={{ fontWeight: "bold" }}>* Available:</span>
+							<span>TuffScreen</span>
+							<span>Florida Glass</span>
+							<span>NoSeemUms Screen</span>
+							<span>Solar Screen</span>
+						</ItemAlsoAvailableDiv>
+					</ItemDescription>
 					<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
 					<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
 						<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
@@ -89,7 +113,17 @@ const GabelShop = props => {
 							backgroundSize: "cover",
 						}}
 					></ItemImage>
-					<ItemDescription>Bottom Panel</ItemDescription>
+					<ItemDescription>
+						<ItemTitleh3>Gabel Bottom Panel</ItemTitleh3>
+						<p style={{ fontSize: ".9rem" }}>Standard 24x24 Screen</p>
+						<ItemAlsoAvailableDiv>
+							<span style={{ fontWeight: "bold" }}>* Available:</span>
+							<span>TuffScreen</span>
+							<span>Florida Glass</span>
+							<span>NoSeemUms Screen</span>
+							<span>Solar Screen</span>
+						</ItemAlsoAvailableDiv>
+					</ItemDescription>
 					<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
 					<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
 						<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
@@ -109,7 +143,17 @@ const GabelShop = props => {
 							backgroundSize: "cover",
 						}}
 					></ItemImage>
-					<ItemDescription>Side Panel</ItemDescription>
+					<ItemDescription>
+						<ItemTitleh3>Gabel Side Panel</ItemTitleh3>
+						<p style={{ fontSize: ".9rem" }}>Standard 24x24 Screen</p>
+						<ItemAlsoAvailableDiv>
+							<span style={{ fontWeight: "bold" }}>* Available:</span>
+							<span>TuffScreen</span>
+							<span>Florida Glass</span>
+							<span>NoSeemUms Screen</span>
+							<span>Solar Screen</span>
+						</ItemAlsoAvailableDiv>
+					</ItemDescription>
 					<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
 					<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
 						<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
@@ -129,7 +173,17 @@ const GabelShop = props => {
 							backgroundSize: "cover",
 						}}
 					></ItemImage>
-					<ItemDescription>Low Riser Panel</ItemDescription>
+					<ItemDescription>
+						<ItemTitleh3>Gabel Low Riser Panel</ItemTitleh3>
+						<p style={{ fontSize: ".9rem" }}>Standard 24x24 Screen</p>
+						<ItemAlsoAvailableDiv>
+							<span style={{ fontWeight: "bold" }}>* Available:</span>
+							<span>TuffScreen</span>
+							<span>Florida Glass</span>
+							<span>NoSeemUms Screen</span>
+							<span>Solar Screen</span>
+						</ItemAlsoAvailableDiv>
+					</ItemDescription>
 					<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
 					<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
 						<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
@@ -149,7 +203,17 @@ const GabelShop = props => {
 							backgroundSize: "cover",
 						}}
 					></ItemImage>
-					<ItemDescription>High Riser Panel</ItemDescription>
+					<ItemDescription>
+						<ItemTitleh3>Gabel High Riser Panel</ItemTitleh3>
+						<p style={{ fontSize: ".9rem" }}>Standard 24x24 Screen</p>
+						<ItemAlsoAvailableDiv>
+							<span style={{ fontWeight: "bold" }}>* Available:</span>
+							<span>TuffScreen</span>
+							<span>Florida Glass</span>
+							<span>NoSeemUms Screen</span>
+							<span>Solar Screen</span>
+						</ItemAlsoAvailableDiv>
+					</ItemDescription>
 					<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
 					<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
 						<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
@@ -169,7 +233,17 @@ const GabelShop = props => {
 							backgroundSize: "cover",
 						}}
 					></ItemImage>
-					<ItemDescription>Low Roof Panel</ItemDescription>
+					<ItemDescription>
+						<ItemTitleh3>Gabel Low Roof Panel</ItemTitleh3>
+						<p style={{ fontSize: ".9rem" }}>Standard 24x24 Screen</p>
+						<ItemAlsoAvailableDiv>
+							<span style={{ fontWeight: "bold" }}>* Available:</span>
+							<span>TuffScreen</span>
+							<span>Florida Glass</span>
+							<span>NoSeemUms Screen</span>
+							<span>Solar Screen</span>
+						</ItemAlsoAvailableDiv>
+					</ItemDescription>
 					<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
 					<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
 						<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
@@ -189,7 +263,17 @@ const GabelShop = props => {
 							backgroundSize: "cover",
 						}}
 					></ItemImage>
-					<ItemDescription>High Roof Panel</ItemDescription>
+					<ItemDescription>
+						<ItemTitleh3>Gabel High Roof Panel</ItemTitleh3>
+						<p style={{ fontSize: ".9rem" }}>Standard 24x24 Screen</p>
+						<ItemAlsoAvailableDiv>
+							<span style={{ fontWeight: "bold" }}>* Available:</span>
+							<span>TuffScreen</span>
+							<span>Florida Glass</span>
+							<span>NoSeemUms Screen</span>
+							<span>Solar Screen</span>
+						</ItemAlsoAvailableDiv>
+					</ItemDescription>
 					<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>$ 79.95</ItemPriceDiv>
 					<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
 						<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>

@@ -7,6 +7,24 @@ import Card from "react-bootstrap/Card";
 import DomeShop from "./domeShop";
 import GabelShop from "./gabelShop";
 
+const CageSelectionSpan = styled.span`
+	color: #3569e1;
+	font-weight: bold;
+	position: relative;
+	width: 100px;
+	height: 30px;
+`;
+
+const CageNameSpan = styled.span`
+	position: absolute;
+
+	:hover {
+		font-size: 1.1rem;
+		cursor: pointer;
+		color: #3569e1;
+	}
+`;
+
 const ShopPage = props => {
 	const { lgShop, toggleShopModal, setSignIn } = props;
 
@@ -33,8 +51,12 @@ const ShopPage = props => {
 							alignItems: "center",
 						}}
 					>
-						<Button onClick={() => (setDomeCage(true), setGabelCage(false))}>Dome Cage</Button>
-						<Button onClick={() => (setGabelCage(true), setDomeCage(false))}>Gabel Cage</Button>
+						<CageSelectionSpan onClick={() => (setDomeCage(true), setGabelCage(false))}>
+							<CageNameSpan>Dome Cage</CageNameSpan>
+						</CageSelectionSpan>
+						<CageSelectionSpan onClick={() => (setGabelCage(true), setDomeCage(false))}>
+							<CageNameSpan>Gabel Cage</CageNameSpan>
+						</CageSelectionSpan>
 					</div>
 					<div style={{ display: domeCage ? "block" : "none" }}>
 						<DomeShop setSignIn={setSignIn} />

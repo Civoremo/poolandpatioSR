@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import styled from "styled-components";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+// import Button from "react-bootstrap/Button";
+// import Card from "react-bootstrap/Card";
 
 import DomeShop from "./domeShop";
 import GabelShop from "./gabelShop";
@@ -51,10 +51,20 @@ const ShopPage = props => {
 							alignItems: "center",
 						}}
 					>
-						<CageSelectionSpan onClick={() => (setDomeCage(true), setGabelCage(false))}>
+						<CageSelectionSpan
+							onClick={() => {
+								setDomeCage(true);
+								setGabelCage(false);
+							}}
+						>
 							<CageNameSpan>Dome Cage</CageNameSpan>
 						</CageSelectionSpan>
-						<CageSelectionSpan onClick={() => (setGabelCage(true), setDomeCage(false))}>
+						<CageSelectionSpan
+							onClick={() => {
+								setGabelCage(true);
+								setDomeCage(false);
+							}}
+						>
 							<CageNameSpan>Gabel Cage</CageNameSpan>
 						</CageSelectionSpan>
 					</div>

@@ -128,7 +128,7 @@ const SignIn = props => {
 		//   verified,
 		//   onVerify,
 		isSelected,
-		loggedIn,
+		// loggedIn,
 		setLoggedIn,
 		signupErrors,
 		setSignupErrorMessages,

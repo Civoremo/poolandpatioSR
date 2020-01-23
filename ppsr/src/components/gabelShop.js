@@ -40,6 +40,7 @@ const ItemDescription = styled.div`
 
 const ItemTitleh3 = styled.h3`
 	font-size: 1.1rem;
+	border-bottom: 1px solid grey;
 `;
 
 const ItemAlsoAvailableDiv = styled.div`
@@ -85,7 +86,7 @@ const GabelShop = props => {
 					></ItemImage>
 					<ItemDescription>
 						<ItemTitleh3>Gabel Door Panel</ItemTitleh3>
-						<p style={{ fontSize: ".9rem" }}>Standard 24x24 Screen</p>
+						<p style={{ fontSize: ".9rem" }}>Standard 18x14 Screen</p>
 						<ItemAlsoAvailableDiv>
 							<span style={{ fontWeight: "bold" }}>* Available:</span>
 							<span>TuffScreen</span>
@@ -115,7 +116,7 @@ const GabelShop = props => {
 					></ItemImage>
 					<ItemDescription>
 						<ItemTitleh3>Gabel Bottom Panel</ItemTitleh3>
-						<p style={{ fontSize: ".9rem" }}>Standard 24x24 Screen</p>
+						<p style={{ fontSize: ".9rem" }}>Standard 18x14 Screen</p>
 						<ItemAlsoAvailableDiv>
 							<span style={{ fontWeight: "bold" }}>* Available:</span>
 							<span>TuffScreen</span>
@@ -145,7 +146,7 @@ const GabelShop = props => {
 					></ItemImage>
 					<ItemDescription>
 						<ItemTitleh3>Gabel Side Panel</ItemTitleh3>
-						<p style={{ fontSize: ".9rem" }}>Standard 24x24 Screen</p>
+						<p style={{ fontSize: ".9rem" }}>Standard 18x14 Screen</p>
 						<ItemAlsoAvailableDiv>
 							<span style={{ fontWeight: "bold" }}>* Available:</span>
 							<span>TuffScreen</span>
@@ -175,7 +176,7 @@ const GabelShop = props => {
 					></ItemImage>
 					<ItemDescription>
 						<ItemTitleh3>Gabel Low Riser Panel</ItemTitleh3>
-						<p style={{ fontSize: ".9rem" }}>Standard 24x24 Screen</p>
+						<p style={{ fontSize: ".9rem" }}>Standard 18x14 Screen</p>
 						<ItemAlsoAvailableDiv>
 							<span style={{ fontWeight: "bold" }}>* Available:</span>
 							<span>TuffScreen</span>
@@ -205,7 +206,7 @@ const GabelShop = props => {
 					></ItemImage>
 					<ItemDescription>
 						<ItemTitleh3>Gabel High Riser Panel</ItemTitleh3>
-						<p style={{ fontSize: ".9rem" }}>Standard 24x24 Screen</p>
+						<p style={{ fontSize: ".9rem" }}>Standard 18x14 Screen</p>
 						<ItemAlsoAvailableDiv>
 							<span style={{ fontWeight: "bold" }}>* Available:</span>
 							<span>TuffScreen</span>
@@ -235,7 +236,7 @@ const GabelShop = props => {
 					></ItemImage>
 					<ItemDescription>
 						<ItemTitleh3>Gabel Low Roof Panel</ItemTitleh3>
-						<p style={{ fontSize: ".9rem" }}>Standard 24x24 Screen</p>
+						<p style={{ fontSize: ".9rem" }}>Standard 18x14 Screen</p>
 						<ItemAlsoAvailableDiv>
 							<span style={{ fontWeight: "bold" }}>* Available:</span>
 							<span>TuffScreen</span>
@@ -265,7 +266,7 @@ const GabelShop = props => {
 					></ItemImage>
 					<ItemDescription>
 						<ItemTitleh3>Gabel High Roof Panel</ItemTitleh3>
-						<p style={{ fontSize: ".9rem" }}>Standard 24x24 Screen</p>
+						<p style={{ fontSize: ".9rem" }}>Standard 18x14 Screen</p>
 						<ItemAlsoAvailableDiv>
 							<span style={{ fontWeight: "bold" }}>* Available:</span>
 							<span>TuffScreen</span>

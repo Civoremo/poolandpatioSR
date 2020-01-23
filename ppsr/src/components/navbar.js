@@ -6,7 +6,8 @@ import styled from "styled-components";
 import { Link } from "react-scroll";
 
 // import logoImg from './images/logo/logo_lg_alt.png';
-import logoImgWhite from "./images/logo/logo_lg_alt_white.png";
+// import logoImgWhite from "./images/logo/logo_lg_alt_white.png";
+import logoImgWhite from "./images/logo/logo_lg_white.png";
 import Gallery from "./gallery";
 import SignIn from "./sign_in";
 import Profile from "./profile";

@@ -37,11 +37,11 @@ const Financing = props => {
 							FinanceMyProject
 						</a>{" "}
 						to make sure getting an unsecured home improvement loan for your project is quick and
-						easy. At FinanceMyProject.com you can apply in 60 seconds, and compare your pre-approved
-						unsecured home improvement loan offers, without it affecting your credit score.
-						Regardless of the type of project around the home, FinanceMyProject can help you get the
-						funds you need to make your desired repairs or upgrades. See some of their awesome
-						benefits below:
+						easy. <br></br>At FinanceMyProject.com you can apply in 60 seconds, and compare your
+						pre-approved unsecured home improvement loan offers, without it affecting your credit
+						score. Regardless of the type of project around the home, FinanceMyProject can help you
+						get the funds you need to make your desired repairs or upgrades. See some of their
+						awesome benefits below:
 					</p>
 				</div>
 				<div style={{ padding: "0 5%" }}>

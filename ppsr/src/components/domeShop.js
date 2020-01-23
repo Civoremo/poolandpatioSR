@@ -193,7 +193,7 @@ const DomeShop = props => {
 					<DescriptionPriceContainer>
 						<ItemDescription>
 							<ItemTitleh3>Dome Bottom Panel</ItemTitleh3>
-							<p style={{ fontSize: ".9rem" }}>Standard 18x14 Screen</p>
+							<StandardTextP>Standard 18x14 Screen</StandardTextP>
 							<ItemAlsoAvailableDiv>
 								<span style={{ fontWeight: "bold" }}>Also Available:</span>
 								<span>TuffScreen</span>
@@ -234,7 +234,7 @@ const DomeShop = props => {
 					<DescriptionPriceContainer>
 						<ItemDescription>
 							<ItemTitleh3>Dome Side Panel</ItemTitleh3>
-							<p style={{ fontSize: ".9rem" }}>Standard 18x14 Screen</p>
+							<StandardTextP>Standard 18x14 Screen</StandardTextP>
 							<ItemAlsoAvailableDiv>
 								<span style={{ fontWeight: "bold" }}>Also Available:</span>
 								<span>TuffScreen</span>
@@ -275,7 +275,7 @@ const DomeShop = props => {
 					<DescriptionPriceContainer>
 						<ItemDescription>
 							<ItemTitleh3>Dome Riser Panel</ItemTitleh3>
-							<p style={{ fontSize: ".9rem" }}>Standard 18x14 Screen</p>
+							<StandardTextP>Standard 18x14 Screen</StandardTextP>
 							<ItemAlsoAvailableDiv>
 								<span style={{ fontWeight: "bold" }}>Also Available:</span>
 								<span>TuffScreen</span>
@@ -316,7 +316,7 @@ const DomeShop = props => {
 					<DescriptionPriceContainer>
 						<ItemDescription>
 							<ItemTitleh3>Dome Roof Panel</ItemTitleh3>
-							<p style={{ fontSize: ".9rem" }}>Standard 18x14 Screen</p>
+							<StandardTextP>Standard 18x14 Screen</StandardTextP>
 							<ItemAlsoAvailableDiv>
 								<span style={{ fontWeight: "bold" }}>Also Available:</span>
 								<span>TuffScreen</span>

@@ -78,7 +78,7 @@ class App extends Component {
 		},
 		insufficientInfo: false,
 		verified: false,
-		isSelected: true,
+		isSelected: false,
 		lgFinancing: false,
 		lgShop: false,
 		// loggedIn: false,
@@ -123,9 +123,14 @@ class App extends Component {
 	};
 
 	toggleSignInLinks = event => {
-		this.setState({
-			isSelected: !this.state.isSelected,
-		});
+		this.setState(
+			{
+				isSelected: !this.state.isSelected,
+			},
+			() => {
+				this.clearInputs();
+			}
+		);
 	};
 
 	clearSigninInputs = event => {

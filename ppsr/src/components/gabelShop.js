@@ -34,6 +34,7 @@ const ItemImage = styled.div`
 
 	@media (max-width: 991px) {
 		width: 90%;
+		height: 220px;
 		margin: 0 auto;
 	}
 `;

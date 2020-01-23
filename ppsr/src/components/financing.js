@@ -2,6 +2,9 @@ import React from "react";
 import Modal from "react-bootstrap/Modal";
 // import styled from "styled-components";
 
+import FinanceHeaderImage from "./images/finance/HI_finance.png";
+import { Button } from "react-bootstrap";
+
 const Financing = props => {
 	const { lgFinancing, toggleFinanceModal } = props;
 
@@ -12,11 +15,68 @@ const Financing = props => {
 					id="example-modal-sizes-title-sm"
 					style={{ textAlign: "center", width: "100%" }}
 				>
-					Finance Options
+					Home Improvement Financing
 				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
-				<div style={{ textAlign: "center" }}>
+				<div>
+					<img
+						style={{ width: "100%", height: "auto", marginBottom: "30px" }}
+						src={FinanceHeaderImage}
+						alt="Home Improvement Financing"
+					/>
+					<p style={{ padding: "0 5%" }}>
+						Our top priority is to make sure your home improvement project with us is smooth and
+						painless. That’s why we’ve partnered with{" "}
+						<a
+							href="https://financemyproject.com/"
+							target="_blank"
+							tabIndex="0"
+							rel="noopener noreferrer"
+						>
+							FinanceMyProject
+						</a>{" "}
+						to make sure getting an unsecured home improvement loan for your project is quick and
+						easy. At FinanceMyProject.com you can apply in 60 seconds, and compare your pre-approved
+						unsecured home improvement loan offers, without it affecting your credit score.
+						Regardless of the type of project around the home, FinanceMyProject can help you get the
+						funds you need to make your desired repairs or upgrades. See some of their awesome
+						benefits below:
+					</p>
+				</div>
+				<div style={{ padding: "0 5%" }}>
+					<ul>
+						<li>Borrow up to $50,000</li>
+						<li>Compare pre-qualified unsecured loan offers in seconds</li>
+						<li>Checking rates won’t affect your credit score</li>
+						<li>Flexible loan terms</li>
+						<li>Quick application process</li>
+						<li>Paperless process</li>
+						<li>No home equity requirements</li>
+						<li>Joint applications accepted</li>
+						<li>Can have funds as soon as one business day</li>
+					</ul>
+				</div>
+				<div
+					style={{
+						display: "flex",
+						alignItems: "center",
+						flexDirection: "column",
+						marginTop: "50px",
+						marginBottom: "40px",
+					}}
+				>
+					<p>Apply now and compare your home improvement loan options now!</p>
+					<a
+						href="https://financemyproject.com/home-improvement-loans/"
+						target="_blank"
+						tabIndex="0"
+						rel="noopener noreferrer"
+					>
+						<Button style={{ width: "120px" }}>Apply</Button>
+					</a>
+				</div>
+				{/* <div style={{ textAlign: "center" }}>
 					At GreenSky, our focus is simple. We want to help you finance your next home improvement
 					project. Whether you as the customer wants to pay using a deferred interest plan or have a
 					fixed monthly budget, the GreenSky programs offer flexible consumer financing options to
@@ -57,13 +117,6 @@ const Financing = props => {
 							/>
 						</div>
 						<div>
-							{/* <img
-								src="https://www.greensky.com/merchantkit/images/finance_buttons/product_headers/sunroom_product_header_320.jpg?v=1.0.1011"
-								width="320"
-								height="100"
-								alt="Finance Your Sun Room Project"
-								tabindex="0"
-							/> */}
 						</div>
 						<div>
 							<a
@@ -117,13 +170,6 @@ const Financing = props => {
 							/>
 						</div>
 						<div>
-							{/* <img
-								src="https://www.greensky.com/merchantkit/images/finance_buttons/product_headers/windows_product_header_320.jpg?v=1.0.1011"
-								width="320"
-								height="100"
-								alt="Finance Your Window Project"
-								tabindex="0"
-							/> */}
 						</div>
 						<div>
 							<a
@@ -150,7 +196,7 @@ const Financing = props => {
 							/>
 						</div>
 					</div>
-				</div>
+				</div> */}
 			</Modal.Body>
 		</Modal>
 	);

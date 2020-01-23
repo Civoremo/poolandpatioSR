@@ -401,13 +401,18 @@ const SignIn = props => {
 		}
 	};
 
+	const ClosingSigninModal = event => {
+		setSignIn(false);
+		clearInputs();
+	};
+
 	return (
 		<div>
 			{/* {console.log('selected: ', isSelected)}
             {console.log('lgSignIn: ' + lgSignIn)}
             {console.log('setSignIn: ' + setSignIn)}
             {console.log('loggedIn: ' + loggedIn)} */}
-			<Modal size="lg" show={lgSignIn} onHide={() => setSignIn(false)} centered>
+			<Modal size="lg" show={lgSignIn} onHide={() => ClosingSigninModal()} centered>
 				<Modal.Header closeButton></Modal.Header>
 
 				<Modal.Body>

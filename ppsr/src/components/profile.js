@@ -126,9 +126,17 @@ const ProfilePage = props => {
 			});
 	};
 
+	const ClosingProfileModal = event => {
+		setProfile(false);
+		// editHandler();
+		setenableEdit(true);
+		clearInputs();
+		setUpdateMessage("");
+	};
+
 	return (
 		<div>
-			<Modal size="lg" show={lgProfile} onHide={() => setProfile(false)}>
+			<Modal size="lg" show={lgProfile} onHide={() => ClosingProfileModal()}>
 				<Modal.Header closeButton></Modal.Header>
 				<Modal.Body>
 					<div

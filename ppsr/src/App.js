@@ -123,9 +123,14 @@ class App extends Component {
 	};
 
 	toggleSignInLinks = event => {
-		this.setState({
-			isSelected: !this.state.isSelected,
-		});
+		this.setState(
+			{
+				isSelected: !this.state.isSelected,
+			},
+			() => {
+				this.clearInputs();
+			}
+		);
 	};
 
 	clearSigninInputs = event => {

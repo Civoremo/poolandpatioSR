@@ -33,7 +33,7 @@ const ShopPage = props => {
 
 	return (
 		<div>
-			<Modal size="lg" show={lgShop} onHide={() => toggleShopModal()}>
+			<Modal size="lg" show={lgShop} onHide={() => toggleShopModal()} scrollable="true">
 				<Modal.Header closeButton>
 					<Modal.Title
 						id="example-modal-sizes-title-sm"

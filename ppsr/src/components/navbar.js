@@ -157,7 +157,7 @@ const Navigationbar = props => {
 						{" "}
 						<img
 							src={logoImgWhite}
-							alt={"PPSR"}
+							alt={"PPSR - Pool & Patio Screen Repair"}
 							style={{ maxWidth: "120px", height: "auto", marginRight: "30px", cursor: "pointer" }}
 						/>
 					</Link>

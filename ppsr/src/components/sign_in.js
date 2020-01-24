@@ -412,7 +412,7 @@ const SignIn = props => {
             {console.log('lgSignIn: ' + lgSignIn)}
             {console.log('setSignIn: ' + setSignIn)}
             {console.log('loggedIn: ' + loggedIn)} */}
-			<Modal size="lg" show={lgSignIn} onHide={() => ClosingSigninModal()} centered>
+			<Modal size="lg" show={lgSignIn} onHide={() => ClosingSigninModal()} scrollable="true">
 				<Modal.Header closeButton></Modal.Header>
 
 				<Modal.Body>

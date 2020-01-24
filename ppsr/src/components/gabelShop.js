@@ -23,7 +23,7 @@ const ItemContainer = styled.div`
 	}
 `;
 
-const ItemImage = styled.div`
+const ItemImage = styled.img`
 	/* border: 1px solid blue; */
 	width: 30%;
 	height: 150px;
@@ -146,15 +146,10 @@ const GabelShop = props => {
 			{/* Door Panel  */}
 			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
 				<ItemContainer>
-					<ItemImage
-						style={{
-							background: `url(${DoorPanel}) center center no-repeat`,
-							backgroundSize: "cover",
-						}}
-					></ItemImage>
+					<ItemImage src={DoorPanel} alt="Gable Pool Cage with Emphasis on Door Panel"></ItemImage>
 					<DescriptionPriceContainer>
 						<ItemDescription>
-							<ItemTitleh3>Gabel Door Panel</ItemTitleh3>
+							<ItemTitleh3>Gable Door Panel</ItemTitleh3>
 							<StandardTextP>Standard 18x14 Screen</StandardTextP>
 							<ItemAlsoAvailableDiv>
 								<span style={{ fontWeight: "bold" }}>* Available:</span>
@@ -188,14 +183,12 @@ const GabelShop = props => {
 			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
 				<ItemContainer>
 					<ItemImage
-						style={{
-							background: `url(${BottomPanel}) center center no-repeat`,
-							backgroundSize: "cover",
-						}}
+						src={BottomPanel}
+						alt="Gable Pool Cage with Emphasis on Bottom Panel"
 					></ItemImage>
 					<DescriptionPriceContainer>
 						<ItemDescription>
-							<ItemTitleh3>Gabel Bottom Panel</ItemTitleh3>
+							<ItemTitleh3>Gable Bottom Panel</ItemTitleh3>
 							<StandardTextP>Standard 18x14 Screen</StandardTextP>
 							<ItemAlsoAvailableDiv>
 								<span style={{ fontWeight: "bold" }}>* Available:</span>
@@ -228,15 +221,10 @@ const GabelShop = props => {
 			{/* Side Panel  */}
 			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
 				<ItemContainer>
-					<ItemImage
-						style={{
-							background: `url(${SidePanel}) center center no-repeat`,
-							backgroundSize: "cover",
-						}}
-					></ItemImage>
+					<ItemImage src={SidePanel} alt="Gable Pool Cage with Emphasis on Side Panel"></ItemImage>
 					<DescriptionPriceContainer>
 						<ItemDescription>
-							<ItemTitleh3>Gabel Side Panel</ItemTitleh3>
+							<ItemTitleh3>Gable Side Panel</ItemTitleh3>
 							<StandardTextP>Standard 18x14 Screen</StandardTextP>
 							<ItemAlsoAvailableDiv>
 								<span style={{ fontWeight: "bold" }}>* Available:</span>
@@ -270,14 +258,12 @@ const GabelShop = props => {
 			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
 				<ItemContainer>
 					<ItemImage
-						style={{
-							background: `url(${RiserPanel}) center center no-repeat`,
-							backgroundSize: "cover",
-						}}
+						src={RiserPanel}
+						alt="Gable Pool Cage with Emphasis on Lower Riser Panel"
 					></ItemImage>
 					<DescriptionPriceContainer>
 						<ItemDescription>
-							<ItemTitleh3>Gabel Low Riser Panel</ItemTitleh3>
+							<ItemTitleh3>Gable Low Riser Panel</ItemTitleh3>
 							<StandardTextP>Standard 18x14 Screen</StandardTextP>
 							<ItemAlsoAvailableDiv>
 								<span style={{ fontWeight: "bold" }}>* Available:</span>
@@ -311,14 +297,12 @@ const GabelShop = props => {
 			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
 				<ItemContainer>
 					<ItemImage
-						style={{
-							background: `url(${RiserPanel2}) center center no-repeat`,
-							backgroundSize: "cover",
-						}}
+						src={RiserPanel2}
+						alt="Gable Pool Cage with Emphasis on Higher Riser Panel"
 					></ItemImage>
 					<DescriptionPriceContainer>
 						<ItemDescription>
-							<ItemTitleh3>Gabel High Riser Panel</ItemTitleh3>
+							<ItemTitleh3>Gable High Riser Panel</ItemTitleh3>
 							<StandardTextP>Standard 18x14 Screen</StandardTextP>
 							<ItemAlsoAvailableDiv>
 								<span style={{ fontWeight: "bold" }}>* Available:</span>
@@ -352,14 +336,12 @@ const GabelShop = props => {
 			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
 				<ItemContainer>
 					<ItemImage
-						style={{
-							background: `url(${RoofPanel}) center center no-repeat`,
-							backgroundSize: "cover",
-						}}
+						src={RoofPanel}
+						alt="Gable Pool Cage with Emphasis on Low Roof Panel"
 					></ItemImage>
 					<DescriptionPriceContainer>
 						<ItemDescription>
-							<ItemTitleh3>Gabel Low Roof Panel</ItemTitleh3>
+							<ItemTitleh3>Gable Low Roof Panel</ItemTitleh3>
 							<StandardTextP>Standard 18x14 Screen</StandardTextP>
 							<ItemAlsoAvailableDiv>
 								<span style={{ fontWeight: "bold" }}>* Available:</span>
@@ -393,14 +375,12 @@ const GabelShop = props => {
 			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
 				<ItemContainer>
 					<ItemImage
-						style={{
-							background: `url(${RoofPanel2}) center center no-repeat`,
-							backgroundSize: "cover",
-						}}
+						src={RoofPanel2}
+						alt="Gable Pool Cage with Emphasis on High Roof Panel"
 					></ItemImage>
 					<DescriptionPriceContainer>
 						<ItemDescription>
-							<ItemTitleh3>Gabel High Roof Panel</ItemTitleh3>
+							<ItemTitleh3>Gable High Roof Panel</ItemTitleh3>
 							<StandardTextP>Standard 18x14 Screen</StandardTextP>
 							<ItemAlsoAvailableDiv>
 								<span style={{ fontWeight: "bold" }}>* Available:</span>

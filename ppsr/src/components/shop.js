@@ -65,7 +65,7 @@ const ShopPage = props => {
 								setDomeCage(false);
 							}}
 						>
-							<CageNameSpan>Gabel Cage</CageNameSpan>
+							<CageNameSpan>Gable Cage</CageNameSpan>
 						</CageSelectionSpan>
 					</div>
 					<div style={{ display: domeCage ? "block" : "none" }}>

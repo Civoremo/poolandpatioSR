@@ -9,7 +9,7 @@ const Financing = props => {
 	const { lgFinancing, toggleFinanceModal } = props;
 
 	return (
-		<Modal size="lg" show={lgFinancing} onHide={() => toggleFinanceModal()} centered>
+		<Modal size="lg" show={lgFinancing} onHide={() => toggleFinanceModal()} scrollable="true">
 			<Modal.Header closeButton>
 				<Modal.Title
 					id="example-modal-sizes-title-sm"

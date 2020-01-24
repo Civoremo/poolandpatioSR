@@ -90,7 +90,7 @@ const ServicesPage = props => {
               <Card.Body>
                 <CardContentDiv>
                   <CardContentImageDiv>
-                    <img src={fullBeforeAfterImage} alt='Full Before and After' style={{width: '300px', height: 'auto'}} />
+                    <img src={fullBeforeAfterImage} alt='PPSR Full Pool Rescreen Before and After' style={{width: '300px', height: 'auto'}} />
                   </CardContentImageDiv>
                   <CardContentTextDiv>
                     <p>
@@ -120,7 +120,7 @@ const ServicesPage = props => {
               <Card.Body>
                 <CardContentDiv>
                   <CardContentImageDiv>
-                    <img src={individualPanelsImage} alt='Individual Panels' style={{width: '300px', height: 'auto'}} />
+                    <img src={individualPanelsImage} alt='PPSR Individual Panels Rescreen' style={{width: '300px', height: 'auto'}} />
                   </CardContentImageDiv>
                   <CardContentTextDiv>
                     <p>
@@ -147,7 +147,7 @@ const ServicesPage = props => {
               <Card.Body>
                 <CardContentDiv>
                   <CardContentImageDiv>
-                    <img src={floridaGlassImage} alt='Florida Glass' style={{width: '300px', height: 'auto'}} />
+                    <img src={floridaGlassImage} alt='PPSR Florida Glass Rescreen' style={{width: '300px', height: 'auto'}} />
                   </CardContentImageDiv>
                   <CardContentTextDiv>
                     <p>
@@ -174,7 +174,7 @@ const ServicesPage = props => {
               <Card.Body>
                 <CardContentDiv>
                   <CardContentImageDiv>
-                    <img src={petScreenImage} alt='Pet Screen' style={{width: '300px', height: 'auto'}} />
+                    <img src={petScreenImage} alt='PPSR Pet Screen Rescreen' style={{width: '300px', height: 'auto'}} />
                   </CardContentImageDiv>
                   <CardContentTextDiv>
                     <p>
@@ -201,7 +201,7 @@ const ServicesPage = props => {
               <Card.Body>
                 <CardContentDiv>
                   <CardContentImageDiv>
-                    <img src={frameInImage} alt='Frame In' style={{width: '300px', height: 'auto'}} />
+                    <img src={frameInImage} alt='PPSR Frame In and Rescreen' style={{width: '300px', height: 'auto'}} />
                   </CardContentImageDiv>
                   <CardContentTextDiv>
                     <p>
@@ -228,7 +228,7 @@ const ServicesPage = props => {
               <Card.Body>
                 <CardContentDiv>
                   <CardContentImageDiv>
-                    <img src={doorHardware} alt='Frame In' style={{width: '300px', height: 'auto'}} />
+                    <img src={doorHardware} alt='PPSR Patio Door Replacement Hardware' style={{width: '300px', height: 'auto'}} />
                   </CardContentImageDiv>
                   <CardContentTextDiv>
                     <p>
@@ -255,7 +255,7 @@ const ServicesPage = props => {
               <Card.Body>
                 <CardContentDiv>
                   <CardContentImageDiv>
-                    <img src={petDoor} alt='Frame In' style={{width: '300px', height: 'auto'}} />
+                    <img src={petDoor} alt='PPSR Patio Pet Door Installation' style={{width: '300px', height: 'auto'}} />
                   </CardContentImageDiv>
                   <CardContentTextDiv>
                     <p>
@@ -282,7 +282,7 @@ const ServicesPage = props => {
               <Card.Body>
                 <CardContentDiv>
                   <CardContentImageDiv>
-                    <img src={hurricaneCable} alt='Frame In' style={{width: '300px', height: 'auto'}} />
+                    <img src={hurricaneCable} alt='PPSR Pool Enclosure Hurricane Wire Replacement' style={{width: '300px', height: 'auto'}} />
                   </CardContentImageDiv>
                   <CardContentTextDiv>
                     <p>
@@ -309,7 +309,7 @@ const ServicesPage = props => {
               <Card.Body>
                 <CardContentDiv>
                   <CardContentImageDiv>
-                    <img src={tapcons} alt='Frame In' style={{width: '300px', height: 'auto'}} />
+                    <img src={tapcons} alt='PPSR Pool Enclosure Screw Replacement' style={{width: '300px', height: 'auto'}} />
                   </CardContentImageDiv>
                   <CardContentTextDiv>
                     <p>
@@ -336,7 +336,7 @@ const ServicesPage = props => {
               <Card.Body>
                 <CardContentDiv>
                   <CardContentImageDiv>
-                    <img src={pressureWashing} alt='Frame In' style={{width: '300px', height: 'auto'}} />
+                    <img src={pressureWashing} alt='PPSR Pressure Washing Services' style={{width: '300px', height: 'auto'}} />
                   </CardContentImageDiv>
                   <CardContentTextDiv>
                     <p>We offer a wide variety of pressure washing services: </p>
@@ -369,7 +369,7 @@ const ServicesPage = props => {
               <Card.Body>
                 <CardContentDiv>
                   <CardContentImageDiv>
-                    <img src={gutterCleaning} alt='Frame In' style={{width: '300px', height: 'auto'}} />
+                    <img src={gutterCleaning} alt='PPSR Gutter Cleaning Services' style={{width: '300px', height: 'auto'}} />
                   </CardContentImageDiv>
                   <CardContentTextDiv>
                     <p>

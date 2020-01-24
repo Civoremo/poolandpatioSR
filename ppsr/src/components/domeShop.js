@@ -21,7 +21,7 @@ const ItemContainer = styled.div`
 	}
 `;
 
-const ItemImage = styled.div`
+const ItemImage = styled.img`
 	/* border: 1px solid blue; */
 	width: 30%;
 	height: 150px;
@@ -144,12 +144,7 @@ const DomeShop = props => {
 			{/* Door Panel */}
 			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
 				<ItemContainer>
-					<ItemImage
-						style={{
-							background: `url(${DoorPanel}) center center no-repeat`,
-							backgroundSize: "cover",
-						}}
-					></ItemImage>
+					<ItemImage src={DoorPanel} alt="Dome Pool Cage with Emphasis On Door Panel"></ItemImage>
 					<DescriptionPriceContainer>
 						<ItemDescription>
 							<ItemTitleh3>Dome Door Panel</ItemTitleh3>
@@ -186,10 +181,8 @@ const DomeShop = props => {
 			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
 				<ItemContainer>
 					<ItemImage
-						style={{
-							background: `url(${BottomPanel}) center center no-repeat`,
-							backgroundSize: "cover",
-						}}
+						src={BottomPanel}
+						alt="Dome Pool Cage with Emphasis on Bottom Panel"
 					></ItemImage>
 					<DescriptionPriceContainer>
 						<ItemDescription>
@@ -226,12 +219,7 @@ const DomeShop = props => {
 			{/* Side Panel */}
 			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
 				<ItemContainer>
-					<ItemImage
-						style={{
-							background: `url(${SidePanel}) center center no-repeat`,
-							backgroundSize: "cover",
-						}}
-					></ItemImage>
+					<ItemImage src={SidePanel} alt="Dome Pool Cage with Emphasis on Side Panel"></ItemImage>
 					<DescriptionPriceContainer>
 						<ItemDescription>
 							<ItemTitleh3>Dome Side Panel</ItemTitleh3>
@@ -267,12 +255,7 @@ const DomeShop = props => {
 			{/* Riser Panel */}
 			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
 				<ItemContainer>
-					<ItemImage
-						style={{
-							background: `url(${RiserPanel}) center center no-repeat`,
-							backgroundSize: "cover",
-						}}
-					></ItemImage>
+					<ItemImage src={RiserPanel} alt="Dome Pool Cage with Emphasis on Riser Panel"></ItemImage>
 					<DescriptionPriceContainer>
 						<ItemDescription>
 							<ItemTitleh3>Dome Riser Panel</ItemTitleh3>
@@ -308,12 +291,7 @@ const DomeShop = props => {
 			{/* Roof Panel */}
 			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
 				<ItemContainer>
-					<ItemImage
-						style={{
-							background: `url(${RoofPanel}) center center no-repeat`,
-							backgroundSize: "cover",
-						}}
-					></ItemImage>
+					<ItemImage src={RoofPanel} alt="Dome Pool Cage with Emphasis on Roof Panel"></ItemImage>
 					<DescriptionPriceContainer>
 						<ItemDescription>
 							<ItemTitleh3>Dome Roof Panel</ItemTitleh3>

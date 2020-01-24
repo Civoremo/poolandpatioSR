@@ -292,7 +292,7 @@ const ContactForm = props => {
       <Container>
 
         <div style={{fontSize: '2rem', marginBottom: '15px'}}>
-          <span style={{paddingLeft: '20px', fontFamily: 'Raleway'}}>Contact Us</span>
+          <h2 style={{paddingLeft: '20px', fontFamily: 'Raleway'}}>Contact Us</h2>
           <div style={{borderBottom: '2px solid #DFDFDF', width: '100%', marginBottom: '30px'}} />
         </div>
         <div style={{marginBottom: '50px'}}>
@@ -307,7 +307,7 @@ const ContactForm = props => {
         <FormContainer>
           <FormInputContainer method='post' action='submit'>
 
-            <div style={{fontWeight: 'bold'}}>Contact Info</div>
+            <h3 style={{fontWeight: 'bold', fontSize: '1.1rem'}}>Contact Info</h3>
 
             <InputFieldContainer>
               <InputDiv>
@@ -427,7 +427,7 @@ const ContactForm = props => {
               </InputDiv>
             </InputFieldContainer>
             
-            <div style={{fontWeight: 'bold'}}>Select Services</div>
+            <h3 style={{fontWeight: 'bold', fontSize: '1.1rem'}}>Select Services</h3>
 
             <CheckboxContainer>
               <CheckboxDiv>
@@ -519,7 +519,7 @@ const ContactForm = props => {
               </CheckboxDiv>
             </CheckboxContainer>
 
-            <div style={{fontWeight: 'bold'}}>Message</div>
+            <h3 style={{fontWeight: 'bold', fontSize: '1.1rem'}}>Message</h3>
 
             <MessageInputContainer>
               <textarea
@@ -595,9 +595,9 @@ const ContactForm = props => {
           <HoursOfOperationDiv>
             <div style={{marginBottom: '20px'}}>
               <div style={{borderBottom: '1px solid #A9A9A9', marginBottom: '15px'}}>
-                <span style={{fontWeight: 'bold'}}>
+                <h2 style={{fontWeight: 'bold', fontSize: '1.1rem'}}>
                   Business Hours
-                </span>
+                </h2>
               </div>
               <div style={{minWidth: '250px'}}>
                 <div style={{display: 'flex', justifyContent: 'space-between'}}>

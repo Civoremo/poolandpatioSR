@@ -420,7 +420,7 @@ const SignIn = props => {
 						<LinkDivContainer>
 							<LinkSignUpDiv showing={isSelected}>
 								<a
-									href="#show"
+									href="#signup"
 									style={{ textDecoration: "none" }}
 									onClick={() => (!isSelected ? toggleSignInLinks() : "")}
 								>
@@ -429,7 +429,7 @@ const SignIn = props => {
 							</LinkSignUpDiv>
 							<LinkLoginDiv showing={!isSelected}>
 								<a
-									href="#hide"
+									href="#login"
 									style={{ textDecoration: "none" }}
 									onClick={() => (isSelected ? toggleSignInLinks() : "")}
 								>

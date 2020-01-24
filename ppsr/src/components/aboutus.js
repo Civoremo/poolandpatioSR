@@ -7,7 +7,7 @@ const AboutUs = () => {
 		<section id="about" style={{ padding: "40px 0" }}>
 			<Container>
 				<div style={{ fontSize: "2rem", marginBottom: "15px" }}>
-					<span style={{ paddingLeft: "20px", fontFamily: "Raleway" }}>About Us</span>
+					<h2 style={{ paddingLeft: "20px", fontFamily: "Raleway" }}>About Us</h2>
 					<div style={{ borderBottom: "2px solid #DFDFDF", width: "100%" }} />
 				</div>
 				<div>

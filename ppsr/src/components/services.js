@@ -63,7 +63,7 @@ const ServicesPage = props => {
 
       <Container>
         <div style={{fontSize: '2rem', marginBottom: '15px'}}>
-          <span style={{paddingLeft: '20px', fontFamily: 'Raleway'}}>Services</span>
+          <h2 style={{paddingLeft: '20px', fontFamily: 'Raleway'}}>Services</h2>
           <div style={{borderBottom: '2px solid #DFDFDF', width: '100%'}} />
         </div>
         <div>

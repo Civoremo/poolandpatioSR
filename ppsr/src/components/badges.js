@@ -70,43 +70,43 @@ const Badges = props => {
 						}}
 					>
 						<a
-							href="http://www.homeadvisor.com/rated.PoolPatioScreenRepair.52286437.html"
+							href="https://www.homeadvisor.com/rated.PoolPatioScreenRepair.52286437.html"
 							style={{ display: "block", margin: "0 auto" }}
 						>
 							<img
 								alt="HomeAdvisor Screened Pro"
 								style={{ display: "block", width: "90px" }}
-								src="http://www.homeadvisor.com/images/sp-badges/soap-solid-border.png?sp=52286437&key=e44235517ac1e785d1c17c477b5bfd2c"
+								src="https://www.homeadvisor.com/images/sp-badges/soap-solid-border.png?sp=52286437&key=e44235517ac1e785d1c17c477b5bfd2c"
 							/>
 						</a>
 						<a
-							href="http://www.homeadvisor.com/c.Swimming-Pools.Orlando.FL.-12070.html#spid=52286437"
+							href="https://www.homeadvisor.com/c.Swimming-Pools.Orlando.FL.-12070.html#spid=52286437"
 							style={{ display: "block", margin: "0 auto" }}
 						>
 							<img
 								alt="HomeAdvisor Top Rated Service"
 								style={{ display: "block", width: "75px" }}
-								src="http://www.homeadvisor.com/images/sp-badges/toprated-solid-border.png?sp=52286437&key=e44235517ac1e785d1c17c477b5bfd2c"
+								src="https://www.homeadvisor.com/images/sp-badges/toprated-solid-border.png?sp=52286437&key=e44235517ac1e785d1c17c477b5bfd2c"
 							/>
 						</a>
 						<a
-							href="http://www.homeadvisor.com/c.Swimming-Pools.Orlando.FL.-12070.html#spid=52286437"
+							href="https://www.homeadvisor.com/c.Swimming-Pools.Orlando.FL.-12070.html#spid=52286437"
 							style={{ display: "block", margin: "0 auto" }}
 						>
 							<img
 								alt="HomeAdvisor Elite Service Award - Pool & Patio Screen Repair"
 								style={{ display: "block", width: "75px" }}
-								src="http://www.homeadvisor.com/images/sp-badges/elite-solid-border.png?sp=52286437&key=e44235517ac1e785d1c17c477b5bfd2c"
+								src="https://www.homeadvisor.com/images/sp-badges/elite-solid-border.png?sp=52286437&key=e44235517ac1e785d1c17c477b5bfd2c"
 							/>
 						</a>
 						<a
-							href="http://www.homeadvisor.com/rated.PoolPatioScreenRepair.52286437.html"
+							href="https://www.homeadvisor.com/rated.PoolPatioScreenRepair.52286437.html"
 							style={{ display: "block", margin: "0 auto" }}
 						>
 							<img
 								alt="Screened & Approved HomeAdvisor Pro"
 								style={{ display: "block", width: "75px" }}
-								src="http://www.homeadvisor.com/images/sp-badges/3year-solid-border.png?sp=52286437&key=e44235517ac1e785d1c17c477b5bfd2c"
+								src="https://www.homeadvisor.com/images/sp-badges/3year-solid-border.png?sp=52286437&key=e44235517ac1e785d1c17c477b5bfd2c"
 							/>
 						</a>
 					</div>

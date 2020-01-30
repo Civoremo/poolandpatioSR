@@ -88,7 +88,6 @@ class App extends Component {
 		axios
 			.get(URL)
 			.then(res => {
-				// console.log(res);
 				this.setState({
 					imageArray: res.data.resources,
 				});
@@ -119,7 +118,7 @@ class App extends Component {
 		this.setState({
 			[event.target.name]: event.target.value,
 		});
-		console.log(event.target.name + ` - ${event.target.value}`);
+		// console.log(event.target.name + ` - ${event.target.value}`);
 	};
 
 	toggleSignInLinks = event => {
@@ -166,12 +165,12 @@ class App extends Component {
 	};
 
 	handleCheckboxChange = (event, name) => {
-		console.log("Name " + event.target.name);
-		console.log("Value " + event.target.checked);
+		// console.log("Name " + event.target.name);
+		// console.log("Value " + event.target.checked);
 
 		this.setState(prevState => {
 			let tempServices = { ...prevState.senderServices };
-			console.table("PREV " + prevState.senderServices[name]);
+			// console.table("PREV " + prevState.senderServices[name]);
 
 			if (name === "complete") {
 				tempServices[name] = !prevState.senderServices[name];
@@ -190,7 +189,7 @@ class App extends Component {
 			} else if (name === "misc") {
 				tempServices[name] = !prevState.senderServices[name];
 			} else {
-				console.log("lets figure this out");
+				console.log("error in service selection");
 			}
 
 			return { senderServices: tempServices };
@@ -297,8 +296,8 @@ class App extends Component {
 	};
 
 	onVerify = recaptchaResponse => {
-		let reResponse = `${document.querySelector("#g-recaptcha-response").value}`;
-		console.log(reResponse);
+		// let reResponse = `${document.querySelector("#g-recaptcha-response").value}`;
+		// console.log(reResponse);
 
 		// axios({
 		// 	method: "post",
@@ -334,7 +333,7 @@ class App extends Component {
 			}),
 		})
 			.then(res => {
-				console.log("recaptcha res: " + JSON.stringify(res));
+				// console.log("recaptcha res: " + JSON.stringify(res));
 				this.setState({
 					verified: true,
 				});
@@ -345,8 +344,8 @@ class App extends Component {
 	};
 
 	validateUpdateInfo = event => {
-		console.log(this.state.senderFirstName);
-		console.log(this.state.senderLastName);
+		// console.log(this.state.senderFirstName);
+		// console.log(this.state.senderLastName);
 		if (!this.state.senderFirstName || this.state.senderFirstName.length < 2) {
 			this.setState({
 				senderFirstName: JSON.parse(localStorage.getItem("ppsr_user")),

@@ -35,7 +35,7 @@ const SignUp = props => {
 		//   verified,
 		//   onVerify
 		signupErrors,
-		registrationError,
+		// registrationError,
 	} = props;
 
 	return (
@@ -51,7 +51,7 @@ const SignUp = props => {
 				// minHeight: "450px",
 			}}
 		>
-			{console.log("registration error: ", registrationError)}
+			{/* {console.log("registration error: ", registrationError)} */}
 			<InputField
 				type="text"
 				name="senderFirstName"

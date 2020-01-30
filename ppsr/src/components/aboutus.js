@@ -36,12 +36,12 @@ const AboutUs = () => {
 						Pool & Patio Screen Repair is a local family business with many years of experience
 						serving Orlando and surrounding area. Our company was founded on the most important
 						principles: being honest with the customer, educating the customer & giving them the
-						most for their money. We achieve this by providing a quality install while installing a
-						quality product. We have learned the trade from our father at an early age and went on
-						to form the current company. Our company has grown, but the install process hasn't
-						changed. As always, we only use top rated products with skilled professionals that
-						maintain the values of the operation for the beginning to the end, under the active
-						involvement of owner.
+						most for their money. We achieve this by providing a quality install while installing
+						the best quality material. We have learned the trade from our father at an early age and
+						went on to form the current company. Our company has grown, but the install process
+						hasn't changed. As always, we only use top rated products with skilled professionals
+						that maintain the values of the company from the beginning to the end, under the active
+						involvement of the owner.
 					</p>
 					<p>
 						We take great pride in providing quality work at competitive prices. We show up on time

@@ -232,9 +232,9 @@ const ContactForm = props => {
       return
     }
 
-    console.log('click button: ' + dataRequesting)
+    // console.log('click button: ' + dataRequesting)
     setDataRequesting(true);
-    console.log('before send: ' + dataRequesting)
+    // console.log('before send: ' + dataRequesting)
 
     let templateParams = {
       from_name: senderFirstName + ' ' + senderLastName + ' ( ' + senderEmail + ' ) ',
@@ -269,18 +269,18 @@ const ContactForm = props => {
 
     emailjs.send(process.env.REACT_APP_EMAILJS_SERVICEID, process.env.REACT_APP_EMAILJS_TEMPLATE, templateParams, process.env.REACT_APP_EMAILJS_USER)
       .then(response => {
-        console.log(response)
+        // console.log(response)
         setDataRequesting(false);
         setSendMessageResponse('Successful')
-        console.log('after send: ' + dataRequesting)
+        // console.log('after send: ' + dataRequesting)
         // alert("Message send successfully.")
         clearInputs();
       })
       .catch(error => {
-        console.log(error)
+        // console.log(error)
         setDataRequesting(false);
         setSendMessageResponse('Failed, try again')
-        console.log('after send: ' + dataRequesting)
+        // console.log('after send: ' + dataRequesting)
         // alert("Message failed, try again.")
       })
   }
@@ -288,7 +288,7 @@ const ContactForm = props => {
 
   return (
     <div className='contact' style={{padding: '40px 0'}}>
-    {console.log(dataRequesting)}
+    {/* {console.log(dataRequesting)} */}
       <Container>
 
         <div style={{fontSize: '2rem', marginBottom: '15px'}}>
@@ -656,7 +656,7 @@ const ContactForm = props => {
 
                 <iframe src="https://www.homeadvisor.com/ratings/embed/iframe/52286437/?orientation=vertical&reviewSort=highest" title='Home Advisor Reviews' style={{width: '100%', height: '607px', background: 'transparent'}} frameBorder="0" scrolling="no"></iframe>
 
-                <a href="http://www.homeadvisor.com/rated.PoolPatioScreenRepair.52286437.html" style={{color: '#5486a3', fontSize: '11px', fontFamily: 'helvetica, arial, san-serif', textAalign: 'center', textDecoration: 'none'}}>See More Reviews on HomeAdvisor</a>
+                <a href="https://www.homeadvisor.com/rated.PoolPatioScreenRepair.52286437.html" style={{color: '#5486a3', fontSize: '11px', fontFamily: 'helvetica, arial, san-serif', textAalign: 'center', textDecoration: 'none'}}>See More Reviews on HomeAdvisor</a>
               </div>
             </div>
 

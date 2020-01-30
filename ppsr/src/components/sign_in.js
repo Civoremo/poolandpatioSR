@@ -238,7 +238,7 @@ const SignIn = props => {
 		setRegistrationError("");
 		setLoginError(false);
 
-		console.log("firstname " + senderFirstName.toLowerCase());
+		// console.log("firstname " + senderFirstName.toLowerCase());
 
 		if (isSelected) {
 			if (!validateSignupInfo()) {
@@ -262,14 +262,14 @@ const SignIn = props => {
 				responseType: "json",
 			})
 				.then(response => {
-					console.log("isSelected: " + isSelected);
+					// console.log("isSelected: " + isSelected);
 					// console.log('register response: ' + response.data);
-					console.log("register response: " + JSON.stringify(response.data));
+					// console.log("register response: " + JSON.stringify(response.data));
 					setSigninDataRequesting(false);
 					// clearSigninInputs();
-					console.log(JSON.stringify(response.data.registered));
+					// console.log(JSON.stringify(response.data.registered));
 					if (JSON.stringify(response.data.registered) === "2") {
-						console.log("EMAIL ALREADY EXISTS");
+						// console.log("EMAIL ALREADY EXISTS");
 						setRegistrationError(JSON.stringify(response.data.message));
 					} else {
 						clearInputs();
@@ -280,13 +280,13 @@ const SignIn = props => {
 					}
 				})
 				.catch(err => {
-					console.log("isSelected: " + isSelected);
+					// console.log("isSelected: " + isSelected);
 					// console.log('register error: ' + JSON.stringify(err));
-					console.log("register error: " + JSON.stringify(err));
+					// console.log("register error: " + JSON.stringify(err));
 					setSigninDataRequesting(false);
 				});
 		} else {
-			console.log("confirmation: " + confirmationKey);
+			// console.log("confirmation: " + confirmationKey);
 			if (confirmationKey.length === 0) {
 				if (!validateLoginInfo()) {
 					return;
@@ -306,13 +306,13 @@ const SignIn = props => {
 					responseType: "json",
 				})
 					.then(response => {
-						console.log("isSelected: " + isSelected);
-						console.log("login response1: " + JSON.stringify(response.data.confirmation));
-						console.log("login response1: " + JSON.stringify(response.data.alert));
-						console.log("login response1: " + JSON.stringify(response.data.message));
+						// console.log("isSelected: " + isSelected);
+						// console.log("login response1: " + JSON.stringify(response.data.confirmation));
+						// console.log("login response1: " + JSON.stringify(response.data.alert));
+						// console.log("login response1: " + JSON.stringify(response.data.message));
 
 						if (JSON.stringify(response.data.confirmation) === "1") {
-							console.log("resent confirmation key email");
+							// console.log("resent confirmation key email");
 							setSigninDataRequesting(false);
 							setConfirmedUser(true);
 							setregistrationConfirmedMessage(JSON.stringify(response.data.message));
@@ -320,8 +320,8 @@ const SignIn = props => {
 							setLoginError(true);
 							// confirmedUser(true);
 						} else if (response.data.login === 4) {
-							console.log("error finding the email provided");
-							console.log(response.data.login);
+							// console.log("error finding the email provided");
+							// console.log(response.data.login);
 							setRegistrationError(JSON.stringify(response.data.message));
 							setSigninDataRequesting(false);
 							setLoginError(true);
@@ -339,8 +339,8 @@ const SignIn = props => {
 						}
 					})
 					.catch(err => {
-						console.log("isSelected: " + isSelected);
-						console.log("login error1: " + JSON.stringify(err));
+						// console.log("isSelected: " + isSelected);
+						// console.log("login error1: " + JSON.stringify(err));
 						setConfirmedUser(true);
 						setSigninDataRequesting(false);
 					});
@@ -361,8 +361,8 @@ const SignIn = props => {
 					},
 				})
 					.then(response => {
-						console.log("isSelected: " + isSelected);
-						console.log("confirm response: " + JSON.stringify(response.data));
+						// console.log("isSelected: " + isSelected);
+						// console.log("confirm response: " + JSON.stringify(response.data));
 						axios({
 							method: "post",
 							url: `${URL}/users/login`,
@@ -374,8 +374,8 @@ const SignIn = props => {
 							responseType: "json",
 						})
 							.then(response => {
-								console.log("isSelected: " + isSelected);
-								console.log("login response2: " + JSON.stringify(response.data));
+								// console.log("isSelected: " + isSelected);
+								// console.log("login response2: " + JSON.stringify(response.data));
 								localStorage.setItem("ppsr", JSON.stringify(response.data.token));
 								localStorage.setItem("ppsr_user", JSON.stringify(response.data.user.firstName));
 								localStorage.setItem("lName", JSON.stringify(response.data.user.lastName));
@@ -387,14 +387,14 @@ const SignIn = props => {
 								clearInputs();
 							})
 							.catch(err => {
-								console.log("isSelected: " + isSelected);
-								console.log("login error2: " + JSON.stringify(err));
+								// console.log("isSelected: " + isSelected);
+								// console.log("login error2: " + JSON.stringify(err));
 								setSigninDataRequesting(false);
 							});
 					})
 					.catch(err => {
-						console.log("isSelected: " + isSelected);
-						console.log("confirm error: " + JSON.stringify(err));
+						// console.log("isSelected: " + isSelected);
+						// console.log("confirm error: " + JSON.stringify(err));
 						setSigninDataRequesting(false);
 					});
 			}

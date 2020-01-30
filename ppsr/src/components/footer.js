@@ -64,7 +64,7 @@ const Footer = props => {
 						All rights reserved Pool & Patio Screen Repair, Inc.
 					</div>
 					<div style={{ fontSize: ".8rem", textAlign: "center" }}>
-						Copyright © 2013-{currentYear.getFullYear()}.
+						Copyright © 2012-{currentYear.getFullYear()}.
 					</div>
 				</div>
 			</Container>

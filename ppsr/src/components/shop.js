@@ -74,6 +74,10 @@ const ShopPage = props => {
 					<div style={{ display: gabelCage ? "block" : "none" }}>
 						<GabelShop setSignIn={setSignIn} />
 					</div>
+					<div style={{ textAlign: "center", fontSize: ".7rem" }}>
+						Prices displayed are per panel and for one story enclosures only! Call for pricing on
+						taller enclosures. Prices subject to change without notice.
+					</div>
 				</Modal.Body>
 			</Modal>
 		</div>

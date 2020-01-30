@@ -156,17 +156,17 @@ const GabelShop = props => {
 								<span>TuffScreen</span>
 								<span>Florida Glass</span>
 								<span>NoSeemUms Screen</span>
-								<span>Solar Screen</span>
+								<span>Pet Screen</span>
 							</ItemAlsoAvailableDiv>
 						</ItemDescription>
 						<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>
-							<ItemTitleh3>Price/s</ItemTitleh3>
-							<div>Standard - $49.99</div>
+							<ItemTitleh3>Price</ItemTitleh3>
+							<div>Standard - $30</div>
 							<AlsoAvailableItemPriceDiv>
-								<span>TuffScreen - $69.99</span>
-								<span>Florida Glass - $69.99</span>
-								<span>NoSeemUms - $59.99</span>
-								<span>Solar Screen - $79.99</span>
+								<span>TuffScreen - $60</span>
+								<span>Florida Glass - $60</span>
+								<span>NoSeemUms - $55</span>
+								<span>Pet Screen - $75</span>
 							</AlsoAvailableItemPriceDiv>
 						</ItemPriceDiv>
 						<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
@@ -195,17 +195,17 @@ const GabelShop = props => {
 								<span>TuffScreen</span>
 								<span>Florida Glass</span>
 								<span>NoSeemUms Screen</span>
-								<span>Solar Screen</span>
+								<span>Pet Screen</span>
 							</ItemAlsoAvailableDiv>
 						</ItemDescription>
 						<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>
-							<ItemTitleh3>Price/s</ItemTitleh3>
-							<div>Standard - $49.99</div>
+							<ItemTitleh3>Price</ItemTitleh3>
+							<div>Standard - $40</div>
 							<AlsoAvailableItemPriceDiv>
-								<span>TuffScreen - $69.99</span>
-								<span>Florida Glass - $69.99</span>
-								<span>NoSeemUms - $59.99</span>
-								<span>Solar Screen - $79.99</span>
+								<span>TuffScreen - $70</span>
+								<span>Florida Glass - $70</span>
+								<span>NoSeemUms - $65</span>
+								<span>Pet Screen - $85</span>
 							</AlsoAvailableItemPriceDiv>
 						</ItemPriceDiv>
 						<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
@@ -231,17 +231,15 @@ const GabelShop = props => {
 								<span>TuffScreen</span>
 								<span>Florida Glass</span>
 								<span>NoSeemUms Screen</span>
-								<span>Solar Screen</span>
 							</ItemAlsoAvailableDiv>
 						</ItemDescription>
 						<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>
-							<ItemTitleh3>Price/s</ItemTitleh3>
-							<div>Standard - $49.99</div>
+							<ItemTitleh3>Price</ItemTitleh3>
+							<div>Standard - $50</div>
 							<AlsoAvailableItemPriceDiv>
-								<span>TuffScreen - $69.99</span>
-								<span>Florida Glass - $69.99</span>
-								<span>NoSeemUms - $59.99</span>
-								<span>Solar Screen - $79.99</span>
+								<span>TuffScreen - $80</span>
+								<span>Florida Glass - $80</span>
+								<span>NoSeemUms - $75</span>
 							</AlsoAvailableItemPriceDiv>
 						</ItemPriceDiv>
 						<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
@@ -268,19 +266,15 @@ const GabelShop = props => {
 							<ItemAlsoAvailableDiv>
 								<span style={{ fontWeight: "bold" }}>* Available:</span>
 								<span>TuffScreen</span>
-								<span>Florida Glass</span>
 								<span>NoSeemUms Screen</span>
-								<span>Solar Screen</span>
 							</ItemAlsoAvailableDiv>
 						</ItemDescription>
 						<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>
-							<ItemTitleh3>Price/s</ItemTitleh3>
-							<div>Standard - $49.99</div>
+							<ItemTitleh3>Price</ItemTitleh3>
+							<div>Standard - $60</div>
 							<AlsoAvailableItemPriceDiv>
-								<span>TuffScreen - $69.99</span>
-								<span>Florida Glass - $69.99</span>
-								<span>NoSeemUms - $59.99</span>
-								<span>Solar Screen - $79.99</span>
+								<span>TuffScreen - $90</span>
+								<span>NoSeemUms - $85</span>
 							</AlsoAvailableItemPriceDiv>
 						</ItemPriceDiv>
 						<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
@@ -307,19 +301,15 @@ const GabelShop = props => {
 							<ItemAlsoAvailableDiv>
 								<span style={{ fontWeight: "bold" }}>* Available:</span>
 								<span>TuffScreen</span>
-								<span>Florida Glass</span>
 								<span>NoSeemUms Screen</span>
-								<span>Solar Screen</span>
 							</ItemAlsoAvailableDiv>
 						</ItemDescription>
 						<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>
-							<ItemTitleh3>Price/s</ItemTitleh3>
-							<div>Standard - $49.99</div>
+							<ItemTitleh3>Price</ItemTitleh3>
+							<div>Standard - $75</div>
 							<AlsoAvailableItemPriceDiv>
-								<span>TuffScreen - $69.99</span>
-								<span>Florida Glass - $69.99</span>
-								<span>NoSeemUms - $59.99</span>
-								<span>Solar Screen - $79.99</span>
+								<span>TuffScreen - $105</span>
+								<span>NoSeemUms - $100</span>
 							</AlsoAvailableItemPriceDiv>
 						</ItemPriceDiv>
 						<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
@@ -346,19 +336,15 @@ const GabelShop = props => {
 							<ItemAlsoAvailableDiv>
 								<span style={{ fontWeight: "bold" }}>* Available:</span>
 								<span>TuffScreen</span>
-								<span>Florida Glass</span>
 								<span>NoSeemUms Screen</span>
-								<span>Solar Screen</span>
 							</ItemAlsoAvailableDiv>
 						</ItemDescription>
 						<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>
-							<ItemTitleh3>Price/s</ItemTitleh3>
-							<div>Standard - $49.99</div>
+							<ItemTitleh3>Price</ItemTitleh3>
+							<div>Standard - $70</div>
 							<AlsoAvailableItemPriceDiv>
-								<span>TuffScreen - $69.99</span>
-								<span>Florida Glass - $69.99</span>
-								<span>NoSeemUms - $59.99</span>
-								<span>Solar Screen - $79.99</span>
+								<span>TuffScreen - $100</span>
+								<span>NoSeemUms - $95</span>
 							</AlsoAvailableItemPriceDiv>
 						</ItemPriceDiv>
 						<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
@@ -385,19 +371,15 @@ const GabelShop = props => {
 							<ItemAlsoAvailableDiv>
 								<span style={{ fontWeight: "bold" }}>* Available:</span>
 								<span>TuffScreen</span>
-								<span>Florida Glass</span>
 								<span>NoSeemUms Screen</span>
-								<span>Solar Screen</span>
 							</ItemAlsoAvailableDiv>
 						</ItemDescription>
 						<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>
-							<ItemTitleh3>Price/s</ItemTitleh3>
-							<div>Standard - $49.99</div>
+							<ItemTitleh3>Price</ItemTitleh3>
+							<div>Standard - $80</div>
 							<AlsoAvailableItemPriceDiv>
-								<span>TuffScreen - $69.99</span>
-								<span>Florida Glass - $69.99</span>
-								<span>NoSeemUms - $59.99</span>
-								<span>Solar Screen - $79.99</span>
+								<span>TuffScreen - $110</span>
+								<span>NoSeemUms - $105</span>
 							</AlsoAvailableItemPriceDiv>
 						</ItemPriceDiv>
 						<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>

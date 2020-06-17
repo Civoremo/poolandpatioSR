@@ -71,7 +71,7 @@ const Header = props => {
 		let id = setInterval(() => {
 			let result = (order + 1) % 3;
 			setOrder(result);
-			console.log("result ", result);
+			// console.log("result ", result);
 			setHeaderText(result);
 		}, 4700);
 		return () => clearInterval(id);

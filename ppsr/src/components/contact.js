@@ -148,7 +148,8 @@ const ContactForm = props => {
     senderError, 
     insufficientInfo,
     verified,
-    onVerify
+    onVerify,
+    prefContact
   } = props;
 
   const validateEmail = () => {
@@ -203,6 +204,11 @@ const ContactForm = props => {
       formIsValid = false;
     }
 
+    if (prefContact.phone == false && prefContact.email == false) {
+      errors.preferredContact = "Missing contact method/s."
+      formIsValid = false;
+    }
+
     if (!senderMessage || senderMessage.length < 10) {
       errors.message = 'Not enough info.';
       errors.incomplete = 'Incomplete, check input fields and try again!';
@@ -243,8 +249,8 @@ const ContactForm = props => {
       subject: 'PPSR Contact Form',
       message_html:{ 
         customer: `Customer: ${senderFirstName} ${senderLastName}`,
-        phone: `Phone: ${senderPhone}`,
-        email: `Email: ${senderEmail}`,
+        phone: `${prefContact.phone}\tPhone: ${senderPhone}`,
+        email: `${prefContact.email}\tEmail: ${senderEmail}`,
         
         address: `Address:`,
         street: `${senderStreet}`,
@@ -288,7 +294,7 @@ const ContactForm = props => {
 
   return (
     <div className='contact' style={{padding: '40px 0'}}>
-    {console.log(dataRequesting)}
+    {console.log('data req ' + dataRequesting)}
       <Container>
 
         <div style={{fontSize: '2rem', marginBottom: '15px'}}>
@@ -426,6 +432,34 @@ const ContactForm = props => {
                 <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '20px', fontSize: '.8rem'}}></div>
               </InputDiv>
             </InputFieldContainer>
+
+            <h3 style={{fontWeight: 'bold', fontSize: '1.1rem'}}>Preferred Contact</h3>
+
+            <CheckboxContainer>
+              <CheckboxDiv>
+                <CheckboxInput
+                type='checkbox'
+                name='phone'
+                onChange={(event) => handleCheckboxChange(event, 'phone')}
+                value={prefContact.phone}
+                >
+                </CheckboxInput>
+                <label>Phone</label>
+              </CheckboxDiv>
+
+              <CheckboxDiv>
+                <CheckboxInput
+                  type="checkbox"
+                  name="email"
+                  onChange={(event) => handleCheckboxChange(event, 'email')}
+                  value={prefContact.email}
+                >                  
+                </CheckboxInput>
+                <label>Email</label>
+              </CheckboxDiv>
+              {console.log("PREF CONTACT " + prefContact.phone + '  ' + prefContact.email)}
+              <div className={insufficientInfo ? <DisplayErrorDiv /> : <HideErrorDiv />} style={{color: 'red', height: '20px', fontSize: '.8rem'}}>{senderError.preferredContact}</div>
+            </CheckboxContainer>
             
             <h3 style={{fontWeight: 'bold', fontSize: '1.1rem'}}>Select Services</h3>
 

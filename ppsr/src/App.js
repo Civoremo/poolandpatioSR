@@ -43,6 +43,10 @@ class App extends Component {
 			gutter: false,
 			misc: false,
 		},
+		preferredContact: {
+			phone: false,
+			email: false
+		},
 		senderMessage: "",
 		error: {
 			fName: "",
@@ -55,6 +59,7 @@ class App extends Component {
 			state: "",
 			zipcode: "",
 			incomplete: "",
+			preferredContact: ''
 		},
 		signupErrors: {
 			fName: "",
@@ -77,7 +82,7 @@ class App extends Component {
 			lName: "",
 		},
 		insufficientInfo: false,
-		verified: false,
+		verified: true,
 		isSelected: false,
 		lgFinancing: false,
 		lgShop: false,
@@ -96,6 +101,10 @@ class App extends Component {
 			.catch(err => {
 				console.log("ERROR --> " + err);
 			});
+	}
+
+	componentWillUnmount() {
+		localStorage.clear()
 	}
 
 	toggleFinanceModal = event => {
@@ -172,6 +181,8 @@ class App extends Component {
 		this.setState(prevState => {
 			let tempServices = { ...prevState.senderServices };
 			console.table("PREV " + prevState.senderServices[name]);
+			let tempPrefContact = { ...prevState.preferredContact };
+			console.table("prev Contact " + prevState.preferredContact[name])
 
 			if (name === "complete") {
 				tempServices[name] = !prevState.senderServices[name];
@@ -189,11 +200,18 @@ class App extends Component {
 				tempServices[name] = !prevState.senderServices[name];
 			} else if (name === "misc") {
 				tempServices[name] = !prevState.senderServices[name];
-			} else {
+			} 
+			else if (name === 'phone') {
+				tempPrefContact[name] = !prevState.preferredContact[name]
+			}
+			else if(name === 'email') {
+				tempPrefContact[name] = !prevState.preferredContact[name]
+			}
+			else {
 				console.log("lets figure this out");
 			}
 
-			return { senderServices: tempServices };
+			return { senderServices: tempServices, preferredContact: tempPrefContact };
 		});
 	};
 
@@ -436,6 +454,7 @@ class App extends Component {
 					insufficientInfo={this.state.insufficientInfo}
 					verified={this.state.verified}
 					onVerify={this.onVerify}
+					prefContact={this.state.preferredContact}
 				/>
 				<Footer />
 			</div>

@@ -1,30 +1,28 @@
-import React, { useState } from "react";
-import axios from "axios";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import Spinner from "react-bootstrap/Spinner";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import axios from 'axios';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
+import styled from 'styled-components';
 
-import SignUp from "./signup";
-import Login from "./login";
+import SignUp from './signup';
+import Login from './login';
 
-const SignUpInputForm = styled.form`
-	/* display: flex;
+const SignUpInputForm = styled.form`/* display: flex;
 	justify-items: space-between;
-	align-items: center; */
-`;
+	align-items: center; */`;
 
 const SignUpDiv = styled.div`
 	position: relative;
-	z-index: ${props => (props.showing ? "10" : "1")};
-	display: ${props => (props.showing ? "flex" : "none")};
+	z-index: ${(props) => (props.showing ? '10' : '1')};
+	display: ${(props) => (props.showing ? 'flex' : 'none')};
 	width: 100%;
 `;
 
 const LoginDiv = styled.div`
 	position: relative;
-	z-index: ${props => (!props.showing ? "10" : "1")};
-	display: ${props => (!props.showing ? "flex" : "none")};
+	z-index: ${(props) => (!props.showing ? '10' : '1')};
+	display: ${(props) => (!props.showing ? 'flex' : 'none')};
 	width: 100%;
 `;
 
@@ -35,9 +33,9 @@ const LinkDivContainer = styled.div`
 `;
 
 const LinkSignUpDiv = styled.div`
-	height: ${props => (props.showing ? "43px" : "40px")};
-	background-color: ${props => (props.showing ? "#fff" : "silver")};
-	border-left: ${props => (props.showing ? "2px" : "1px")} solid grey;
+	height: ${(props) => (props.showing ? '43px' : '40px')};
+	background-color: ${(props) => (props.showing ? '#fff' : 'silver')};
+	border-left: ${(props) => (props.showing ? '2px' : '1px')} solid grey;
 	border-top: 1px solid grey;
 	border-right: 1px solid grey;
 	border-top-left-radius: 5px;
@@ -47,15 +45,15 @@ const LinkSignUpDiv = styled.div`
 	display: flex;
 	justify-content: center;
 	padding-top: 10px;
-	z-index: ${props => (props.showing ? "20" : "1")};
-	border-bottom: ${props => (props.showing ? "0" : "2px")} solid grey;
-	margin-top: ${props => (props.showing ? "0" : "3px")};
+	z-index: ${(props) => (props.showing ? '20' : '1')};
+	border-bottom: ${(props) => (props.showing ? '0' : '2px')} solid grey;
+	margin-top: ${(props) => (props.showing ? '0' : '3px')};
 `;
 
 const LinkLoginDiv = styled.div`
-	height: ${props => (props.showing ? "43px" : "40px")};
-	background-color: ${props => (props.showing ? "#fff" : "silver")};
-	border-left: ${props => (props.showing ? "2px" : "1px")} solid grey;
+	height: ${(props) => (props.showing ? '43px' : '40px')};
+	background-color: ${(props) => (props.showing ? '#fff' : 'silver')};
+	border-left: ${(props) => (props.showing ? '2px' : '1px')} solid grey;
 	// border-left: 2px solid grey;
 	border-top: 1px solid grey;
 	border-right: 1px solid grey;
@@ -66,14 +64,14 @@ const LinkLoginDiv = styled.div`
 	display: flex;
 	justify-content: center;
 	padding-top: 10px;
-	z-index: ${props => (props.showing ? "20" : "1")};
-	border-bottom: ${props => (props.showing ? "0" : "2px")} solid grey;
-	margin-top: ${props => (props.showing ? "0" : "3px")};
+	z-index: ${(props) => (props.showing ? '20' : '1')};
+	border-bottom: ${(props) => (props.showing ? '0' : '2px')} solid grey;
+	margin-top: ${(props) => (props.showing ? '0' : '3px')};
 `;
 
 const LinkStyle = styled.span`
-	color: ${props => (props.showing ? "#222" : "#222")};
-	font-weight: ${props => (props.showing ? "bold" : "normal")};
+	color: ${(props) => (props.showing ? '#222' : '#222')};
+	font-weight: ${(props) => (props.showing ? 'bold' : 'normal')};
 `;
 
 const SignInContainer = styled.div`
@@ -88,16 +86,16 @@ const SignInContainer = styled.div`
 	top: -1px;
 `;
 
-const SignIn = props => {
+const SignIn = (props) => {
 	const { lgSignIn, setSignIn } = props;
-	const [signinDataRequesting, setSigninDataRequesting] = useState(false);
-	const [confirmedUser, setConfirmedUser] = useState(false);
-	const [registrationError, setRegistrationError] = useState("");
-	const [registrationConfirmedMessage, setregistrationConfirmedMessage] = useState("");
-	const [loginError, setLoginError] = useState(false);
+	const [ signinDataRequesting, setSigninDataRequesting ] = useState(false);
+	const [ confirmedUser, setConfirmedUser ] = useState(false);
+	const [ registrationError, setRegistrationError ] = useState('');
+	const [ registrationConfirmedMessage, setregistrationConfirmedMessage ] = useState('');
+	const [ loginError, setLoginError ] = useState(false);
 	// const [profileInfo, setProfileInfo] = useState({ firstName: "", lastName: "", userEmail: "" });
 
-	const URL = "https://ppsr-api.herokuapp.com";
+	const URL = process.env.REACT_APP_API_URL;
 	// const URL = "http://localhost:4000";
 
 	const {
@@ -133,7 +131,7 @@ const SignIn = props => {
 		signupErrors,
 		setSignupErrorMessages,
 		loginErrors,
-		setLoginErrorMessages,
+		setLoginErrorMessages
 		// setProfileErrorMessage,
 	} = props;
 
@@ -142,59 +140,59 @@ const SignIn = props => {
 		let formIsValid = true;
 
 		if (!senderFirstName || senderFirstName.length < 2) {
-			errors.fName = "Required!";
-			errors.incomplete = "Incomplete, check input fields and try again!";
+			errors.fName = 'Required!';
+			errors.incomplete = 'Incomplete, check input fields and try again!';
 			formIsValid = false;
 		}
 
 		if (!senderLastName || senderLastName.length < 2) {
-			errors.lName = "Required!";
-			errors.incomplete = "Incomplete, check input fields and try again!";
+			errors.lName = 'Required!';
+			errors.incomplete = 'Incomplete, check input fields and try again!';
 			formIsValid = false;
 		}
 
 		if (!senderEmail || senderEmail.length < 3) {
-			errors.email = "Not a valid email!";
-			errors.incomplete = "Incomplete, check input fields and try again!";
+			errors.email = 'Not a valid email!';
+			errors.incomplete = 'Incomplete, check input fields and try again!';
 			formIsValid = false;
 		}
 
 		if (!senderConfirmEmail || senderConfirmEmail.length < 3) {
-			errors.confirmEmail = "Not a valid email!";
-			errors.incomplete = "Incomplete, check input fields and try again!";
+			errors.confirmEmail = 'Not a valid email!';
+			errors.incomplete = 'Incomplete, check input fields and try again!';
 			formIsValid = false;
 		}
 
 		if (senderEmail !== senderConfirmEmail) {
-			errors.confirmEmail = "Does not match email!";
-			errors.incomplete = "Incomplete, check input fields and try again!";
+			errors.confirmEmail = 'Does not match email!';
+			errors.incomplete = 'Incomplete, check input fields and try again!';
 			formIsValid = false;
 		}
 
 		if (!credentials || credentials.length < 8) {
-			errors.credentials = "Must be at least 8 characters!";
-			errors.incomplete = "Incomplete, check input fields and try again!";
+			errors.credentials = 'Must be at least 8 characters!';
+			errors.incomplete = 'Incomplete, check input fields and try again!';
 			formIsValid = false;
 		}
 
 		if (!confirmCredentials || confirmCredentials.length < 8) {
-			errors.confirmCredentials = "Must be at least 8 characters!";
-			errors.incomplete = "Incomplete, check input fields and try again!";
+			errors.confirmCredentials = 'Must be at least 8 characters!';
+			errors.incomplete = 'Incomplete, check input fields and try again!';
 			formIsValid = false;
 		}
 
 		if (credentials !== confirmCredentials) {
-			errors.confirmCredentials = "Does not match password!";
-			errors.incomplete = "Incomplete, check input fields and try again!";
+			errors.confirmCredentials = 'Does not match password!';
+			errors.incomplete = 'Incomplete, check input fields and try again!';
 			formIsValid = false;
 		}
 
 		let pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
 		if (!pattern.test(senderEmail)) {
-			errors.email = "Not a valid email!";
+			errors.email = 'Not a valid email!';
 			// let pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-			errors.incomplete = "Incomplete, check input fields and try again!";
+			errors.incomplete = 'Incomplete, check input fields and try again!';
 			formIsValid = false;
 		}
 
@@ -209,21 +207,21 @@ const SignIn = props => {
 		let pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
 		if (!senderEmail) {
-			errors.email = "Required!";
-			errors.incomplete = "Incomplete, check input fields and try again!";
+			errors.email = 'Required!';
+			errors.incomplete = 'Incomplete, check input fields and try again!';
 			formIsValid = false;
 		}
 
 		if (!credentials) {
-			errors.credentials = "Required!";
-			errors.incomplete = "Incomplete, check input fields and try again!";
+			errors.credentials = 'Required!';
+			errors.incomplete = 'Incomplete, check input fields and try again!';
 			formIsValid = false;
 		}
 
 		if (!pattern.test(senderEmail)) {
-			errors.email = "Not a valid email!";
+			errors.email = 'Not a valid email!';
 			// let pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-			errors.incomplete = "Incomplete, check input fields and try again!";
+			errors.incomplete = 'Incomplete, check input fields and try again!';
 			formIsValid = false;
 		}
 
@@ -232,13 +230,13 @@ const SignIn = props => {
 		return formIsValid;
 	};
 
-	const SignupLoginRequest = event => {
+	const SignupLoginRequest = (event) => {
 		// event.preventDefault();
 		// console.log(senderFirstName + " " + senderLastName + " " + senderEmail + " " + credentials)
-		setRegistrationError("");
+		setRegistrationError('');
 		setLoginError(false);
 
-		console.log("firstname " + senderFirstName.toLowerCase());
+		console.log('firstname ' + senderFirstName.toLowerCase());
 
 		if (isSelected) {
 			if (!validateSignupInfo()) {
@@ -247,8 +245,8 @@ const SignIn = props => {
 			setSigninDataRequesting(true);
 
 			axios({
-				method: "post",
-				mode: "no-cors",
+				method: 'post',
+				mode: 'no-cors',
 				url: `${URL}/users/register`,
 				headers: {},
 				data: {
@@ -256,63 +254,63 @@ const SignIn = props => {
 					lastName: senderLastName,
 					email: senderEmail.toLowerCase(),
 					// senderConfirmEmail: senderConfirmEmail,
-					password: credentials,
+					password: credentials
 					// confirmCredentials: confirmCredentials
 				},
-				responseType: "json",
+				responseType: 'json'
 			})
-				.then(response => {
-					console.log("isSelected: " + isSelected);
+				.then((response) => {
+					// console.log("isSelected: " + isSelected);
 					// console.log('register response: ' + response.data);
-					console.log("register response: " + JSON.stringify(response.data));
+					// console.log("register response: " + JSON.stringify(response.data));
 					setSigninDataRequesting(false);
 					// clearSigninInputs();
-					console.log(JSON.stringify(response.data.registered));
-					if (JSON.stringify(response.data.registered) === "2") {
-						console.log("EMAIL ALREADY EXISTS");
+					// console.log(JSON.stringify(response.data.registered));
+					if (JSON.stringify(response.data.registered) === '2') {
+						// console.log("EMAIL ALREADY EXISTS");
 						setRegistrationError(JSON.stringify(response.data.message));
 					} else {
 						clearInputs();
-						setRegistrationError("");
+						setRegistrationError('');
 						setregistrationConfirmedMessage(JSON.stringify(response.data.message));
 						setConfirmedUser(true);
 						toggleSignInLinks();
 					}
 				})
-				.catch(err => {
-					console.log("isSelected: " + isSelected);
+				.catch((err) => {
+					// console.log("isSelected: " + isSelected);
 					// console.log('register error: ' + JSON.stringify(err));
-					console.log("register error: " + JSON.stringify(err));
+					// console.log("register error: " + JSON.stringify(err));
 					setSigninDataRequesting(false);
 				});
 		} else {
-			console.log("confirmation: " + confirmationKey);
+			// console.log("confirmation: " + confirmationKey);
 			if (confirmationKey.length === 0) {
 				if (!validateLoginInfo()) {
 					return;
 				}
 				setSigninDataRequesting(true);
-				setregistrationConfirmedMessage("");
+				setregistrationConfirmedMessage('');
 
 				axios({
-					method: "post",
+					method: 'post',
 					// mode: "no-cors",
 					url: `${URL}/users/login`,
 					data: {
 						email: senderEmail,
-						password: credentials,
+						password: credentials
 						// confirmationKey: confirmationKey
 					},
-					responseType: "json",
+					responseType: 'json'
 				})
-					.then(response => {
-						console.log("isSelected: " + isSelected);
-						console.log("login response1: " + JSON.stringify(response.data.confirmation));
-						console.log("login response1: " + JSON.stringify(response.data.alert));
-						console.log("login response1: " + JSON.stringify(response.data.message));
+					.then((response) => {
+						// console.log("isSelected: " + isSelected);
+						// console.log("login response1: " + JSON.stringify(response.data.confirmation));
+						// console.log("login response1: " + JSON.stringify(response.data.alert));
+						// console.log("login response1: " + JSON.stringify(response.data.message));
 
-						if (JSON.stringify(response.data.confirmation) === "1") {
-							console.log("resent confirmation key email");
+						if (JSON.stringify(response.data.confirmation) === '1') {
+							// console.log("resent confirmation key email");
 							setSigninDataRequesting(false);
 							setConfirmedUser(true);
 							setregistrationConfirmedMessage(JSON.stringify(response.data.message));
@@ -320,17 +318,17 @@ const SignIn = props => {
 							setLoginError(true);
 							// confirmedUser(true);
 						} else if (response.data.login === 4) {
-							console.log("error finding the email provided");
-							console.log(response.data.login);
+							// console.log('error finding the email provided');
+							// console.log(response.data.login);
 							setRegistrationError(JSON.stringify(response.data.message));
 							setSigninDataRequesting(false);
 							setLoginError(true);
 						} else {
-							localStorage.setItem("ppsr", JSON.stringify(response.data.token));
+							localStorage.setItem('ppsr', JSON.stringify(response.data.token));
 							// localStorage.setItem("ppsr_user", JSON.stringify(response.data.user.firstName));
-							localStorage.setItem("ppsr_user", JSON.stringify(response.data.user.firstName));
-							localStorage.setItem("lName", JSON.stringify(response.data.user.lastName));
-							localStorage.setItem("email", JSON.stringify(response.data.user.email));
+							localStorage.setItem('ppsr_user', JSON.stringify(response.data.user.firstName));
+							localStorage.setItem('lName', JSON.stringify(response.data.user.lastName));
+							localStorage.setItem('email', JSON.stringify(response.data.user.email));
 							setSigninDataRequesting(false);
 							setSignIn(false);
 							setLoggedIn(true);
@@ -338,9 +336,9 @@ const SignIn = props => {
 							clearInputs();
 						}
 					})
-					.catch(err => {
-						console.log("isSelected: " + isSelected);
-						console.log("login error1: " + JSON.stringify(err));
+					.catch((err) => {
+						// console.log('isSelected: ' + isSelected);
+						// console.log('login error1: ' + JSON.stringify(err));
 						setConfirmedUser(true);
 						setSigninDataRequesting(false);
 					});
@@ -351,57 +349,57 @@ const SignIn = props => {
 				setSigninDataRequesting(true);
 
 				axios({
-					method: "put",
+					method: 'put',
 					// mode: "no-cors",
 					url: `${URL}/users/confirmUser`,
 					data: {
 						email: senderEmail,
 						password: credentials,
-						activationKey: parseInt(confirmationKey),
-					},
+						activationKey: parseInt(confirmationKey)
+					}
 				})
-					.then(response => {
-						console.log("isSelected: " + isSelected);
-						console.log("confirm response: " + JSON.stringify(response.data));
+					.then((response) => {
+						// console.log('isSelected: ' + isSelected);
+						// console.log('confirm response: ' + JSON.stringify(response.data));
 						axios({
-							method: "post",
+							method: 'post',
 							url: `${URL}/users/login`,
 							data: {
 								email: senderEmail,
-								password: credentials,
+								password: credentials
 								// confirmationKey: confirmationKey
 							},
-							responseType: "json",
+							responseType: 'json'
 						})
-							.then(response => {
-								console.log("isSelected: " + isSelected);
-								console.log("login response2: " + JSON.stringify(response.data));
-								localStorage.setItem("ppsr", JSON.stringify(response.data.token));
-								localStorage.setItem("ppsr_user", JSON.stringify(response.data.user.firstName));
-								localStorage.setItem("lName", JSON.stringify(response.data.user.lastName));
-								localStorage.setItem("email", JSON.stringify(response.data.user.email));
+							.then((response) => {
+								console.log('isSelected: ' + isSelected);
+								// console.log('login response2: ' + JSON.stringify(response.data));
+								// localStorage.setItem('ppsr', JSON.stringify(response.data.token));
+								localStorage.setItem('ppsr_user', JSON.stringify(response.data.user.firstName));
+								localStorage.setItem('lName', JSON.stringify(response.data.user.lastName));
+								localStorage.setItem('email', JSON.stringify(response.data.user.email));
 								setSigninDataRequesting(false);
 								setSignIn(false);
 								setLoggedIn(true);
 								// clearSigninInputs();
 								clearInputs();
 							})
-							.catch(err => {
-								console.log("isSelected: " + isSelected);
-								console.log("login error2: " + JSON.stringify(err));
+							.catch((err) => {
+								// console.log('isSelected: ' + isSelected);
+								// console.log('login error2: ' + JSON.stringify(err));
 								setSigninDataRequesting(false);
 							});
 					})
-					.catch(err => {
-						console.log("isSelected: " + isSelected);
-						console.log("confirm error: " + JSON.stringify(err));
+					.catch((err) => {
+						// console.log('isSelected: ' + isSelected);
+						// console.log('confirm error: ' + JSON.stringify(err));
 						setSigninDataRequesting(false);
 					});
 			}
 		}
 	};
 
-	const ClosingSigninModal = event => {
+	const ClosingSigninModal = (event) => {
 		setSignIn(false);
 		clearInputs();
 	};
@@ -412,26 +410,26 @@ const SignIn = props => {
             {console.log('lgSignIn: ' + lgSignIn)}
             {console.log('setSignIn: ' + setSignIn)}
             {console.log('loggedIn: ' + loggedIn)} */}
-			<Modal size="lg" show={lgSignIn} onHide={() => ClosingSigninModal()} scrollable="true">
-				<Modal.Header closeButton></Modal.Header>
+			<Modal size='lg' show={lgSignIn} onHide={() => ClosingSigninModal()} scrollable='true'>
+				<Modal.Header closeButton />
 
 				<Modal.Body>
-					<SignUpInputForm method="post" action="submit">
+					<SignUpInputForm method='post' action='submit'>
 						<LinkDivContainer>
 							<LinkSignUpDiv showing={isSelected}>
 								<a
-									href="#signup"
-									style={{ textDecoration: "none" }}
-									onClick={() => (!isSelected ? toggleSignInLinks() : "")}
+									href='#signup'
+									style={{ textDecoration: 'none' }}
+									onClick={() => (!isSelected ? toggleSignInLinks() : '')}
 								>
 									<LinkStyle showing={isSelected}>Sign Up</LinkStyle>
 								</a>
 							</LinkSignUpDiv>
 							<LinkLoginDiv showing={!isSelected}>
 								<a
-									href="#login"
-									style={{ textDecoration: "none" }}
-									onClick={() => (isSelected ? toggleSignInLinks() : "")}
+									href='#login'
+									style={{ textDecoration: 'none' }}
+									onClick={() => (isSelected ? toggleSignInLinks() : '')}
 								>
 									<LinkStyle showing={!isSelected}>Log in</LinkStyle>
 								</a>
@@ -467,48 +465,44 @@ const SignIn = props => {
 							</LoginDiv>
 						</SignInContainer>
 
-						<div style={{ textAlign: "center" }}>
-							<div style={{ display: signinDataRequesting ? "none" : "block" }}>
+						<div style={{ textAlign: 'center' }}>
+							<div style={{ display: signinDataRequesting ? 'none' : 'block' }}>
 								<Button
-									type="button"
+									type='button'
 									// name='submit'
 									onClick={() => SignupLoginRequest()}
 									style={{
 										// marginTop: "10px",
-										marginBottom: "5px",
-										width: "200px",
-										height: "50px",
+										marginBottom: '5px',
+										width: '200px',
+										height: '50px'
 									}}
 								>
-									<span style={{ display: isSelected ? "block" : "none" }}>Register</span>
-									<span style={{ display: isSelected ? "none" : "block" }}>Login</span>
+									<span style={{ display: isSelected ? 'block' : 'none' }}>Register</span>
+									<span style={{ display: isSelected ? 'none' : 'block' }}>Login</span>
 								</Button>
 							</div>
-							<div style={{ display: signinDataRequesting ? "block" : "none" }}>
+							<div style={{ display: signinDataRequesting ? 'block' : 'none' }}>
 								<Button
 									disabled
 									style={{
-										marginTop: "20px",
-										marginBottom: "5px",
-										width: "200px",
-										height: "50px",
+										marginTop: '20px',
+										marginBottom: '5px',
+										width: '200px',
+										height: '50px'
 									}}
 								>
-									<Spinner as="span" animation="border" role="status" />
-									<span className="sr-only">Loading...</span>
+									<Spinner as='span' animation='border' role='status' />
+									<span className='sr-only'>Loading...</span>
 								</Button>
 							</div>
-							<div
-								style={{ color: "red", height: "20px", fontSize: ".8rem", marginBottom: "25px" }}
-							>
-								<span style={{ display: isSelected ? "block" : "none" }}>
+							<div style={{ color: 'red', height: '20px', fontSize: '.8rem', marginBottom: '25px' }}>
+								<span style={{ display: isSelected ? 'block' : 'none' }}>
 									{signupErrors.incomplete}
 								</span>
-								<span style={{ display: isSelected ? "block" : "none" }}>{registrationError}</span>
-								<span style={{ display: isSelected ? "none" : "block" }}>
-									{loginErrors.incomplete}
-								</span>
-								<span style={{ display: loginError ? "block" : "none" }}>{registrationError}</span>
+								<span style={{ display: isSelected ? 'block' : 'none' }}>{registrationError}</span>
+								<span style={{ display: isSelected ? 'none' : 'block' }}>{loginErrors.incomplete}</span>
+								<span style={{ display: loginError ? 'block' : 'none' }}>{registrationError}</span>
 							</div>
 						</div>
 					</SignUpInputForm>

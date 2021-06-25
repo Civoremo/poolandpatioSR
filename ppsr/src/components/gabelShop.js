@@ -1,15 +1,15 @@
-import React from "react";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import styled from "styled-components";
+import React from 'react';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import styled from 'styled-components';
 
-import BottomPanel from "./images/gabel/BottomPanel.jpg";
-import DoorPanel from "./images/gabel/DoorPanels.jpg";
-import RiserPanel from "./images/gabel/RiserPanel.jpg";
-import RiserPanel2 from "./images/gabel/RiserPanel2.jpg";
-import RoofPanel from "./images/gabel/RoofPanel.jpg";
-import RoofPanel2 from "./images/gabel/RoofPanel2.jpg";
-import SidePanel from "./images/gabel/SidePanel.jpg";
+import BottomPanel from './images/gabel/BottomPanel.jpg';
+import DoorPanel from './images/gabel/DoorPanels.jpg';
+import RiserPanel from './images/gabel/RiserPanel.jpg';
+import RiserPanel2 from './images/gabel/RiserPanel2.jpg';
+import RoofPanel from './images/gabel/RoofPanel.jpg';
+import RoofPanel2 from './images/gabel/RoofPanel2.jpg';
+import SidePanel from './images/gabel/SidePanel.jpg';
 
 const ItemContainer = styled.div`
 	/* border: 1px solid red; */
@@ -97,7 +97,7 @@ const ItemPriceDiv = styled.div`
 	/* border: 1px solid green; */
 	width: 30%;
 	height: 150px;
-	display: ${props => (props.showing !== null ? "flex" : "none")};
+	display: ${(props) => (props.showing !== null ? 'flex' : 'none')};
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -128,7 +128,7 @@ const PriceLoginDiv = styled.div`
 	/* border: 1px solid grey; */
 	width: 30%;
 	// height: 150px;
-	display: ${props => (props.showing === null ? "flex" : "none")};
+	display: ${(props) => (props.showing === null ? 'flex' : 'none')};
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -139,274 +139,119 @@ const PriceLoginDiv = styled.div`
 	}
 `;
 
-const GabelShop = props => {
-	const { setSignIn } = props;
+const GabelShop = (props) => {
+	const { setSignIn, cageData } = props;
+
+	const gableCageData = cageData.filter((cage) => cage.cageType === 'Gable');
+
+	const cageDisplayCard = (cagePartName) => {
+		return (
+			<DescriptionPriceContainer>
+				<ItemDescription>
+					<ItemTitleh3>Dome {cagePartName} Panel</ItemTitleh3>
+					<StandardTextP>Standard 18x14 Screen</StandardTextP>
+					<ItemAlsoAvailableDiv>
+						<span style={{ fontWeight: 'bold' }}>Also Available:</span>
+
+						{screenOptionsAvailable(cagePartName)}
+					</ItemAlsoAvailableDiv>
+				</ItemDescription>
+				<ItemPriceDiv showing={localStorage.getItem('ppsr_user')}>
+					<ItemTitleh3>Price/s</ItemTitleh3>
+					<div>Standard - ${gableCageData.filter((cage) => cage.cagePart === cagePartName)[0].price}</div>
+					<AlsoAvailableItemPriceDiv>{screenOptionsAvailable(cagePartName, true)}</AlsoAvailableItemPriceDiv>
+				</ItemPriceDiv>
+				<PriceLoginDiv showing={localStorage.getItem('ppsr_user')}>
+					<div style={{ marginBottom: '10px', fontSize: '.8rem' }}>Login to view price</div>
+					<Button type='button' onClick={() => setSignIn(true)}>
+						Log in
+					</Button>
+				</PriceLoginDiv>
+			</DescriptionPriceContainer>
+		);
+	};
+
+	const screenOptionsAvailable = (partName, bPrices = false) => {
+		if (!bPrices) {
+			return gableCageData.filter((cage) => cage.cagePart === partName)[0].altScreenOptions.map((screen) => {
+				return <span key={screen.id}>{screen.altScreenName}</span>;
+			});
+		}
+
+		if (bPrices) {
+			return gableCageData.filter((cage) => cage.cagePart === partName)[0].altScreenOptions.map((screen) => {
+				return (
+					<span key={screen.id}>
+						{screen.altScreenName} - ${screen.price}
+					</span>
+				);
+			});
+		}
+	};
+
 	return (
 		<div>
 			{/* Door Panel  */}
-			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
+			<Card style={{ padding: '10px 10px', margin: '5px 0' }}>
 				<ItemContainer>
-					<ItemImage src={DoorPanel} alt="Gable Pool Cage with Emphasis on Door Panel"></ItemImage>
-					<DescriptionPriceContainer>
-						<ItemDescription>
-							<ItemTitleh3>Gable Door Panel</ItemTitleh3>
-							<StandardTextP>Standard 18x14 Screen</StandardTextP>
-							<ItemAlsoAvailableDiv>
-								<span style={{ fontWeight: "bold" }}>* Available:</span>
-								<span>TuffScreen</span>
-								<span>Florida Glass</span>
-								<span>NoSeemUms Screen</span>
-								<span>Solar Screen</span>
-							</ItemAlsoAvailableDiv>
-						</ItemDescription>
-						<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>
-							<ItemTitleh3>Price/s</ItemTitleh3>
-							<div>Standard - $49.99</div>
-							<AlsoAvailableItemPriceDiv>
-								<span>TuffScreen - $69.99</span>
-								<span>Florida Glass - $69.99</span>
-								<span>NoSeemUms - $59.99</span>
-								<span>Solar Screen - $79.99</span>
-							</AlsoAvailableItemPriceDiv>
-						</ItemPriceDiv>
-						<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
-							<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
-							<Button type="button" onClick={() => setSignIn(true)}>
-								Log in
-							</Button>
-						</PriceLoginDiv>
-					</DescriptionPriceContainer>
+					<ItemImage src={DoorPanel} alt='Gable Pool Cage with Emphasis on Door Panel' loading='lazy' />
+					{cageDisplayCard('Door')}
 				</ItemContainer>
 			</Card>
 
 			{/* Bottom Panel */}
-			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
+			<Card style={{ padding: '10px 10px', margin: '5px 0' }}>
 				<ItemContainer>
-					<ItemImage
-						src={BottomPanel}
-						alt="Gable Pool Cage with Emphasis on Bottom Panel"
-					></ItemImage>
-					<DescriptionPriceContainer>
-						<ItemDescription>
-							<ItemTitleh3>Gable Bottom Panel</ItemTitleh3>
-							<StandardTextP>Standard 18x14 Screen</StandardTextP>
-							<ItemAlsoAvailableDiv>
-								<span style={{ fontWeight: "bold" }}>* Available:</span>
-								<span>TuffScreen</span>
-								<span>Florida Glass</span>
-								<span>NoSeemUms Screen</span>
-								<span>Solar Screen</span>
-							</ItemAlsoAvailableDiv>
-						</ItemDescription>
-						<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>
-							<ItemTitleh3>Price/s</ItemTitleh3>
-							<div>Standard - $49.99</div>
-							<AlsoAvailableItemPriceDiv>
-								<span>TuffScreen - $69.99</span>
-								<span>Florida Glass - $69.99</span>
-								<span>NoSeemUms - $59.99</span>
-								<span>Solar Screen - $79.99</span>
-							</AlsoAvailableItemPriceDiv>
-						</ItemPriceDiv>
-						<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
-							<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
-							<Button type="button" onClick={() => setSignIn(true)}>
-								Log in
-							</Button>
-						</PriceLoginDiv>
-					</DescriptionPriceContainer>
+					<ItemImage src={BottomPanel} alt='Gable Pool Cage with Emphasis on Bottom Panel' loading='lazy' />
+					{cageDisplayCard('Bottom')}
 				</ItemContainer>
 			</Card>
 
 			{/* Side Panel  */}
-			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
+			<Card style={{ padding: '10px 10px', margin: '5px 0' }}>
 				<ItemContainer>
-					<ItemImage src={SidePanel} alt="Gable Pool Cage with Emphasis on Side Panel"></ItemImage>
-					<DescriptionPriceContainer>
-						<ItemDescription>
-							<ItemTitleh3>Gable Side Panel</ItemTitleh3>
-							<StandardTextP>Standard 18x14 Screen</StandardTextP>
-							<ItemAlsoAvailableDiv>
-								<span style={{ fontWeight: "bold" }}>* Available:</span>
-								<span>TuffScreen</span>
-								<span>Florida Glass</span>
-								<span>NoSeemUms Screen</span>
-								<span>Solar Screen</span>
-							</ItemAlsoAvailableDiv>
-						</ItemDescription>
-						<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>
-							<ItemTitleh3>Price/s</ItemTitleh3>
-							<div>Standard - $49.99</div>
-							<AlsoAvailableItemPriceDiv>
-								<span>TuffScreen - $69.99</span>
-								<span>Florida Glass - $69.99</span>
-								<span>NoSeemUms - $59.99</span>
-								<span>Solar Screen - $79.99</span>
-							</AlsoAvailableItemPriceDiv>
-						</ItemPriceDiv>
-						<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
-							<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
-							<Button type="button" onClick={() => setSignIn(true)}>
-								Log in
-							</Button>
-						</PriceLoginDiv>
-					</DescriptionPriceContainer>
+					<ItemImage src={SidePanel} alt='Gable Pool Cage with Emphasis on Side Panel' loading='lazy' />
+					{cageDisplayCard('Side')}
 				</ItemContainer>
 			</Card>
 
 			{/* Riser Panel  */}
-			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
+			<Card style={{ padding: '10px 10px', margin: '5px 0' }}>
 				<ItemContainer>
 					<ItemImage
 						src={RiserPanel}
-						alt="Gable Pool Cage with Emphasis on Lower Riser Panel"
-					></ItemImage>
-					<DescriptionPriceContainer>
-						<ItemDescription>
-							<ItemTitleh3>Gable Low Riser Panel</ItemTitleh3>
-							<StandardTextP>Standard 18x14 Screen</StandardTextP>
-							<ItemAlsoAvailableDiv>
-								<span style={{ fontWeight: "bold" }}>* Available:</span>
-								<span>TuffScreen</span>
-								<span>Florida Glass</span>
-								<span>NoSeemUms Screen</span>
-								<span>Solar Screen</span>
-							</ItemAlsoAvailableDiv>
-						</ItemDescription>
-						<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>
-							<ItemTitleh3>Price/s</ItemTitleh3>
-							<div>Standard - $49.99</div>
-							<AlsoAvailableItemPriceDiv>
-								<span>TuffScreen - $69.99</span>
-								<span>Florida Glass - $69.99</span>
-								<span>NoSeemUms - $59.99</span>
-								<span>Solar Screen - $79.99</span>
-							</AlsoAvailableItemPriceDiv>
-						</ItemPriceDiv>
-						<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
-							<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
-							<Button type="button" onClick={() => setSignIn(true)}>
-								Log in
-							</Button>
-						</PriceLoginDiv>
-					</DescriptionPriceContainer>
+						alt='Gable Pool Cage with Emphasis on Lower Riser Panel'
+						loading='lazy'
+					/>
+					{cageDisplayCard('Low Riser')}
 				</ItemContainer>
 			</Card>
 
 			{/* Riser Panel 2  */}
-			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
+			<Card style={{ padding: '10px 10px', margin: '5px 0' }}>
 				<ItemContainer>
 					<ItemImage
 						src={RiserPanel2}
-						alt="Gable Pool Cage with Emphasis on Higher Riser Panel"
-					></ItemImage>
-					<DescriptionPriceContainer>
-						<ItemDescription>
-							<ItemTitleh3>Gable High Riser Panel</ItemTitleh3>
-							<StandardTextP>Standard 18x14 Screen</StandardTextP>
-							<ItemAlsoAvailableDiv>
-								<span style={{ fontWeight: "bold" }}>* Available:</span>
-								<span>TuffScreen</span>
-								<span>Florida Glass</span>
-								<span>NoSeemUms Screen</span>
-								<span>Solar Screen</span>
-							</ItemAlsoAvailableDiv>
-						</ItemDescription>
-						<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>
-							<ItemTitleh3>Price/s</ItemTitleh3>
-							<div>Standard - $49.99</div>
-							<AlsoAvailableItemPriceDiv>
-								<span>TuffScreen - $69.99</span>
-								<span>Florida Glass - $69.99</span>
-								<span>NoSeemUms - $59.99</span>
-								<span>Solar Screen - $79.99</span>
-							</AlsoAvailableItemPriceDiv>
-						</ItemPriceDiv>
-						<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
-							<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
-							<Button type="button" onClick={() => setSignIn(true)}>
-								Log in
-							</Button>
-						</PriceLoginDiv>
-					</DescriptionPriceContainer>
+						alt='Gable Pool Cage with Emphasis on Higher Riser Panel'
+						loading='lazy'
+					/>
+					{cageDisplayCard('High Riser')}
 				</ItemContainer>
 			</Card>
 
 			{/* Roof Panel  */}
-			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
+			<Card style={{ padding: '10px 10px', margin: '5px 0' }}>
 				<ItemContainer>
-					<ItemImage
-						src={RoofPanel}
-						alt="Gable Pool Cage with Emphasis on Low Roof Panel"
-					></ItemImage>
-					<DescriptionPriceContainer>
-						<ItemDescription>
-							<ItemTitleh3>Gable Low Roof Panel</ItemTitleh3>
-							<StandardTextP>Standard 18x14 Screen</StandardTextP>
-							<ItemAlsoAvailableDiv>
-								<span style={{ fontWeight: "bold" }}>* Available:</span>
-								<span>TuffScreen</span>
-								<span>Florida Glass</span>
-								<span>NoSeemUms Screen</span>
-								<span>Solar Screen</span>
-							</ItemAlsoAvailableDiv>
-						</ItemDescription>
-						<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>
-							<ItemTitleh3>Price/s</ItemTitleh3>
-							<div>Standard - $49.99</div>
-							<AlsoAvailableItemPriceDiv>
-								<span>TuffScreen - $69.99</span>
-								<span>Florida Glass - $69.99</span>
-								<span>NoSeemUms - $59.99</span>
-								<span>Solar Screen - $79.99</span>
-							</AlsoAvailableItemPriceDiv>
-						</ItemPriceDiv>
-						<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
-							<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
-							<Button type="button" onClick={() => setSignIn(true)}>
-								Log in
-							</Button>
-						</PriceLoginDiv>
-					</DescriptionPriceContainer>
+					<ItemImage src={RoofPanel} alt='Gable Pool Cage with Emphasis on Low Roof Panel' loading='lazy' />
+					{cageDisplayCard('Low Roof')}
 				</ItemContainer>
 			</Card>
 
 			{/* Roof Panel 2 */}
-			<Card style={{ padding: "10px 10px", margin: "5px 0" }}>
+			<Card style={{ padding: '10px 10px', margin: '5px 0' }}>
 				<ItemContainer>
-					<ItemImage
-						src={RoofPanel2}
-						alt="Gable Pool Cage with Emphasis on High Roof Panel"
-					></ItemImage>
-					<DescriptionPriceContainer>
-						<ItemDescription>
-							<ItemTitleh3>Gable High Roof Panel</ItemTitleh3>
-							<StandardTextP>Standard 18x14 Screen</StandardTextP>
-							<ItemAlsoAvailableDiv>
-								<span style={{ fontWeight: "bold" }}>* Available:</span>
-								<span>TuffScreen</span>
-								<span>Florida Glass</span>
-								<span>NoSeemUms Screen</span>
-								<span>Solar Screen</span>
-							</ItemAlsoAvailableDiv>
-						</ItemDescription>
-						<ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>
-							<ItemTitleh3>Price/s</ItemTitleh3>
-							<div>Standard - $49.99</div>
-							<AlsoAvailableItemPriceDiv>
-								<span>TuffScreen - $69.99</span>
-								<span>Florida Glass - $69.99</span>
-								<span>NoSeemUms - $59.99</span>
-								<span>Solar Screen - $79.99</span>
-							</AlsoAvailableItemPriceDiv>
-						</ItemPriceDiv>
-						<PriceLoginDiv showing={localStorage.getItem("ppsr_user")}>
-							<div style={{ marginBottom: "10px", fontSize: ".8rem" }}>Login to view price</div>
-							<Button type="button" onClick={() => setSignIn(true)}>
-								Log in
-							</Button>
-						</PriceLoginDiv>
-					</DescriptionPriceContainer>
+					<ItemImage src={RoofPanel2} alt='Gable Pool Cage with Emphasis on High Roof Panel' loading='lazy' />
+					{cageDisplayCard('High Roof')}
 				</ItemContainer>
 			</Card>
 		</div>

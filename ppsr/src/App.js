@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import axios from "axios";
-import "./App.css";
+import React, { Component } from 'react';
+import axios from 'axios';
+import './App.css';
 
-import Navigation from "./components/navbar";
-import ServicesPage from "./components/services";
-import AboutUs from "./components/aboutus";
-import ContactUs from "./components/contact";
-import Footer from "./components/footer";
-import PageBreakOne from "./components/pageBreakOne";
-import PageBreakTwo from "./components/pageBreakTwo";
-import Header from "./components/header";
-import Badges from "./components/badges";
+import Navigation from './components/navbar';
+import ServicesPage from './components/services';
+import AboutUs from './components/aboutus';
+import ContactUs from './components/contact';
+import Footer from './components/footer';
+import PageBreakOne from './components/pageBreakOne';
+import PageBreakTwo from './components/pageBreakTwo';
+import Header from './components/header';
+import Badges from './components/badges';
 
 const URL = `https://res.cloudinary.com/ppscreens/image/list/ppsr.json`;
 // const URLAPI = "https://ppsr-api.herokuapp.com";
@@ -18,21 +18,21 @@ const URL = `https://res.cloudinary.com/ppscreens/image/list/ppsr.json`;
 
 class App extends Component {
 	state = {
-		collapsedID: "",
+		collapsedID: '',
 		imageArray: [],
-		senderEmail: "",
-		credentials: "",
-		confirmCredentials: "",
-		confirmationKey: "",
-		senderConfirmEmail: "",
-		senderFirstName: "",
-		senderLastName: "",
-		senderPhone: "",
-		senderStreet: "",
-		senderCity: "",
-		senderState: "",
-		senderZipcode: "",
-		senderGateCode: "",
+		senderEmail: '',
+		credentials: '',
+		confirmCredentials: '',
+		confirmationKey: '',
+		senderConfirmEmail: '',
+		senderFirstName: '',
+		senderLastName: '',
+		senderPhone: '',
+		senderStreet: '',
+		senderCity: '',
+		senderState: '',
+		senderZipcode: '',
+		senderGateCode: '',
 		senderServices: {
 			complete: false,
 			individual: false,
@@ -41,91 +41,100 @@ class App extends Component {
 			entry: false,
 			washing: false,
 			gutter: false,
-			misc: false,
+			misc: false
 		},
-		senderMessage: "",
+		preferredContact: {
+			phone: false,
+			email: false
+		},
+		senderMessage: '',
 		error: {
-			fName: "",
-			lName: "",
-			email: "",
-			phone: "",
-			message: "",
-			street: "",
-			city: "",
-			state: "",
-			zipcode: "",
-			incomplete: "",
+			fName: '',
+			lName: '',
+			email: '',
+			phone: '',
+			message: '',
+			street: '',
+			city: '',
+			state: '',
+			zipcode: '',
+			incomplete: '',
+			preferredContact: ''
 		},
 		signupErrors: {
-			fName: "",
-			lName: "",
-			email: "",
-			confirmEmail: "",
-			credentials: "",
-			confirmCredentials: "",
-			incomplete: "",
+			fName: '',
+			lName: '',
+			email: '',
+			confirmEmail: '',
+			credentials: '',
+			confirmCredentials: '',
+			incomplete: ''
 		},
 		loginErrors: {
-			email: "",
-			credentials: "",
-			incomplete: "",
-			confirmationKey: "",
+			email: '',
+			credentials: '',
+			incomplete: '',
+			confirmationKey: ''
 		},
 		profileErrors: {
-			email: "",
-			fName: "",
-			lName: "",
+			email: '',
+			fName: '',
+			lName: ''
 		},
 		insufficientInfo: false,
-		verified: false,
+		verified: true,
 		isSelected: false,
 		lgFinancing: false,
-		lgShop: false,
+		lgShop: false
 		// loggedIn: false,
 	};
 
 	componentDidMount() {
 		axios
 			.get(URL)
-			.then(res => {
+			.then((res) => {
 				// console.log(res);
 				this.setState({
-					imageArray: res.data.resources,
+					imageArray: res.data.resources
 				});
 			})
-			.catch(err => {
-				console.log("ERROR --> " + err);
+			.catch((err) => {
+				console.log('ERROR --> ' + err);
 			});
 	}
 
-	toggleFinanceModal = event => {
+	componentWillUnmount() {
+		localStorage.clear();
+	}
+
+	toggleFinanceModal = (event) => {
 		this.setState({
-			lgFinancing: !this.state.lgFinancing,
+			lgFinancing: !this.state.lgFinancing
 		});
 	};
 
-	toggleShopModal = event => {
+	toggleShopModal = (event) => {
 		this.setState({
-			lgShop: !this.state.lgShop,
+			lgShop: !this.state.lgShop
 		});
 	};
 
-	toggleAccordion = collapsedID => () =>
-		this.setState(prevState => ({
-			collapsedID: prevState.collapsedID !== collapsedID ? collapsedID : "",
+	toggleAccordion = (collapsedID) => () =>
+		this.setState((prevState) => ({
+			collapsedID: prevState.collapsedID !== collapsedID ? collapsedID : ''
 		}));
 
-	handleInputChange = event => {
+	handleInputChange = (event) => {
 		this.setState({
-			[event.target.name]: event.target.value,
+			[event.target.name]: event.target.value
 		});
-		console.log(event.target.name + ` - ${event.target.value}`);
+		// console.log(event.target.name + ` - ${event.target.value}`);
 	};
 
-	toggleSignInLinks = event => {
+	toggleSignInLinks = (event) => {
 		this.setState(
 			{
-				isSelected: !this.state.isSelected,
+				isSelected: !this.state.isSelected
 			},
 			() => {
 				this.clearInputs();
@@ -133,85 +142,91 @@ class App extends Component {
 		);
 	};
 
-	clearSigninInputs = event => {
+	clearSigninInputs = (event) => {
 		this.setState({
-			senderEmail: "",
-			senderConfirmEmail: "",
-			senderFirstName: "",
-			senderLastName: "",
-			credentials: "",
-			confirmCredentials: "",
-			confirmationKey: "",
+			senderEmail: '',
+			senderConfirmEmail: '',
+			senderFirstName: '',
+			senderLastName: '',
+			credentials: '',
+			confirmCredentials: '',
+			confirmationKey: '',
 			signupErrors: {
-				fName: "",
-				lName: "",
-				email: "",
-				confirmEmail: "",
-				credentials: "",
-				confirmCredentials: "",
-				incomplete: "",
+				fName: '',
+				lName: '',
+				email: '',
+				confirmEmail: '',
+				credentials: '',
+				confirmCredentials: '',
+				incomplete: ''
 			},
 			loginErrors: {
-				email: "",
-				credentials: "",
-				incomplete: "",
-				confirmationKey: "",
+				email: '',
+				credentials: '',
+				incomplete: '',
+				confirmationKey: ''
 			},
 			profileErrors: {
-				email: "",
-				fName: "",
-				lName: "",
-			},
+				email: '',
+				fName: '',
+				lName: ''
+			}
 		});
 	};
 
 	handleCheckboxChange = (event, name) => {
-		console.log("Name " + event.target.name);
-		console.log("Value " + event.target.checked);
+		// console.log("Name " + event.target.name);
+		// console.log("Value " + event.target.checked);
 
-		this.setState(prevState => {
+		this.setState((prevState) => {
 			let tempServices = { ...prevState.senderServices };
-			console.table("PREV " + prevState.senderServices[name]);
+			// console.table("PREV " + prevState.senderServices[name]);
+			let tempPrefContact = { ...prevState.preferredContact };
+			// console.table("prev Contact " + prevState.preferredContact[name])
 
-			if (name === "complete") {
+			if (name === 'complete') {
 				tempServices[name] = !prevState.senderServices[name];
-			} else if (name === "individual") {
+			} else if (name === 'individual') {
 				tempServices[name] = !prevState.senderServices[name];
-			} else if (name === "window") {
+			} else if (name === 'window') {
 				tempServices[name] = !prevState.senderServices[name];
-			} else if (name === "lanai") {
+			} else if (name === 'lanai') {
 				tempServices[name] = !prevState.senderServices[name];
-			} else if (name === "entry") {
+			} else if (name === 'entry') {
 				tempServices[name] = !prevState.senderServices[name];
-			} else if (name === "washing") {
+			} else if (name === 'washing') {
 				tempServices[name] = !prevState.senderServices[name];
-			} else if (name === "gutter") {
+			} else if (name === 'gutter') {
 				tempServices[name] = !prevState.senderServices[name];
-			} else if (name === "misc") {
+			} else if (name === 'misc') {
 				tempServices[name] = !prevState.senderServices[name];
+			} else if (name === 'phone') {
+				tempPrefContact[name] = !prevState.preferredContact[name];
+			} else if (name === 'email') {
+				tempPrefContact[name] = !prevState.preferredContact[name];
 			} else {
-				console.log("lets figure this out");
+				console.log('lets figure this out');
 			}
 
-			return { senderServices: tempServices };
+			return { senderServices: tempServices, preferredContact: tempPrefContact };
 		});
 	};
 
-	clearInputs = event => {
+	clearInputs = (event) => {
 		this.setState({
-			senderEmail: "",
-			senderConfirmEmail: "",
-			credentials: "",
-			confirmCredentials: "",
-			confirmationKey: "",
-			senderFirstName: "",
-			senderLastName: "",
-			senderPhone: "",
-			senderStreet: "",
-			senderCity: "",
-			senderState: "",
-			senderZipcode: "",
-			senderGateCode: "",
+			senderEmail: '',
+			senderConfirmEmail: '',
+			credentials: '',
+			confirmCredentials: '',
+			confirmationKey: '',
+			senderFirstName: '',
+			senderLastName: '',
+			senderPhone: '',
+			senderStreet: '',
+			senderCity: '',
+			senderState: '',
+			senderZipcode: '',
+			senderGateCode: '',
 			senderServices: {
 				complete: false,
 				individual: false,
@@ -220,85 +235,85 @@ class App extends Component {
 				entry: false,
 				washing: false,
 				gutter: false,
-				misc: false,
+				misc: false
 			},
-			senderMessage: "",
+			senderMessage: '',
 			error: {
-				name: "",
-				email: "",
-				phone: "",
-				message: "",
-				street: "",
-				city: "",
-				state: "",
-				zipcode: "",
-				incomplete: "",
+				name: '',
+				email: '',
+				phone: '',
+				message: '',
+				street: '',
+				city: '',
+				state: '',
+				zipcode: '',
+				incomplete: ''
 			},
 			signupErrors: {
-				fName: "",
-				lName: "",
-				email: "",
-				confirmEmail: "",
-				credentials: "",
-				confirmCredentials: "",
-				incomplete: "",
+				fName: '',
+				lName: '',
+				email: '',
+				confirmEmail: '',
+				credentials: '',
+				confirmCredentials: '',
+				incomplete: ''
 			},
 			loginErrors: {
-				email: "",
-				credentials: "",
-				incomplete: "",
-				confirmationKey: "",
+				email: '',
+				credentials: '',
+				incomplete: '',
+				confirmationKey: ''
 			},
 			profileErrors: {
-				email: "",
-				fName: "",
-				lName: "",
+				email: '',
+				fName: '',
+				lName: ''
 			},
-			insufficientInfo: false,
+			insufficientInfo: false
 		});
 	};
 
-	setErrorMessages = errors => {
+	setErrorMessages = (errors) => {
 		this.setState({
-			error: errors,
+			error: errors
 		});
 	};
 
-	setProfileErrorMessage = errors => {
+	setProfileErrorMessage = (errors) => {
 		this.setState({
-			profileErrors: errors,
+			profileErrors: errors
 		});
 	};
 
-	setProfileInfo = userInfo => {
+	setProfileInfo = (userInfo) => {
 		this.setState({
 			senderFirstName: userInfo.firstName,
 			senderLastName: userInfo.lastName,
-			senderEmail: userInfo.email,
+			senderEmail: userInfo.email
 		});
 	};
 
-	setSignupErrorMessages = errors => {
+	setSignupErrorMessages = (errors) => {
 		this.setState({
-			signupErrors: errors,
+			signupErrors: errors
 		});
 	};
 
-	setLoginErrorMessages = errors => {
+	setLoginErrorMessages = (errors) => {
 		this.setState({
-			loginErrors: errors,
+			loginErrors: errors
 		});
 	};
 
-	toggleMissingInfoMessage = event => {
+	toggleMissingInfoMessage = (event) => {
 		this.setState({
-			insufficientInfo: true,
+			insufficientInfo: true
 		});
 	};
 
-	onVerify = recaptchaResponse => {
-		let reResponse = `${document.querySelector("#g-recaptcha-response").value}`;
-		console.log(reResponse);
+	onVerify = (recaptchaResponse) => {
+		let reResponse = `${document.querySelector('#g-recaptcha-response').value}`;
+		// console.log(reResponse);
 
 		// axios({
 		// 	method: "post",
@@ -320,42 +335,42 @@ class App extends Component {
 		// 		console.log("recaptcha failure");
 		// 	});
 
-		fetch("https://www.google.com/recaptcha/api/siteverify", {
-			method: "POST",
-			mode: "no-cors",
+		fetch('https://www.google.com/recaptcha/api/siteverify', {
+			method: 'POST',
+			mode: 'no-cors',
 			// headers: {
 			//   'Content-Type': 'application/x-www-form-urlencoded'
 			// },
 			// headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
 			body: JSON.stringify({
 				secret: `${process.env.REACT_APP_CAPTCHASECRET}`,
-				response: `${document.querySelector("#g-recaptcha-response").value}`,
+				response: `${document.querySelector('#g-recaptcha-response').value}`
 				// remoteip: 'localhost'
-			}),
+			})
 		})
-			.then(res => {
-				console.log("recaptcha res: " + JSON.stringify(res));
+			.then((res) => {
+				console.log('recaptcha res: ' + JSON.stringify(res));
 				this.setState({
-					verified: true,
+					verified: true
 				});
 			})
-			.catch(err => {
-				console.log("recaptcha error " + err);
+			.catch((err) => {
+				console.log('recaptcha error ' + err);
 			});
 	};
 
-	validateUpdateInfo = event => {
+	validateUpdateInfo = (event) => {
 		console.log(this.state.senderFirstName);
 		console.log(this.state.senderLastName);
 		if (!this.state.senderFirstName || this.state.senderFirstName.length < 2) {
 			this.setState({
-				senderFirstName: JSON.parse(localStorage.getItem("ppsr_user")),
+				senderFirstName: JSON.parse(localStorage.getItem('ppsr_user'))
 			});
 		}
 
 		if (!this.state.senderLastName || this.state.senderLastName.length < 2) {
 			this.setState({
-				senderLastName: JSON.parse(localStorage.getItem("lName")),
+				senderLastName: JSON.parse(localStorage.getItem('lName'))
 			});
 		}
 	};
@@ -408,7 +423,7 @@ class App extends Component {
 					setProfileErrorMessage={this.setProfileErrorMessage}
 				/>
 				{/* {console.log('APP: ', this.state.isSelected)} */}
-				<div className="callToActionSpacer" />
+				<div className='callToActionSpacer' />
 				<Header />
 				<Badges />
 				<AboutUs />
@@ -436,6 +451,7 @@ class App extends Component {
 					insufficientInfo={this.state.insufficientInfo}
 					verified={this.state.verified}
 					onVerify={this.onVerify}
+					prefContact={this.state.preferredContact}
 				/>
 				<Footer />
 			</div>

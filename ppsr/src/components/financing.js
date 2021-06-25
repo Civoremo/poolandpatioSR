@@ -1,50 +1,42 @@
-import React from "react";
-import Modal from "react-bootstrap/Modal";
+import React from 'react';
+import Modal from 'react-bootstrap/Modal';
 // import styled from "styled-components";
 
-import FinanceHeaderImage from "./images/finance/HI_finance.png";
-import { Button } from "react-bootstrap";
+import FinanceHeaderImage from './images/finance/HI_finance.png';
+import { Button } from 'react-bootstrap';
 
-const Financing = props => {
+const Financing = (props) => {
 	const { lgFinancing, toggleFinanceModal } = props;
 
 	return (
-		<Modal size="lg" show={lgFinancing} onHide={() => toggleFinanceModal()} scrollable="true">
+		<Modal size='lg' show={lgFinancing} onHide={() => toggleFinanceModal()} scrollable='true'>
 			<Modal.Header closeButton>
-				<Modal.Title
-					id="example-modal-sizes-title-sm"
-					style={{ textAlign: "center", width: "100%" }}
-				>
+				<Modal.Title id='example-modal-sizes-title-sm' style={{ textAlign: 'center', width: '100%' }}>
 					Home Improvement Financing
 				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
 				<div>
 					<img
-						style={{ width: "100%", height: "auto", marginBottom: "30px" }}
+						style={{ width: '100%', height: 'auto', marginBottom: '30px' }}
 						src={FinanceHeaderImage}
-						alt="Home Improvement Financing"
+						alt='Home Improvement Financing'
+						loading='lazy'
 					/>
-					<p style={{ padding: "0 5%" }}>
-						Our top priority is to make sure your home improvement project with us is smooth and
-						painless. That’s why we’ve partnered with{" "}
-						<a
-							href="https://financemyproject.com/"
-							target="_blank"
-							tabIndex="0"
-							rel="noopener noreferrer"
-						>
+					<p style={{ padding: '0 5%' }}>
+						Our top priority is to make sure your home improvement project with us is smooth and painless.
+						That’s why we’ve partnered with{' '}
+						<a href='https://financemyproject.com/' target='_blank' tabIndex='0' rel='noopener noreferrer'>
 							FinanceMyProject
-						</a>{" "}
-						to make sure getting an unsecured home improvement loan for your project is quick and
-						easy. <br></br>At FinanceMyProject.com you can apply in 60 seconds, and compare your
-						pre-approved unsecured home improvement loan offers, without it affecting your credit
-						score. Regardless of the type of project around the home, FinanceMyProject can help you
-						get the funds you need to make your desired repairs or upgrades. See some of their
-						awesome benefits below:
+						</a>{' '}
+						to make sure getting an unsecured home improvement loan for your project is quick and easy.{' '}
+						<br />At FinanceMyProject.com you can apply in 60 seconds, and compare your pre-approved
+						unsecured home improvement loan offers, without it affecting your credit score. Regardless of
+						the type of project around the home, FinanceMyProject can help you get the funds you need to
+						make your desired repairs or upgrades. See some of their awesome benefits below:
 					</p>
 				</div>
-				<div style={{ padding: "0 5%" }}>
+				<div style={{ padding: '0 5%' }}>
 					<ul>
 						<li>Borrow up to $50,000</li>
 						<li>Compare pre-qualified unsecured loan offers in seconds</li>
@@ -59,21 +51,21 @@ const Financing = props => {
 				</div>
 				<div
 					style={{
-						display: "flex",
-						alignItems: "center",
-						flexDirection: "column",
-						marginTop: "50px",
-						marginBottom: "40px",
+						display: 'flex',
+						alignItems: 'center',
+						flexDirection: 'column',
+						marginTop: '50px',
+						marginBottom: '40px'
 					}}
 				>
 					<p>Apply now and compare your home improvement loan options now!</p>
 					<a
-						href="https://financemyproject.com/home-improvement-loans/"
-						target="_blank"
-						tabIndex="0"
-						rel="noopener noreferrer"
+						href='https://financemyproject.com/home-improvement-loans/'
+						target='_blank'
+						tabIndex='0'
+						rel='noopener noreferrer'
 					>
-						<Button style={{ width: "120px" }}>Apply</Button>
+						<Button style={{ width: '120px' }}>Apply</Button>
 					</a>
 				</div>
 				{/* <div style={{ textAlign: "center" }}>

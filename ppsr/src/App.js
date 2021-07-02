@@ -14,7 +14,8 @@ import PageBreakTwo from "./components/pageBreakTwo";
 import Header from "./components/header";
 import Badges from "./components/badges";
 
-const URL = `https://res.cloudinary.com/ppscreens/image/list/ppsr.json`;
+// const URL = `https://res.cloudinary.com/ppscreens/image/list/ppsr.json`;
+const URL = `${process.env.REACT_APP_API_URL}/gallery/all`;
 // const URLAPI = "https://ppsr-api.herokuapp.com";
 // const URLAPI = "http://localhost:4000";
 
@@ -97,7 +98,7 @@ class App extends Component {
       .then(res => {
         // console.log(res);
         this.setState({
-          imageArray: res.data.resources,
+          imageArray: res.data,
         });
       })
       .catch(err => {

@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import styled from "styled-components";
@@ -152,23 +152,22 @@ const DomeShop = props => {
     "Low Roof",
     "High Roof",
   ]);
-
   const [sortedParts, setSortedParts] = useState([]);
-
-  const domeCageData = cageData.filter(cage => cage.cageType === "Dome");
-
-  useEffect(() => {
+  const sortFilteredData = useRef(function () {
     let sortedFilter = [];
     for (let name in cagePartNames) {
       let filtered = domeCageData.filter(part => {
         return part.cagePart === cagePartNames[name];
       });
-      //   console.log("sorted", filtered);
       sortedFilter.push(filtered);
-      //   console.log(sortedFilter);
     }
     setSortedParts(sortedFilter);
-    // console.log(sortedFilter);
+  });
+
+  const domeCageData = cageData.filter(cage => cage.cageType === "Dome");
+
+  useEffect(() => {
+    sortFilteredData.current();
   }, []);
 
   const cageDisplayCard = cagePartName => {
@@ -230,6 +229,10 @@ const DomeShop = props => {
     }
   };
 
+  if (sortedParts.length === 0) {
+    return <>Checking...</>;
+  }
+
   return (
     <div>
       {sortedParts.map(part => {
@@ -252,67 +255,8 @@ const DomeShop = props => {
             );
           }
         }
+        return null;
       })}
-      {/* {drawDomeCageDisplaycard(domeCageData)} */}
-      {/* Door Panel */}
-      {/* <Card style={{ padding: "10px 10px", margin: "5px 0" }}>
-        <ItemContainer>
-          <ItemImage
-            src={DoorPanel}
-            alt='Dome Pool Cage with Emphasis On Door Panel'
-            loading='lazy'
-          />
-          {cageDisplayCard("Door")}
-        </ItemContainer>
-      </Card> */}
-
-      {/* Bottom Panel */}
-      {/* <Card style={{ padding: "10px 10px", margin: "5px 0" }}>
-        <ItemContainer>
-          <ItemImage
-            src={BottomPanel}
-            alt='Dome Pool Cage with Emphasis on Bottom Panel'
-            loading='lazy'
-          />
-          {cageDisplayCard("Bottom")}
-        </ItemContainer>
-      </Card> */}
-
-      {/* Side Panel */}
-      {/* <Card style={{ padding: "10px 10px", margin: "5px 0" }}>
-        <ItemContainer>
-          <ItemImage
-            src={SidePanel}
-            alt='Dome Pool Cage with Emphasis on Side Panel'
-            loading='lazy'
-          />
-          {cageDisplayCard("Side")}
-        </ItemContainer>
-      </Card> */}
-
-      {/* Riser Panel */}
-      {/* <Card style={{ padding: "10px 10px", margin: "5px 0" }}>
-        <ItemContainer>
-          <ItemImage
-            src={RiserPanel}
-            alt='Dome Pool Cage with Emphasis on Riser Panel'
-            loading='lazy'
-          />
-          {cageDisplayCard("Riser")}
-        </ItemContainer>
-      </Card> */}
-
-      {/* Roof Panel */}
-      {/* <Card style={{ padding: "10px 10px", margin: "5px 0" }}>
-        <ItemContainer>
-          <ItemImage
-            src={RoofPanel}
-            alt='Dome Pool Cage with Emphasis on Roof Panel'
-            loading='lazy'
-          />
-          {cageDisplayCard("Roof")}
-        </ItemContainer>
-      </Card> */}
     </div>
   );
 };

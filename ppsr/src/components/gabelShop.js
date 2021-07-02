@@ -1,17 +1,17 @@
 /** @format */
 
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import styled from "styled-components";
 
-import BottomPanel from "./images/gabel/BottomPanel.jpg";
-import DoorPanel from "./images/gabel/DoorPanels.jpg";
-import RiserPanel from "./images/gabel/RiserPanel.jpg";
-import RiserPanel2 from "./images/gabel/RiserPanel2.jpg";
-import RoofPanel from "./images/gabel/RoofPanel.jpg";
-import RoofPanel2 from "./images/gabel/RoofPanel2.jpg";
-import SidePanel from "./images/gabel/SidePanel.jpg";
+// import BottomPanel from "./images/gabel/BottomPanel.jpg";
+// import DoorPanel from "./images/gabel/DoorPanels.jpg";
+// import RiserPanel from "./images/gabel/RiserPanel.jpg";
+// import RiserPanel2 from "./images/gabel/RiserPanel2.jpg";
+// import RoofPanel from "./images/gabel/RoofPanel.jpg";
+// import RoofPanel2 from "./images/gabel/RoofPanel2.jpg";
+// import SidePanel from "./images/gabel/SidePanel.jpg";
 
 const ItemContainer = styled.div`
   /* border: 1px solid red; */
@@ -143,8 +143,34 @@ const PriceLoginDiv = styled.div`
 
 const GabelShop = props => {
   const { setSignIn, cageData } = props;
+  const [cagePartsNames] = useState([
+    "Door",
+    "Bottom",
+    "Side",
+    "Riser",
+    "Roof",
+    "Low Riser",
+    "High Riser",
+    "Low Roof",
+    "High Roof",
+  ]);
+  const [sortedParts, setSortedParts] = useState([]);
+  const sortFilteredData = useRef(function () {
+    let sortedFilter = [];
+    for (let name in cagePartsNames) {
+      let filtered = gableCageData.filter(part => {
+        return part.cagePart === cagePartsNames[name];
+      });
+      sortedFilter.push(filtered);
+    }
+    setSortedParts(sortedFilter);
+  });
 
   const gableCageData = cageData.filter(cage => cage.cageType === "Gable");
+
+  useEffect(() => {
+    sortFilteredData.current();
+  }, []);
 
   const cageDisplayCard = cagePartName => {
     return (
@@ -160,13 +186,13 @@ const GabelShop = props => {
         </ItemDescription>
         <ItemPriceDiv showing={localStorage.getItem("ppsr_user")}>
           <ItemTitleh3>Price/s</ItemTitleh3>
-          {/* <div>
+          <div>
             Standard - $
             {
               gableCageData.filter(cage => cage.cagePart === cagePartName)[0]
                 .price
             }
-          </div> */}
+          </div>
           <AlsoAvailableItemPriceDiv>
             {screenOptionsAvailable(cagePartName, true)}
           </AlsoAvailableItemPriceDiv>
@@ -185,121 +211,54 @@ const GabelShop = props => {
 
   const screenOptionsAvailable = (partName, bPrices = false) => {
     if (!bPrices) {
-      let filteredGableCageData = gableCageData.filter(
-        cage => cage.cagePart === partName
-      );
-      // console.log("filtered gable", filteredGableCageData);
-
-      // return gableCageData
-      //   .filter(cage => cage.cagePart === partName)[0]
-      //   .altScreenOptions.map(screen => {
-      //     return <span key={screen.id}>{screen.altScreenName}</span>;
-      //   });
+      return gableCageData
+        .filter(cage => cage.cagePart === partName)[0]
+        .altScreenOptions.map(screen => {
+          return <span key={screen.id}>{screen.altScreenName}</span>;
+        });
     }
 
     if (bPrices) {
-      let filteredGableCageData = gableCageData.filter(
-        cage => cage.cagePart === partName
-      );
-      // console.log("filtered gable", filteredGableCageData);
-
-      // return gableCageData
-      //   .filter(cage => cage.cagePart === partName)[0]
-      //   .altScreenOptions.map(screen => {
-      //     return (
-      //       <span key={screen.id}>
-      //         {screen.altScreenName} - ${screen.price}
-      //       </span>
-      //     );
-      //   });
+      return gableCageData
+        .filter(cage => cage.cagePart === partName)[0]
+        .altScreenOptions.map(screen => {
+          return (
+            <span key={screen.id}>
+              {screen.altScreenName} - ${screen.price}
+            </span>
+          );
+        });
     }
   };
 
+  if (sortedParts.length === 0) {
+    return <>Checking...</>;
+  }
+
   return (
     <div>
-      {/* Door Panel  */}
-      <Card style={{ padding: "10px 10px", margin: "5px 0" }}>
-        <ItemContainer>
-          <ItemImage
-            src={DoorPanel}
-            alt='Gable Pool Cage with Emphasis on Door Panel'
-            loading='lazy'
-          />
-          {cageDisplayCard("Door")}
-        </ItemContainer>
-      </Card>
-
-      {/* Bottom Panel */}
-      <Card style={{ padding: "10px 10px", margin: "5px 0" }}>
-        <ItemContainer>
-          <ItemImage
-            src={BottomPanel}
-            alt='Gable Pool Cage with Emphasis on Bottom Panel'
-            loading='lazy'
-          />
-          {cageDisplayCard("Bottom")}
-        </ItemContainer>
-      </Card>
-
-      {/* Side Panel  */}
-      <Card style={{ padding: "10px 10px", margin: "5px 0" }}>
-        <ItemContainer>
-          <ItemImage
-            src={SidePanel}
-            alt='Gable Pool Cage with Emphasis on Side Panel'
-            loading='lazy'
-          />
-          {cageDisplayCard("Side")}
-        </ItemContainer>
-      </Card>
-
-      {/* Riser Panel  */}
-      <Card style={{ padding: "10px 10px", margin: "5px 0" }}>
-        <ItemContainer>
-          <ItemImage
-            src={RiserPanel}
-            alt='Gable Pool Cage with Emphasis on Lower Riser Panel'
-            loading='lazy'
-          />
-          {cageDisplayCard("Low Riser")}
-        </ItemContainer>
-      </Card>
-
-      {/* Riser Panel 2  */}
-      <Card style={{ padding: "10px 10px", margin: "5px 0" }}>
-        <ItemContainer>
-          <ItemImage
-            src={RiserPanel2}
-            alt='Gable Pool Cage with Emphasis on Higher Riser Panel'
-            loading='lazy'
-          />
-          {cageDisplayCard("High Riser")}
-        </ItemContainer>
-      </Card>
-
-      {/* Roof Panel  */}
-      <Card style={{ padding: "10px 10px", margin: "5px 0" }}>
-        <ItemContainer>
-          <ItemImage
-            src={RoofPanel}
-            alt='Gable Pool Cage with Emphasis on Low Roof Panel'
-            loading='lazy'
-          />
-          {cageDisplayCard("Low Roof")}
-        </ItemContainer>
-      </Card>
-
-      {/* Roof Panel 2 */}
-      <Card style={{ padding: "10px 10px", margin: "5px 0" }}>
-        <ItemContainer>
-          <ItemImage
-            src={RoofPanel2}
-            alt='Gable Pool Cage with Emphasis on High Roof Panel'
-            loading='lazy'
-          />
-          {cageDisplayCard("High Roof")}
-        </ItemContainer>
-      </Card>
+      {sortedParts.map(part => {
+        if (part.length > 0) {
+          for (let item in part) {
+            return (
+              <Card
+                key={part[item].id}
+                style={{ padding: "10px 10px", margin: "5px 0" }}
+              >
+                <ItemContainer>
+                  <ItemImage
+                    src={part[item].imageURL}
+                    alt={`${part[item].cageType} Pool Cage with Emphasis on ${part[item].cagePart} Panel`}
+                    loading='lazy'
+                  />
+                  {cageDisplayCard(part[item].cagePart)}
+                </ItemContainer>
+              </Card>
+            );
+          }
+        }
+        return null;
+      })}
     </div>
   );
 };
